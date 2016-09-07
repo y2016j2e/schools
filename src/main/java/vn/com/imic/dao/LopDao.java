@@ -12,6 +12,7 @@ public interface LopDao {
 	public void insertOrUpdate(Lop lop);
 	public void DeleteLop(int id);
 	public int CountLop();
+	public Lop findLopByCondition(String tenlop,String diemtruong);
 	
 	public List<Khoahoc> findAllLopInKhoahoc(String namhoc,String hocki,String diemtruong);
 	public List<Khoahoc> findLimitLopInKhoahoc(int first,int max,String namhoc,String hocki,String diemtruong);

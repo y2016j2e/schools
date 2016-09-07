@@ -260,6 +260,71 @@ th , td{text-align:center;}
 .btn-can{}
 .nothing{}
 
+#addCotent{
+	width:100%;
+	height:auto;
+	float:left;
+	background-image:url(../img/lop-bg.jpg);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+#addCotent .addBox{
+	width:40%;
+	height:auto;
+	margin-left:30%;
+	margin-top:5%;
+	border:1px solid #000;
+	border-radius:5px;
+	float:left;
+	background-color:#f5f5f5;
+	margin-bottom:100px;
+}
+
+#addCotent .addBox .head{
+	width:100%;
+	height:auto;
+	text-align:center;
+	border-bottom:1px solid #000;
+	padding-top:10px;
+	margin-bottom:10px;
+	font-size:24px;
+	font-weight:bold;
+	float:left;
+	background-color:#5cb85c;
+	border-radius:5px 5px 0px 0px;
+	color:#fff;
+}
+
+#addCotent .addBox .tit{
+	width:25%;
+	height:auto;
+	float:left;
+	margin-left:5%;
+	margin-top:20px;
+}
+
+#addCotent .addBox .tit .text{
+	width:100%;
+	float:left;
+	margin-top:7px;
+	margin-bottom:25px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+#addCotent .addBox .add{
+	width:65%;
+	height:auto;
+	margin-top:20px;
+	float:left;
+}
+
+.item{margin-bottom:20px;}
+.fsize{font-size:18px;}
+
+
 @media (min-width: 600px) and (max-width: 1024px) {
 	.main{width:100%;}	
 }

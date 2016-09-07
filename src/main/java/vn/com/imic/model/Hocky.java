@@ -46,6 +46,9 @@ public class Hocky {
 	public void setKhoahoc(List<Khoahoc> khoahoc) {
 		this.khoahoc = khoahoc;
 	}
-
+	
+	public String toString(){
+		return this.tenhocky;
+	}
 
 }
