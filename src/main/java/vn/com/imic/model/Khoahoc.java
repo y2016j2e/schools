@@ -12,9 +12,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="Khoahoc")
+@Table(name="Khoahoc",uniqueConstraints = {@UniqueConstraint(columnNames = {"namhoc", "hocky","lop"})})
 public class Khoahoc {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +37,9 @@ public class Khoahoc {
 	@JoinTable(name = "hocsinhkhoa",joinColumns = { @JoinColumn(name = "makhoahoc") }, inverseJoinColumns = {@JoinColumn(name = "mahocsinh") })
 	private List<Hocsinh> hocsinh;
 	
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(name = "chunhiem",joinColumns = { @JoinColumn(name = "makhoahoc") }, inverseJoinColumns = {@JoinColumn(name = "giaovien") })
-	private List<Giaovien> chunhiem;
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="chunhiem")
+	private Giaovien chunhiem;
 	
 	@ManyToMany(cascade=CascadeType.PERSIST)
 	@JoinTable(name = "phancong",joinColumns = { @JoinColumn(name = "makhoahoc") }, inverseJoinColumns = {@JoinColumn(name = "magiangday") })
@@ -84,11 +85,11 @@ public class Khoahoc {
 		this.hocsinh = hocsinh;
 	}
 
-	public List<Giaovien> getChunhiem() {
+	public Giaovien getChunhiem() {
 		return chunhiem;
 	}
 
-	public void setChunhiem(List<Giaovien> chunhiem) {
+	public void setChunhiem(Giaovien chunhiem) {
 		this.chunhiem = chunhiem;
 	}
 

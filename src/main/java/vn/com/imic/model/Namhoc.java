@@ -48,6 +48,8 @@ public class Namhoc {
 		this.khoahoc = khoahoc;
 	}
 
-	
+	public String toString(){
+		return this.thoigian;
+	}
 	
 }
