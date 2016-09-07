@@ -11,4 +11,7 @@ public interface LopServices {
 	public void SaveOrUpdateLopInKhoahoc(Lop lop,Khoahoc khoahoc);
 	public void DeleteLopInKhoahoc(int makhoahoc);
 	public int getPage(String namhoc,String hocki,String diemtruong,int max);
+	public Khoahoc getKhoahocById(int id);
+	public Lop getLopById(int id);
+	public Lop findLop(String tenlop,String diemtruong);
 }

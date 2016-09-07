@@ -7,9 +7,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-<spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-<spring:url value="resources/css/lopstyle.css" var="lopStyle" />
-<spring:url value="resources/font-awesome-4.1.0/css/font-awesome.css" var="fontStyle" />
+<spring:url value="/resources/css/bootstrap.min.css" var="bootstrap" />
+<spring:url value="/resources/css/lopstyle.css" var="lopStyle" />
+<spring:url value="/resources/font-awesome-4.1.0/css/font-awesome.css" var="fontStyle" />
 
 <link href="${bootstrap}" type="text/css" rel="stylesheet" />
 <link href="${lopStyle}" type="text/css" rel="stylesheet" />
@@ -18,8 +18,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lop</title>
 
-<script src="resources/js/libs/jquery-1.9.1.js"></script>
-<script src="resources/js/libs/bootstrap.min.js"></script>
+<script src="/resources/js/libs/jquery-1.9.1.js"></script>
+<script src="/resources/js/libs/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="wapper">
@@ -58,32 +58,6 @@
 	<div class="box1">
     	<div class="text">Danh Sách Lớp Học</div>
     </div>
-    <form:form action="lop/xem" commandName="temp" method="POST" id="xem">
-    <div class="box2">
-    	<div class="text">Điểm Trường : </div>
-        <div class="select">
-        	<form:select class="form-control" path="diemtruong">
-            	<form:options items="${dt}" itemValue="tendiemtruong" />
-            </form:select>
-        </div>
-        
-        <div class="text">Năm học : </div>
-        <div class="select">
-        	<form:select class="form-control" path="namhoc">
-            	<form:options items="${nam}" itemValue="thoigian"/>
-            </form:select>
-        </div>
-        
-        <div class="text">Học Kỳ :</div>
-        <div class="select">
-        	<form:select class="form-control" path="hocki">
-            	<form:options items="${hk}" itemValue="tenhocky" />
-            </form:select>
-        </div>
-    </div>
-    
-    <div class="but center"><button type="button" class="btn btn-success" onclick="document.getElementById('xem').submit();"><i class="fa fa-pencil"> Xem Danh Sách</i></input></div>
-    </form:form>
     
     <div class="box3">
     <form>
@@ -128,27 +102,27 @@
     	<table class="table table-striped table-bordered" aria-describedby="dataTables-example_info">
         <tr>
         	<th class="center">STT</th>
-        	<th class="center">Học Kỳ</th>
-        	<th class="center">Năm Học</th>
-            <th class="center">Lớp</th>
-            <th class="center">Điểm Trường</th>
-            <th class="center">Chủ Nhiệm</th>
-            <th class="center">Sĩ Số</th>
-            <th class="center">Số Tiết học / Tuần</th>
+        	<th class="center">Mã Học Sinh</th>
+        	<th class="center">Họ Và Tên</th>
+            <th class="center">Ngày Sinh</th>
+            <th class="center">Địa Chỉ</th>
+            <th class="center">Quê QUán</th>
+            <th class="center">Họ Tên Bố</th>
+            <th class="center">Họ Tên Mẹ</th>
             <th><a href="http://localhost:8081/schools/lop/add"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></th>
         </tr>
         
-        <c:forEach var="lop" items="${lis}" varStatus="indexes">
+        <c:forEach var="hocsinh" items="${lis}" varStatus="indexes">
         <tr>
         	<td class="center">${indexes.index + 1}</td>
-        	<td class="center">${lop.hocky.tenhocky}</td>
-        	<td class="center">${lop.namhoc.thoigian}</td>
-            <td class="center"><a href="/schools/lop/${lop.makhoahoc}" style="color: blue;">${lop.lop.tenlop}</a></td>
-            <td class="center">${lop.lop.diemtruong.tendiemtruong}</td>
-            <td class="center">${lop.chunhiem.ten}</td>
-            <td class="center">${ss.get(indexes.index)}</td>
-            <td class="center">${lop.lop.sotiethoc}</td>
-            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop.makhoahoc}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
+        	<td class="center">${hocsinh.maso}</td>
+        	<td class="center">${hocsinh.ten}</td>
+            <td class="center"><fmt:formatDate pattern="dd-MM-yyyy" value="${hocsinh.ngaysinh}"/></td>
+            <td class="center">${hocsinh.diachi}</td>
+            <td class="center">${hocsinh.quequan}</td>
+            <td class="center">${hocsinh.bo}</td>
+            <td class="center">${hocsinh.me}</td>
+            <td class="center"><a href="#"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop.makhoahoc}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
         </tr>
         </c:forEach>
         </table>

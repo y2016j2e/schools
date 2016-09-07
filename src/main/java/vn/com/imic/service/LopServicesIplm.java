@@ -11,6 +11,7 @@ import vn.com.imic.model.Khoahoc;
 import vn.com.imic.model.Lop;
 
 @Service
+@Transactional(readOnly=false)
 public class LopServicesIplm implements LopServices{
 
 	@Autowired
@@ -28,13 +29,18 @@ public class LopServicesIplm implements LopServices{
 	}
 
 	@Override
-	public void SaveOrUpdateLopInKhoahoc(Lop lop, Khoahoc khoahoc) {
-		// TODO Auto-generated method stub
+	public void SaveOrUpdateLopInKhoahoc(Lop lop, Khoahoc khoahoc){
+		if(lop != null){
+			dao.insertOrUpdate(lop);
+			dao.insertOrUpdateLopInKhoahoc(khoahoc);
+		}
+		else{
+			dao.insertOrUpdateLopInKhoahoc(khoahoc);
+		}
 		
 	}
 
 	@Override
-	@Transactional(readOnly=false)
 	public void DeleteLopInKhoahoc(int makhoahoc) {
 		// TODO Auto-generated method stub
 		dao.DeleteLopInKhoahoc(makhoahoc);
@@ -45,5 +51,16 @@ public class LopServicesIplm implements LopServices{
 		// TODO Auto-generated method stub
 		return dao.Page(namhoc, hocki, diemtruong, max);
 	}
-
+	
+	public Lop findLop(String tenlop,String diemtruong){
+		return dao.findLopByCondition(tenlop,diemtruong);
+	}
+	
+	public Khoahoc getKhoahocById(int id){
+		return dao.findByIdLopInKhoahoc(id);
+	}
+	
+	public Lop getLopById(int id){
+		return dao.findById(id);
+	}
 }

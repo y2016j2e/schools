@@ -51,6 +51,17 @@ public class LopDaoIplm extends HibernateDaoSupport implements LopDao{
 		int count = ((Long)session.createQuery("select count(*) from Lop").uniqueResult()).intValue();//from Lop.class.getName()
 		return count;
 	}
+	
+	
+	public Lop findLopByCondition(String tenlop,String diemtruong){
+		DetachedCriteria criteria = DetachedCriteria.forClass(Lop.class, "lop");
+		criteria.createAlias("lop.diemtruong", "diemtruong")
+		.add(Restrictions.eq("tenlop",tenlop))
+		.add(Restrictions.eq("diemtruong.tendiemtruong",diemtruong));
+			if(hibernateTemplate.findByCriteria(criteria).size()!=0)
+				return (Lop) hibernateTemplate.findByCriteria(criteria).get(0);
+		return null;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -84,14 +95,12 @@ public class LopDaoIplm extends HibernateDaoSupport implements LopDao{
 
 	@Override
 	public Khoahoc findByIdLopInKhoahoc(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return hibernateTemplate.get(Khoahoc.class, id);
 	}
 
 	@Override
-	public void insertOrUpdateLopInKhoahoc(Khoahoc khoahoc) {
-		// TODO Auto-generated method stub
-		
+	public void insertOrUpdateLopInKhoahoc(Khoahoc khoahoc){
+			save(khoahoc);
 	}
 
 	@Override
