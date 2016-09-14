@@ -17,28 +17,30 @@ import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
 @Entity
-@Table(name="Lop")
-@NamedQueries({
-	@NamedQuery(name="findAll",query="from Lop"),
-	@NamedQuery(name="findById",query="from Lop where malop = :malop")
-})
+@Table(name = "Lop")
+@NamedQueries({ @NamedQuery(name = "findAll", query = "from Lop"),
+		@NamedQuery(name = "findById", query = "from Lop where malop = :malop") })
 public class Lop {
+
+	public Lop() {
+//		System.out.println("Khoi Tao LopHoc");
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int malop;
-	
-	@Column(name="tenlop",nullable=false)
+
+	@Column(name = "tenlop", nullable = false)
 	private String tenlop;
-	
-	@Column(name="sotiethoc",nullable=false)
+
+	@Column(name = "sotiethoc", nullable = false)
 	private int sotiethoc;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="diemtruong")
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "diemtruong")
 	private Diemtruong diemtruong;
-	
-	@OneToMany(mappedBy="lop")
+
+	@OneToMany(mappedBy = "lop")
 	private List<Khoahoc> khoahoc;
 
 	public int getMalop() {
@@ -81,6 +83,4 @@ public class Lop {
 		this.khoahoc = khoahoc;
 	}
 
-
-	
 }

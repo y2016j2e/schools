@@ -18,10 +18,22 @@
 	href="<c:url value="/resources/font-awesome-4.1.0/css/font-awesome.min.css"/>"
 	rel="stylesheet" type="text/css" />
 
+<link href="<c:url value="/resources/css/bootstrap-select.css"/>"
+	rel="stylesheet" type="text/css" />
 
 <link href="<c:url value="/resources/css/vuong.css"/>" rel="stylesheet"
 	type="text/css" />
+<script src="<c:url value="/resources/js/libs/jquery-1.9.1.js"/>"
+		type="text/javascript"></script>
 
+<script src="<c:url value="/resources/js/libs/bootstrap.min.js"/>"
+	type="text/javascript"></script>
+
+<script src="<c:url value="/resources/js/libs/jquery.min.js"/>"
+	type="text/javascript"></script>
+
+<script src="<c:url value="/resources/js/libs/bootstrap-select.js"/>"
+	type="text/javascript"></script>
 </head>
 <body>
 	<div id="header">
@@ -29,8 +41,7 @@
 			<div class="header_left">
 				<ul class="nav navbar-nav">
 					<li><a data-toggle="tooltip" title="Trở Về Trang Chủ"
-						href="/home" class="logo"><i
-							class="fa fa-home"></i></a></li>
+						href="/home" class="logo"><i class="fa fa-home"></i></a></li>
 					<li><p class="ten_truong">Tiểu Học An Khánh</p></li>
 					<li>
 						<div class="dropdown nam_hoc">

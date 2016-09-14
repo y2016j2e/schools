@@ -202,3 +202,36 @@ body {
 	float: left;
 	width: 100%;
 }
+
+#phancong .row{
+	float: left;
+	width: 100%;
+}
+#phancong .phantrang{
+	float: left;
+	width: 100%;
+}
+#phancong .sodong_tai{
+	float: left;
+	width: 100%;
+}
+#phancong .sodong_tai .col-sm-6{
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 20px;
+}
+#phancong span.caret{
+	color:blue;
+	font-size:16px;
+	margin-left: 10px;
+}
+#phancong_update{
+	float: left;
+	width: 100%;
+}
+#phancong_update .form_update{
+	float: left;
+	width: 50%;
+	margin-left: 25%;
+}

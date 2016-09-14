@@ -12,15 +12,5 @@
 	<div id="footer">
 		<div class="container"></div>
 	</div>
-	<script
-		src="<c:url value="/resources/js/libs/jquery-jquery-1.9.1.js"/>"
-		type="text/javascript"></script>
-
-	<script src="<c:url value="/resources/js/libs/bootstrap.min.js"/>"
-		type="text/javascript"></script>
-
-	<script src="<c:url value="/resources/js/libs/jquery.min.js"/>"
-		type="text/javascript"></script>
-
 </body>
 </html>
