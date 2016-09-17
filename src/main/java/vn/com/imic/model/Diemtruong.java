@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -39,8 +40,8 @@ public class Diemtruong {
 	@OneToMany(mappedBy="diemtruong")
 	private List<Lop> lops;
 	
-	@OneToMany(mappedBy="diemtruong")
-	private List<Cosovatchat> cosovatchat;
+	@OneToOne(mappedBy="diemtruong")
+	private Cosovatchat cosovatchat;
 
 	public int getMadiemtruong() {
 		return madiemtruong;
@@ -98,14 +99,15 @@ public class Diemtruong {
 		this.lops = lops;
 	}
 
-	public List<Cosovatchat> getCosovatchat() {
+
+	public Cosovatchat getCosovatchat() {
 		return cosovatchat;
 	}
 
-	public void setCosovatchat(List<Cosovatchat> cosovatchat) {
+	public void setCosovatchat(Cosovatchat cosovatchat) {
 		this.cosovatchat = cosovatchat;
 	}
-	
+
 	@Override
 	public String toString(){
 		return this.tendiemtruong;

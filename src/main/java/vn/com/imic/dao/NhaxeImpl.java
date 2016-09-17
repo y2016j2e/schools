@@ -1,0 +1,44 @@
+package vn.com.imic.dao;
+
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import vn.com.imic.model.NhaXe;
+
+public class NhaxeImpl extends HibernateDaoSupport implements csvcInterface<NhaXe> {
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NhaXe> findAll() {
+		DetachedCriteria criteria = DetachedCriteria.forClass(NhaXe.class, "nx");
+
+		return (List<NhaXe>) hibernateTemplate.findByCriteria(criteria);
+	}
+
+	@Override
+	public NhaXe FindById(int id) {
+		return hibernateTemplate.get(NhaXe.class, id);
+	}
+
+	@Override
+	public List<NhaXe> findByCondition(int iddt, int idcsvc, int idnamhoc) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(NhaXe.class, "nx");
+		criteria.createAlias("nx.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt))
+				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+		return null;
+	}
+
+	@Override
+	public void SaveOrUpdate(NhaXe e) {
+		save(e);
+	}
+
+	@Override
+	public void deleteByid(int id) {
+		delete(hibernateTemplate.get(NhaXe.class, id));
+	}
+
+}

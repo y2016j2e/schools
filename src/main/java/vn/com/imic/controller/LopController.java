@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import vn.com.imic.dao.HocsinhDao;
 import vn.com.imic.model.Diemtruong;
 import vn.com.imic.model.Hocky;
 import vn.com.imic.model.Hocsinh;

@@ -1,13 +1,15 @@
 package vn.com.imic.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,18 +19,81 @@ public class Cosovatchat {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int macosovatchat;
 	
-	@Column(name="ten",nullable=false)
-	private String ten;
-	
-	@Column(name="soluong",nullable=false)
-	private int soluong;
-	
-	@Column(name="dongia",nullable=false)
-	private int dongia;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	public Banghe getBanghe() {
+		return banghe;
+	}
+
+	public void setBanghe(Banghe banghe) {
+		this.banghe = banghe;
+	}
+
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="diemtruong")
 	private Diemtruong diemtruong;
+
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="banghe")
+	private Banghe banghe;
+	
+	
+	@OneToMany(mappedBy="cosovatchat")
+	private List<Phonghoc> phongHoc;
+	
+	public List<Phonghoc> getPhongHoc() {
+		return phongHoc;
+	}
+
+	public void setPhongHoc(List<Phonghoc> phongHoc) {
+		this.phongHoc = phongHoc;
+	}
+
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="nhaxe")
+	private NhaXe nhaXe;
+
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="nhavesinh")
+	private Nhavesinh nhavesinh;
+	
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="thietbi")
+	private Thietbi thietbi;
+
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="khuonvien")
+	private Khuonvien khuonvien;
+	
+	public Khuonvien getKhuonvien() {
+		return khuonvien;
+	}
+
+	public void setKhuonvien(Khuonvien khuonvien) {
+		this.khuonvien = khuonvien;
+	}
+
+	public NhaXe getNhaXe() {
+		return nhaXe;
+	}
+
+	public void setNhaXe(NhaXe nhaXe) {
+		this.nhaXe = nhaXe;
+	}
+
+	public Nhavesinh getNhavesinh() {
+		return nhavesinh;
+	}
+
+	public void setNhavesinh(Nhavesinh nhavesinh) {
+		this.nhavesinh = nhavesinh;
+	}
+
+	public Thietbi getThietbi() {
+		return thietbi;
+	}
+
+	public void setThietbi(Thietbi thietbi) {
+		this.thietbi = thietbi;
+	}
 
 	public int getMacosovatchat() {
 		return macosovatchat;
@@ -36,30 +101,6 @@ public class Cosovatchat {
 
 	public void setMacosovatchat(int macosovatchat) {
 		this.macosovatchat = macosovatchat;
-	}
-
-	public String getTen() {
-		return ten;
-	}
-
-	public void setTen(String ten) {
-		this.ten = ten;
-	}
-
-	public int getSoluong() {
-		return soluong;
-	}
-
-	public void setSoluong(int soluong) {
-		this.soluong = soluong;
-	}
-
-	public int getDongia() {
-		return dongia;
-	}
-
-	public void setDongia(int dongia) {
-		this.dongia = dongia;
 	}
 
 	public Diemtruong getDiemtruong() {

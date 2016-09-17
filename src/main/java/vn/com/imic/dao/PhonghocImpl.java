@@ -1,0 +1,44 @@
+package vn.com.imic.dao;
+
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import vn.com.imic.model.Phonghoc;
+
+public class PhonghocImpl extends HibernateDaoSupport implements csvcInterface<Phonghoc> {
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Phonghoc> findAll() {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Phonghoc.class,"ph");
+		return  (List<Phonghoc>) hibernateTemplate.findByCriteria(criteria);
+	}
+
+	@Override
+	public Phonghoc FindById(int id) {
+		return hibernateTemplate.get(Phonghoc.class, id);
+	}
+
+	@Override
+	public List<Phonghoc> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Phonghoc.class, "ph");
+		criteria.createAlias("ph.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt))
+				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+
+		return null;
+	}
+
+	@Override
+	public void SaveOrUpdate(Phonghoc e) {
+		save(e);
+	}
+
+	@Override
+	public void deleteByid(int id) {
+		delete(hibernateTemplate.get(Phonghoc.class, id));
+	}
+
+}
