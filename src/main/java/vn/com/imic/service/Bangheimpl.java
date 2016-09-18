@@ -3,10 +3,11 @@ package vn.com.imic.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import vn.com.imic.dao.BangheImpl;
 import vn.com.imic.model.Banghe;
-
+@Service
 public class Bangheimpl implements CosovatchatService<Banghe> {
 	
 	@Autowired
