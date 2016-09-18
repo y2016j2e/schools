@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Khuonvien;
-
+@Repository
 public class KhuonvienDaoImpl extends HibernateDaoSupport implements csvcInterface<Khuonvien> {
 
 	@SuppressWarnings("unchecked")

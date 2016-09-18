@@ -1,7 +1,7 @@
 <html>
 <head>
 	 <script type="text/javascript">
-		window.location="home";
+		window.location="cosovatchat";
 	</script> 
 </head>
 <body>

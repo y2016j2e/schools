@@ -25,22 +25,22 @@ import vn.com.imic.service.CosovatchatService;
 import vn.com.imic.service.DiemtruongServicesIplm;
 import vn.com.imic.service.KhuonVienImpl;
 import vn.com.imic.service.NamhocServices;
-import vn.com.imic.service.NhavesinhImpl;
-import vn.com.imic.service.NhaxeImpl;
+import vn.com.imic.service.Nhavesinhimpl;
+import vn.com.imic.service.Nhaxeimpl;
 import vn.com.imic.service.ServicesInterface;
-import vn.com.imic.service.ThietbiImpl;
+import vn.com.imic.service.Thietbiimpl;
 
 @Controller
 @Scope(scopeName = "session")
 public class CosovatchatController {
-	@Autowired(required=true)
+	@Autowired
 	private ServicesInterface<Diemtruong> diemtruongser;
 
-	@Autowired(required=true)
+	@Autowired
 	private NamhocServices namhocSer;
 	
-	@Autowired(required=true)
-	private CosovatchatService<Banghe> bangheser;
+	@Autowired
+	private CosovatchatService<Banghe> bangheservice;
 
 //	@Autowired(required=true)
 //	private CosovatchatService<Khuonvien> khuonvienser;

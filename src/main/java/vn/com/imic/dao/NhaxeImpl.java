@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.NhaXe;
-
+@Repository
 public class NhaxeImpl extends HibernateDaoSupport implements csvcInterface<NhaXe> {
 
 	@SuppressWarnings("unchecked")

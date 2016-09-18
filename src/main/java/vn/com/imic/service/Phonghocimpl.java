@@ -2,46 +2,48 @@ package vn.com.imic.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import vn.com.imic.dao.KhuonvienDaoImpl;
 import vn.com.imic.dao.csvcInterface;
-import vn.com.imic.model.Khuonvien;
 import vn.com.imic.model.Nhavesinh;
+import vn.com.imic.model.Phonghoc;
 @Service
-public class KhuonVienImpl implements CosovatchatService<Khuonvien> {
-
+public class Phonghocimpl implements CosovatchatService<Phonghoc> {
 	@Autowired
-	csvcInterface<Khuonvien> kvdao;
+	csvcInterface<Phonghoc> phdao;
 
 	@Override
-	public List<Khuonvien> findAll() {
+	public List<Phonghoc> findAll() {
 		// TODO Auto-generated method stub
-		return kvdao.findAll();
+		return phdao.findAll();
 	}
 
 	@Override
-	public Khuonvien FindById(int id) {
+	public Phonghoc FindById(int id) {
 		// TODO Auto-generated method stub
-		return kvdao.FindById(id);
+		return phdao.FindById(id);
 	}
 
 	@Override
-	public List<Khuonvien> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Phonghoc> findByCondition(int iddt, int idcsvc,int idnamhoc) {
 		// TODO Auto-generated method stub
-		return kvdao.findByCondition(iddt, idcsvc,idnamhoc);
+		return phdao.findByCondition(iddt, idcsvc,idnamhoc);
 	}
 
+
 	@Override
-	public void SaveOrUpdate(Khuonvien e) {
-		kvdao.SaveOrUpdate(e);
+	public void SaveOrUpdate(Phonghoc e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteByid(int id) {
-		kvdao.deleteByid(id);
+		// TODO Auto-generated method stub
+		
 	}
+
+
 }

@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Banghe;
-
+@Repository
 public class BangheImpl extends HibernateDaoSupport implements csvcInterface<Banghe> {
 
 	@SuppressWarnings("unchecked")

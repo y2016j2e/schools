@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Phonghoc;
 import vn.com.imic.model.Thietbi;
-
+@Repository
 public class ThietBiImpl extends HibernateDaoSupport implements csvcInterface<Thietbi> {
 
 	@SuppressWarnings("unchecked")

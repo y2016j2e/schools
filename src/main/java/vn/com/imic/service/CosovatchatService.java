@@ -2,8 +2,9 @@ package vn.com.imic.service;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
-@Service
+@Service("csvcser")
 public interface CosovatchatService<E> {
 	public List<E> findAll();
 	public E FindById(int id);

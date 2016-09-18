@@ -3,14 +3,17 @@ package vn.com.imic.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import vn.com.imic.dao.ThietBiImpl;
+import vn.com.imic.dao.csvcInterface;
+import vn.com.imic.model.Nhavesinh;
 import vn.com.imic.model.Thietbi;
-
-public class ThietbiImpl implements CosovatchatService<Thietbi>{
+@Service
+public class Thietbiimpl implements CosovatchatService<Thietbi>{
 
 	@Autowired
-	ThietBiImpl tbdao;
+	csvcInterface<Thietbi> tbdao;
 
 	@Override
 	public List<Thietbi> findAll() {

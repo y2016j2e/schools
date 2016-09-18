@@ -3,14 +3,17 @@ package vn.com.imic.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import vn.com.imic.dao.csvcInterface;
 import vn.com.imic.model.NhaXe;
-
-public class NhaxeImpl implements CosovatchatService<NhaXe> {
+import vn.com.imic.model.Nhavesinh;
+@Service
+public class Nhaxeimpl implements CosovatchatService<NhaXe> {
 
 	@Autowired
-	vn.com.imic.dao.NhaxeImpl nxdao;
-
+	private csvcInterface<NhaXe> nxdao;
 	@Override
 	public List<NhaXe> findAll() {
 		// TODO Auto-generated method stub

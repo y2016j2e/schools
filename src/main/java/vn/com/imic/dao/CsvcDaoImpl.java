@@ -5,10 +5,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Cosovatchat;
 import vn.com.imic.model.Diemtruong;
-
+@Repository
 public class CsvcDaoImpl extends HibernateDaoSupport implements CsvcDao {
 
 	@SuppressWarnings("unchecked")
