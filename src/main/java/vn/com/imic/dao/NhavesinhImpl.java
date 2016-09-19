@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Nhavesinh;
+
 @Repository
 public class NhavesinhImpl extends HibernateDaoSupport implements csvcInterface<Nhavesinh> {
 
@@ -24,10 +25,10 @@ public class NhavesinhImpl extends HibernateDaoSupport implements csvcInterface<
 	}
 
 	@Override
-	public List<Nhavesinh> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Nhavesinh> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Nhavesinh.class, "nvs");
-		criteria.createAlias("nvs.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
-				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt)).add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+		criteria.createAlias("nvs.cosovatchat", "cosovatchat")
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
 		return null;
 	}
 

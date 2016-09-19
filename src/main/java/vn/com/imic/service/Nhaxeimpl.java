@@ -27,9 +27,9 @@ public class Nhaxeimpl implements CosovatchatService<NhaXe> {
 	}
 
 	@Override
-	public List<NhaXe> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<NhaXe> findByCondition(int iddt) {
 		// TODO Auto-generated method stub
-		return nxdao.findByCondition(iddt, idcsvc,idnamhoc);
+		return nxdao.findByCondition(iddt);
 	}
 
 	@Override

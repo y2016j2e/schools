@@ -14,7 +14,7 @@ import vn.com.imic.model.Nhavesinh;
 public class Bangheimpl implements CosovatchatService<Banghe> {
 	
 	@Autowired
-	CosovatchatService<Banghe> bgdao;
+	csvcInterface<Banghe> bgdao;
 
 	@Override
 	public List<Banghe> findAll() {
@@ -27,8 +27,8 @@ public class Bangheimpl implements CosovatchatService<Banghe> {
 	}
 
 	@Override
-	public List<Banghe> findByCondition(int iddt, int idcsvc,int idnamhoc) {
-		return bgdao.findByCondition(iddt, idcsvc,idnamhoc);
+	public List<Banghe> findByCondition(int iddt) {
+		return bgdao.findByCondition(iddt);
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.NhaXe;
+
 @Repository
 public class NhaxeImpl extends HibernateDaoSupport implements csvcInterface<NhaXe> {
 
@@ -24,11 +25,10 @@ public class NhaxeImpl extends HibernateDaoSupport implements csvcInterface<NhaX
 	}
 
 	@Override
-	public List<NhaXe> findByCondition(int iddt, int idcsvc, int idnamhoc) {
+	public List<NhaXe> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(NhaXe.class, "nx");
-		criteria.createAlias("nx.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
-				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt))
-				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+		criteria.createAlias("nx.cosovatchat", "cosovatchat")
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
 		return null;
 	}
 

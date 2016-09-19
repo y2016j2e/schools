@@ -27,9 +27,9 @@ public class Phonghocimpl implements CosovatchatService<Phonghoc> {
 	}
 
 	@Override
-	public List<Phonghoc> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Phonghoc> findByCondition(int iddt) {
 		// TODO Auto-generated method stub
-		return phdao.findByCondition(iddt, idcsvc,idnamhoc);
+		return phdao.findByCondition(iddt);
 	}
 
 

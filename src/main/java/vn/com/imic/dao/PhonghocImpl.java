@@ -23,11 +23,10 @@ public class PhonghocImpl extends HibernateDaoSupport implements csvcInterface<P
 	}
 
 	@Override
-	public List<Phonghoc> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Phonghoc> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Phonghoc.class, "ph");
-		criteria.createAlias("ph.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
-				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt))
-				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+		criteria.createAlias("ph.cosovatchat", "cosovatchat")
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
 
 		return null;
 	}

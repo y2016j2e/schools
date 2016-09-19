@@ -19,12 +19,10 @@ public class KhuonvienDaoImpl extends HibernateDaoSupport implements csvcInterfa
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Khuonvien> findByCondition(int diemtruongid, int cosovatchatid,int idnamhoc) {
+	public List<Khuonvien> findByCondition(int diemtruongid) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Khuonvien.class, "kv");
 		criteria.createAlias("kv.cosovatchat", "cosovatchat")
-				.add(Restrictions.eq("cosovatchat.macosovatchat", cosovatchatid))
-				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", diemtruongid))
-				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", diemtruongid));
 		List<Khuonvien> lis = (List<Khuonvien>) hibernateTemplate.findByCriteria(criteria);
 		return lis;
 

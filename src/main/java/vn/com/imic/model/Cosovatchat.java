@@ -3,6 +3,7 @@ package vn.com.imic.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,56 +14,48 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cosovatchat")
+@Table(name = "Cosovatchat")
 public class Cosovatchat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int macosovatchat;
-	
-	public Banghe getBanghe() {
-		return banghe;
-	}
 
-	public void setBanghe(Banghe banghe) {
-		this.banghe = banghe;
-	}
-
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="diemtruong")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "diemtruong")
 	private Diemtruong diemtruong;
 
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="banghe")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "banghe")
 	private Banghe banghe;
-	
-	
-	@OneToMany(mappedBy="cosovatchat")
-	private List<Phonghoc> phongHoc;
-	
-	public List<Phonghoc> getPhongHoc() {
+
+	@OneToOne(mappedBy = "cosovatchat")
+	@JoinColumn(name = "phonghoc")
+	private Phonghoc phongHoc;
+
+	public Phonghoc getPhongHoc() {
 		return phongHoc;
 	}
 
-	public void setPhongHoc(List<Phonghoc> phongHoc) {
+	public void setPhongHoc(Phonghoc phongHoc) {
 		this.phongHoc = phongHoc;
 	}
 
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="nhaxe")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "nhaxe")
 	private NhaXe nhaXe;
 
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="nhavesinh")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "nhavesinh")
 	private Nhavesinh nhavesinh;
-	
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="thietbi")
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "thietbi")
 	private Thietbi thietbi;
 
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="khuonvien")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "khuonvien")
 	private Khuonvien khuonvien;
-	
+
 	public Khuonvien getKhuonvien() {
 		return khuonvien;
 	}
@@ -81,6 +74,14 @@ public class Cosovatchat {
 
 	public Nhavesinh getNhavesinh() {
 		return nhavesinh;
+	}
+
+	public Banghe getBanghe() {
+		return banghe;
+	}
+
+	public void setBanghe(Banghe banghe) {
+		this.banghe = banghe;
 	}
 
 	public void setNhavesinh(Nhavesinh nhavesinh) {
@@ -110,6 +111,5 @@ public class Cosovatchat {
 	public void setDiemtruong(Diemtruong diemtruong) {
 		this.diemtruong = diemtruong;
 	}
-	
-	
+
 }

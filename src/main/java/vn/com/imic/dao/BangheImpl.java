@@ -24,11 +24,10 @@ public class BangheImpl extends HibernateDaoSupport implements csvcInterface<Ban
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Banghe> findByCondition(int iddt, int idcsvc, int idnamhoc) {
+	public List<Banghe> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Banghe.class, "bg");
-		criteria.createAlias("bg.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
-				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", idcsvc))
-				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
+		criteria.createAlias("bg.cosovatchat", "cosovatchat")
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
 		List<Banghe> lis = (List<Banghe>) hibernateTemplate.findByCriteria(criteria);
 		return lis;
 	}

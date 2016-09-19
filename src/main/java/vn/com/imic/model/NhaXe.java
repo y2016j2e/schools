@@ -17,18 +17,48 @@ public class NhaXe {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int maNhaxe;
 	
-	@Column(name="soluong",nullable=true)
-	private int soluong;
+	@Column(name="nhaxegv")
+	private int nhaxegv;
+	@Column(name="nhaxehs")
+	private int nhaxehs;
+	@Column(name="Sgv")
+	private double Sgv;
+	@Column(name="Shs")
+	private double Shs;
 	
-	@Column(name="dientich",nullable=true)
-	private double dientich;
 	
-	@Column(name="ofgv")
-	private boolean ofgv;
-	
-	@Column(name="ofhs")
-	private boolean ofhs;
-	
+	public int getNhaxegv() {
+		return nhaxegv;
+	}
+
+	public void setNhaxegv(int nhaxegv) {
+		this.nhaxegv = nhaxegv;
+	}
+
+	public int getNhaxehs() {
+		return nhaxehs;
+	}
+
+	public void setNhaxehs(int nhaxehs) {
+		this.nhaxehs = nhaxehs;
+	}
+
+	public double getSgv() {
+		return Sgv;
+	}
+
+	public void setSgv(double sgv) {
+		Sgv = sgv;
+	}
+
+	public double getShs() {
+		return Shs;
+	}
+
+	public void setShs(double shs) {
+		Shs = shs;
+	}
+
 	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="cosovatchat")
 	private Cosovatchat cosovatchat;
@@ -41,37 +71,6 @@ public class NhaXe {
 		this.maNhaxe = maNhaxe;
 	}
 
-	public int getSoluong() {
-		return soluong;
-	}
-
-	public void setSoluong(int soluong) {
-		this.soluong = soluong;
-	}
-
-	public double getDientich() {
-		return dientich;
-	}
-
-	public void setDientich(double dientich) {
-		this.dientich = dientich;
-	}
-
-	public boolean isOfgv() {
-		return ofgv;
-	}
-
-	public void setOfgv(boolean ofgv) {
-		this.ofgv = ofgv;
-	}
-
-	public boolean isOfhs() {
-		return ofhs;
-	}
-
-	public void setOfhs(boolean ofhs) {
-		this.ofhs = ofhs;
-	}
 
 	public Cosovatchat getCosovatchat() {
 		return cosovatchat;

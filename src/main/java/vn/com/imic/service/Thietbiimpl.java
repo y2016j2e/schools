@@ -28,9 +28,9 @@ public class Thietbiimpl implements CosovatchatService<Thietbi>{
 	}
 
 	@Override
-	public List<Thietbi> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Thietbi> findByCondition(int iddt) {
 		// TODO Auto-generated method stub
-		return tbdao.findByCondition(iddt, idcsvc,idnamhoc);
+		return tbdao.findByCondition(iddt);
 	}
 
 	@Override

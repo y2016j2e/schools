@@ -16,76 +16,85 @@ public class Khuonvien {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int makhuonvien;
 	@Column(name="duoccap",nullable= true)
-	private boolean duoccap;
+	private double duoccap;
 	@Column(name="dithue",nullable= true)
-	private boolean dithue;
+	private double dithue;
 	@Column(name="sanchoi",nullable= true)
-	private boolean sanchoi;
+	private double sanchoi;
 	@Column(name="santap",nullable= true)
-	private boolean santap;
+	private double santap;
 	@Column(name="dieukienngoaitroi",nullable= true)
 	private boolean dieukienngoaitroi;
-	@Column(name="dientich",nullable= true)
-	private double dientich;
 	@Column(name="soluonvuon",nullable= true)
 	private int soluonvuon;
 	
 	@OneToOne(cascade=CascadeType.PERSIST)
 	private Cosovatchat cosovatchat;
-	
-	public Cosovatchat getCosovatchat() {
-		return cosovatchat;
-	}
-	public void setCosovatchat(Cosovatchat cosovatchat) {
-		this.cosovatchat = cosovatchat;
-	}
+
 	public int getMakhuonvien() {
 		return makhuonvien;
 	}
+
 	public void setMakhuonvien(int makhuonvien) {
 		this.makhuonvien = makhuonvien;
 	}
-	public boolean isDuoccap() {
+
+	public double getDuoccap() {
 		return duoccap;
 	}
-	public void setDuoccap(boolean duoccap) {
+
+	public void setDuoccap(double duoccap) {
 		this.duoccap = duoccap;
 	}
-	public boolean isDithue() {
+
+	public double getDithue() {
 		return dithue;
 	}
-	public void setDithue(boolean dithue) {
+
+	public void setDithue(double dithue) {
 		this.dithue = dithue;
 	}
-	public boolean isSanchoi() {
+
+	public double getSanchoi() {
 		return sanchoi;
 	}
-	public void setSanchoi(boolean sanchoi) {
+
+	public void setSanchoi(double sanchoi) {
 		this.sanchoi = sanchoi;
 	}
-	public boolean isSantap() {
+
+	public double getSantap() {
 		return santap;
 	}
-	public void setSantap(boolean santap) {
+
+	public void setSantap(double santap) {
 		this.santap = santap;
 	}
+
 	public boolean isDieukienngoaitroi() {
 		return dieukienngoaitroi;
 	}
+
 	public void setDieukienngoaitroi(boolean dieukienngoaitroi) {
 		this.dieukienngoaitroi = dieukienngoaitroi;
 	}
-	public double getDientich() {
-		return dientich;
-	}
-	public void setDientich(double dientich) {
-		this.dientich = dientich;
-	}
+
 	public int getSoluonvuon() {
 		return soluonvuon;
 	}
+
 	public void setSoluonvuon(int soluonvuon) {
 		this.soluonvuon = soluonvuon;
 	}
+
+	public Cosovatchat getCosovatchat() {
+		return cosovatchat;
+	}
+
+	public void setCosovatchat(Cosovatchat cosovatchat) {
+		this.cosovatchat = cosovatchat;
+	}
+	
+	
 
 }

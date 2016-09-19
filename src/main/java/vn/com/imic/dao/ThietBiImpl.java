@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Phonghoc;
 import vn.com.imic.model.Thietbi;
+
 @Repository
 public class ThietBiImpl extends HibernateDaoSupport implements csvcInterface<Thietbi> {
 
@@ -25,12 +26,11 @@ public class ThietBiImpl extends HibernateDaoSupport implements csvcInterface<Th
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Thietbi> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Thietbi> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Thietbi.class, "tb");
-		criteria.createAlias("tb.cosovatchat", "cosovatchat").add(Restrictions.eq("cosovatchat.macosovatchat", idcsvc))
-				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt))
-				.add(Restrictions.eq("cosovatchat.diemtruong.namhoc.manamhoc", idnamhoc));
-		
+		criteria.createAlias("tb.cosovatchat", "cosovatchat")
+				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
+
 		return (List<Thietbi>) hibernateTemplate.findByCriteria(criteria);
 	}
 

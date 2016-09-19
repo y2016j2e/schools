@@ -30,9 +30,9 @@ public class KhuonVienImpl implements CosovatchatService<Khuonvien> {
 	}
 
 	@Override
-	public List<Khuonvien> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Khuonvien> findByCondition(int iddt) {
 		// TODO Auto-generated method stub
-		return kvdao.findByCondition(iddt, idcsvc,idnamhoc);
+		return kvdao.findByCondition(iddt);
 	}
 
 	@Override

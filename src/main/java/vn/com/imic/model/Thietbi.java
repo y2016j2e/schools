@@ -16,14 +16,30 @@ public class Thietbi {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maTbi;
-	@Column(name="soluong",nullable=true)
-	private int soluong;
-	@Column(name="ofgv")
-	private boolean ofgv;
-	@Column(name="ofhs")
-	private boolean ofhs;
-	@Column(name="somaychieu")
-	private int somaychieu;
+	@Column(name="mayhs")
+	private int mayhs;
+	@Column(name="maygv")
+	private int maygv;
+	@Column(name="maychieu")
+	private int maychieu;
+	public int getMayhs() {
+		return mayhs;
+	}
+	public void setMayhs(int mayhs) {
+		this.mayhs = mayhs;
+	}
+	public int getMaygv() {
+		return maygv;
+	}
+	public void setMaygv(int maygv) {
+		this.maygv = maygv;
+	}
+	public int getMaychieu() {
+		return maychieu;
+	}
+	public void setMaychieu(int maychieu) {
+		this.maychieu = maychieu;
+	}
 	@Column(name="internet")
 	private boolean internet;
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -35,30 +51,7 @@ public class Thietbi {
 	public void setMaTbi(int maTbi) {
 		this.maTbi = maTbi;
 	}
-	public int getSoluong() {
-		return soluong;
-	}
-	public void setSoluong(int soluong) {
-		this.soluong = soluong;
-	}
-	public boolean isOfgv() {
-		return ofgv;
-	}
-	public void setOfgv(boolean ofgv) {
-		this.ofgv = ofgv;
-	}
-	public boolean isOfhs() {
-		return ofhs;
-	}
-	public void setOfhs(boolean ofhs) {
-		this.ofhs = ofhs;
-	}
-	public int getSomaychieu() {
-		return somaychieu;
-	}
-	public void setSomaychieu(int somaychieu) {
-		this.somaychieu = somaychieu;
-	}
+	
 	public boolean isInternet() {
 		return internet;
 	}

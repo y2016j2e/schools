@@ -26,9 +26,9 @@ public class Nhavesinhimpl implements CosovatchatService<Nhavesinh>{
 	}
 
 	@Override
-	public List<Nhavesinh> findByCondition(int iddt, int idcsvc,int idnamhoc) {
+	public List<Nhavesinh> findByCondition(int iddt) {
 		// TODO Auto-generated method stub
-		return nvsdao.findByCondition(iddt, idcsvc,idnamhoc);
+		return nvsdao.findByCondition(iddt);
 	}
 
 	@Override
