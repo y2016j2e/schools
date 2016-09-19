@@ -2,7 +2,11 @@ package vn.com.imic.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -38,9 +42,9 @@ public class GiangDayDAO extends HibernateDaoSupport implements IGiangDayDAO {
 	}
 
 	@Override
-	public List<Giaovien> getGiaoVien() {
+	public List<Giaovien> getGiaoVien(int first, int max) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Giaovien.class);
-		return (List<Giaovien>) hibernateTemplate.findByCriteria(criteria);
+		return (List<Giaovien>) hibernateTemplate.findByCriteria(criteria, first, max);
 	}
 
 	@Override
@@ -90,6 +94,25 @@ public class GiangDayDAO extends HibernateDaoSupport implements IGiangDayDAO {
 	@Override
 	public void upDateKhoaHoc(Khoahoc khoahoc) {
 		save(khoahoc);
+	}
+
+	@Override
+	public int countGiaoVien() {
+		Session session = hibernateTemplate.getSessionFactory().openSession();
+		int count = ((Long) session.createQuery("select count(*) from Giaovien").uniqueResult()).intValue();
+		return count;
+	}
+
+	@Override
+	public List<Giaovien> getGVCN() {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Giaovien.class, "giaovien");
+		criteria.createAlias("giaovien.khoahoc", "khoahoc").createAlias("khoahoc.namhoc", "namhoc")
+				.add(Restrictions.eq("namhoc.manamhoc", 1));
+		List<Giaovien> list = (List<Giaovien>) hibernateTemplate.findByCriteria(criteria);
+		for (Giaovien giaovien : list) {
+			System.out.println(giaovien.getTen()+ "Ma: "+giaovien.getMagiaovien());
+		}
+		return list;
 	}
 
 }

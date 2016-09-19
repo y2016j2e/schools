@@ -10,7 +10,7 @@ import vn.com.imic.model.Monhoc;
 
 public interface IGiangDayDAO {
 
-	public List<Giaovien> getGiaoVien();
+	public List<Giaovien> getGiaoVien(int first, int max);
 
 	public List<Monhoc> getMonHoc();
 
@@ -37,5 +37,9 @@ public interface IGiangDayDAO {
 	public void upDatePhanCong(Giaovien giaovien);
 
 	public void upDateKhoaHoc(Khoahoc khoahoc);
+	
+	public int countGiaoVien();
+	
+	public List<Giaovien> getGVCN();
 
 }

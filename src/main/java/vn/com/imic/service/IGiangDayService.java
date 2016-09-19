@@ -10,11 +10,11 @@ import vn.com.imic.model.Monhoc;
 
 public interface IGiangDayService {
 
-	public List<Giaovien> getGiaoVien();
+	public List<Giaovien> getGiaoVienLimit(int first,int max);
 
 	public List<Monhoc> getMonHoc();
 
-	public List<Giangday> getAll();
+	public List<Giangday> getAll(int maNamHoc);
 
 	public void saveOrUpdate(Giangday giangday);
 
@@ -37,6 +37,11 @@ public interface IGiangDayService {
 	public Khoahoc findKhoaHoc(int maKhoaHoc);
 
 	public Monhoc findMonHoc(int maMonHoc);
+	public List<Giaovien> getGVCN();
 
 	public void updateKhoaHoc(Khoahoc khoahoc);
+
+	public boolean checkPhanCong(List<Giangday> listGiangDay, Giangday giangday);
+
+	public int countGiaoVien();
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.IGiangDayDAO;
-import vn.com.imic.dao.KhoahocDAO;
 import vn.com.imic.model.Giangday;
 import vn.com.imic.model.Giaovien;
 import vn.com.imic.model.Khoahoc;
@@ -23,8 +22,16 @@ public class GiangDayService implements IGiangDayService {
 	private IGiangDayDAO giangdayDAO;
 
 	@Override
-	public List<Giangday> getAll() {
-		return giangdayDAO.getAll();
+	public List<Giangday> getAll(int maNamHoc) {
+		List<Giangday> listGiangDay = giangdayDAO.getAll();
+		Iterator<Giangday> iterator = listGiangDay.iterator();
+		while (iterator.hasNext()) {
+			Giangday giangday = iterator.next();
+			if (giangday.getKhoahoc().getNamhoc().getManamhoc() != maNamHoc) {
+				iterator.remove();
+			}
+		}
+		return listGiangDay;
 	}
 
 	@Override
@@ -43,8 +50,8 @@ public class GiangDayService implements IGiangDayService {
 	}
 
 	@Override
-	public List<Giaovien> getGiaoVien() {
-		return giangdayDAO.getGiaoVien();
+	public List<Giaovien> getGiaoVienLimit(int first, int max) {
+		return giangdayDAO.getGiaoVien(first, max);
 	}
 
 	@Override
@@ -107,31 +114,40 @@ public class GiangDayService implements IGiangDayService {
 	}
 
 	@Override
-	public void updatePhanCong(Giaovien giaoVien1) {
-
-		Giaovien giaovien2 = getGiaoVien(giaoVien1.getMagiaovien(), 1);
-		if (giaovien2.getKhoahoc().size() > 0) {
+	public void updatePhanCong(Giaovien giaoVien) {
+		Giaovien giaovien2 = getGiaoVien(giaoVien.getMagiaovien(), 1);
+		if (giaoVien.getKhoahoc().get(0).getMakhoahoc() == 0) {
 			Khoahoc khoahocDelete = giaovien2.getKhoahoc().get(0);
 			khoahocDelete.setChunhiem(null);
-			giangdayDAO.upDateKhoaHoc(khoahocDelete);
+			if (khoahocDelete != null) {
+				giangdayDAO.upDateKhoaHoc(khoahocDelete);
+			}
+		} else {
+			if (giaovien2.getKhoahoc().size() > 0) {
+				Khoahoc khoahocDelete = giaovien2.getKhoahoc().get(0);
+				khoahocDelete.setChunhiem(null);
+				giangdayDAO.upDateKhoaHoc(khoahocDelete);
+			}
+			Khoahoc khoahoc = findKhoaHoc(giaoVien.getKhoahoc().get(0).getMakhoahoc());
+			khoahoc.setChunhiem(giaovien2);
+			giangdayDAO.upDateKhoaHoc(khoahoc);
 		}
-		Khoahoc khoahoc = findKhoaHoc(giaoVien1.getKhoahoc().get(0).getMakhoahoc());
-		khoahoc.setChunhiem(giaovien2);
-		giangdayDAO.upDateKhoaHoc(khoahoc);
-		List<Giangday> giangdays = new ArrayList<>();
-		for (Giangday giangday : giaoVien1.getGiangday()) {
-			if (giangday.getMagiangday() != 0) {
-				Giangday giangday2 = findByID(giangday.getMagiangday());
+		for (Giangday giangday : giaovien2.getGiangday()) {
+			giangdayDAO.delete(giangday.getMagiangday());
+		}
+		if (giaoVien.getGiangday() != null) {
+			List<Giangday> giangdays = new ArrayList<>();
+			for (Giangday giangday : giaoVien.getGiangday()) {
 				Khoahoc khoahoc2 = findKhoaHoc(giangday.getKhoahoc().getMakhoahoc());
 				Monhoc monhoc = findMonHoc(giangday.getMonhoc().getMamonhoc());
-				giangday2.setKhoahoc(khoahoc2);
-				giangday2.setMonhoc(monhoc);
-				giangday2.setGiaovien(giaovien2);
-				giangdays.add(giangday2);
+				giangday.setKhoahoc(khoahoc2);
+				giangday.setMonhoc(monhoc);
+				giangday.setGiaovien(giaovien2);
+				giangdays.add(giangday);
 			}
+			giaovien2.setGiangday(giangdays);
+			giangdayDAO.upDatePhanCong(giaovien2);
 		}
-		giaovien2.setGiangday(giangdays);
-		giangdayDAO.upDatePhanCong(giaovien2);
 	}
 
 	@Override
@@ -150,4 +166,24 @@ public class GiangDayService implements IGiangDayService {
 		giangdayDAO.upDateKhoaHoc(khoahoc);
 	}
 
+	@Override
+	public boolean checkPhanCong(List<Giangday> listGiangDay, Giangday giangday) {
+		for (int i = 0; i < listGiangDay.size(); i++) {
+			if (giangday.getMonhoc().getMamonhoc() == listGiangDay.get(i).getMonhoc().getMamonhoc()
+					&& giangday.getKhoahoc().getMakhoahoc() == listGiangDay.get(i).getKhoahoc().getMakhoahoc()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public int countGiaoVien() {
+		return giangdayDAO.countGiaoVien();
+	}
+
+	@Override
+	public List<Giaovien> getGVCN() {
+		return giangdayDAO.getGVCN();
+	}
 }
