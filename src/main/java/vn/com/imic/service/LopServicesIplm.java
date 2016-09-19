@@ -63,4 +63,27 @@ public class LopServicesIplm implements LopServices{
 	public Lop getLopById(int id){
 		return dao.findById(id);
 	}
+
+	@Override
+	public List<Khoahoc> getLimitLopInKhoahocById(int namhoc, int hocki, int diemtruong, int first, int max) {
+		// TODO Auto-generated method stub
+		return dao.findLimitLopInKhoahocById(first, max, namhoc, hocki, diemtruong);
+	}
+
+	public List<Khoahoc> getAllKhoahoc(){
+		return dao.findAllKhoahoc();
+	}
+	
+	public List<Khoahoc> getLopChange(int id){
+		return dao.findLopChange(id);
+	}
+	
+	public void changeLop(int id,int hsid,int change){
+		dao.changeLopById(id,hsid,change);
+	}
+	
+	@Override
+	public int getPageById(int namhoc, int hocki, int diemtruong, int max) {
+		return dao.PageById(namhoc, hocki, diemtruong, max);
+	}
 }

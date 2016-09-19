@@ -3,11 +3,14 @@ package vn.com.imic.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,6 +50,10 @@ public class Giaovien {
 	
 	@OneToMany(mappedBy="giaovien")
 	private List<Giangday> giangday;
+	
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="diemtruong")
+	private Diemtruong diemtruong;
 
 	public int getMagiaovien() {
 		return magiaovien;
@@ -135,6 +142,17 @@ public class Giaovien {
 	public void setGiangday(List<Giangday> giangday) {
 		this.giangday = giangday;
 	}
+
+	public Diemtruong getDiemtruong() {
+		return diemtruong;
+	}
+
+	public void setDiemtruong(Diemtruong diemtruong) {
+		this.diemtruong = diemtruong;
+	}
 	
+	public String toString(){
+		return this.ten;
+	}
 	
 }

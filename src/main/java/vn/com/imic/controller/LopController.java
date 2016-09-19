@@ -1,12 +1,29 @@
 package vn.com.imic.controller;
 
 import java.beans.PropertyEditorSupport;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,7 +39,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import vn.com.imic.dao.HocsinhDao;
+import vn.com.imic.dao.LopDao;
 import vn.com.imic.model.Diemtruong;
 import vn.com.imic.model.Hocky;
 import vn.com.imic.model.Hocsinh;
@@ -55,12 +72,23 @@ public class LopController {
 	@Autowired
 	private HocsinhLopServices hocsinhServices;
 	
+	@Autowired
+	private LopDao dao;
+	
+//	@Autowired
+//	private AddLopValidate lopValidate;
+
+	
 	private KhoahocDataTemp t;
 	private int r=5;
+	private int hsr = 5;
 	private Khoahoc khtemp = null;
+
+	private int checkAddHs = 0;
 	
 	@InitBinder
 	protected void InitBinder(WebDataBinder binder){
+//		binder.setValidator(lopValidate);
 		binder.registerCustomEditor(Diemtruong.class,"diemtruong",new PropertyEditorSupport(){ //add object for selected option in jsp file
 			@Override
 			public void setAsText(String text) throws IllegalArgumentException {
@@ -120,16 +148,16 @@ public class LopController {
 	public ModelAndView setViewLopa(@RequestParam(value="page",required=false) String page, HttpServletRequest request){
 		
 		ModelAndView model = new ModelAndView("lop/lop");
-		int count = sevices.getPage(t.getNamhoc(),t.getHocki(),t.getDiemtruong(),r);
+		int count = sevices.getPageById(t.getNamhoc(),t.getHocki(),t.getDiemtruong(),r);
 		System.out.println(count+"so page");
 		List<Khoahoc> lis = new ArrayList<>();
 		if(page!=null){
 			int pg = Integer.parseInt(page);
-			lis = sevices.getLimitLopInKhoahoc(t.getNamhoc(),t.getHocki(),t.getDiemtruong(),r*(pg-1),r);
+			lis = sevices.getLimitLopInKhoahocById(t.getNamhoc(),t.getHocki(),t.getDiemtruong(),r*(pg-1),r);
 			model.addObject("act",pg);
 		}
 		else{
-			lis = sevices.getLimitLopInKhoahoc(t.getNamhoc(),t.getHocki(),t.getDiemtruong(),0,r);
+			lis = sevices.getLimitLopInKhoahocById(t.getNamhoc(),t.getHocki(),t.getDiemtruong(),0,r);
 			model.addObject("act",1);
 		}
 		
@@ -162,6 +190,8 @@ public class LopController {
 		model.addObject("hk", hk);
 		model.addObject("dt", dt);
 		model.addObject("temp", new KhoahocDataTemp());
+		
+		
 		return model;
 	}
 	
@@ -187,50 +217,67 @@ public class LopController {
 	}
 	
 	//show add object's view
-	@RequestMapping(value="/lop/add",method = RequestMethod.GET)
-	public ModelAndView setAddView(){
-		ModelAndView model = new ModelAndView("lop/addLop");
-		List<Namhoc> nam = new ArrayList<>();
-		nam = namhocServices.getAllNamhoc();
-		
-		List<Hocky> hk = new ArrayList<>();
-		hk = hockiServices.getAllObjects();
-		
-		List<Diemtruong> dt = new ArrayList<>();
-		dt = diemtruongServices.getAllObjects();
-		
-		model.addObject("nam", nam);
-		model.addObject("hk", hk);
-		model.addObject("dt", dt);
-		model.addObject("loptemp", new LopDataTemp());
-		return model;
-	}
-	
-	@RequestMapping(value="/lop/addLop",method = RequestMethod.POST) //add object
-	public String addLop(Model model,@ModelAttribute("loptemp") LopDataTemp loptemp,BindingResult result,
-			RedirectAttributes redirect){
-		
-		Khoahoc kh = new Khoahoc();
-		kh.setHocky(loptemp.getHocky());
-		kh.setNamhoc(loptemp.getNamhoc());
-		Lop lop = null;
-		//check Lop, if Lop already exists , do nothing , else add new Lop
-		if(sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong()) == null){ 
-			lop = new Lop();
-			lop.setDiemtruong(loptemp.getDiemtruong());
-			lop.setSotiethoc(loptemp.getSotiethoc());
-			lop.setTenlop(loptemp.getTenlop());
-			kh.setLop(lop);
-		}
-		else {
-			lop = sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong());
-			lop.setSotiethoc(loptemp.getSotiethoc());
-			kh.setLop(lop);
-		}
-		
-		sevices.SaveOrUpdateLopInKhoahoc(lop, kh);
-		return "redirect:/lop";
-	}
+//	@RequestMapping(value="/lop/add",method = RequestMethod.GET)
+//	public ModelAndView setAddView(){
+//		ModelAndView model = new ModelAndView("lop/addLop");
+//		List<Namhoc> nam = new ArrayList<>();
+//		nam = namhocServices.getAllNamhoc();
+//		
+//		List<Hocky> hk = new ArrayList<>();
+//		hk = hockiServices.getAllObjects();
+//		
+//		List<Diemtruong> dt = new ArrayList<>();
+//		dt = diemtruongServices.getAllObjects();
+//		
+//		model.addObject("nam", nam);
+//		model.addObject("hk", hk);
+//		model.addObject("dt", dt);
+//		model.addObject("loptemp", new LopDataTemp());
+//		return model;
+//	}
+//	
+//	@RequestMapping(value="/lop/addLop",method = RequestMethod.POST) //add object
+//	public String addLop(Model model,@ModelAttribute("loptemp") @Validated LopDataTemp loptemp,BindingResult result,
+//			RedirectAttributes redirect){
+////		System.out.println(loptemp.getTenlop());
+////		if(result.hasErrors()){
+////			List<Namhoc> nam = new ArrayList<>();
+////			nam = namhocServices.getAllNamhoc();
+////			
+////			List<Hocky> hk = new ArrayList<>();
+////			hk = hockiServices.getAllObjects();
+////			
+////			List<Diemtruong> dt = new ArrayList<>();
+////			dt = diemtruongServices.getAllObjects();
+////			
+////			model.addAttribute("nam", nam);
+////			model.addAttribute("hk", hk);
+////			model.addAttribute("dt", dt);
+////			model.addAttribute("loptemp", new LopDataTemp());
+////			return "lop/addLop";
+////		}
+////		
+//		Khoahoc kh = new Khoahoc();
+//		kh.setHocky(loptemp.getHocky());
+//		kh.setNamhoc(loptemp.getNamhoc());
+//		Lop lop = null;
+//		//check Lop, if Lop already exists , do nothing , else add new Lop
+//		if(null == sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong())){ 
+//			lop = new Lop();
+//			lop.setDiemtruong(loptemp.getDiemtruong());
+//			lop.setSotiethoc(loptemp.getSotiethoc());
+//			lop.setTenlop(loptemp.getTenlop());
+//			kh.setLop(lop);
+//		}
+//		else {
+//			lop = sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong());
+//			lop.setSotiethoc(loptemp.getSotiethoc());
+//			kh.setLop(lop);
+//		}
+//		
+//		sevices.SaveOrUpdateLopInKhoahoc(lop, kh);
+//		return "redirect:/lop";
+//	}
 	
 	//show Edit view
 	@RequestMapping(value="/lop/edit/{id}",method = RequestMethod.GET)
@@ -261,26 +308,99 @@ public class LopController {
 	public String updateLop(Model model,@ModelAttribute("update") LopDataTemp update,BindingResult result,
 			RedirectAttributes redirect){
 		
-		khtemp.getLop().setSotiethoc(update.getSotiethoc());
+		if(khtemp.getLop().getSotiethoc() != update.getSotiethoc())
+			khtemp.getLop().setSotiethoc(update.getSotiethoc());
+		
 		khtemp.setHocky(update.getHocky());
 		khtemp.setNamhoc(update.getNamhoc());
+		sevices.SaveOrUpdateLopInKhoahoc(khtemp.getLop(), khtemp);
 		return "redirect:/lop";
 	}
 	
+	
+	
+	@RequestMapping(value="/lop/download")
+	public String downloadFile(HttpServletResponse response){
+		dao.download();
+		response.setContentType("application/xlsx");
+		response.setHeader("Content-Disposition", "attachment; filename=excelfile.xlsx");
+		try {
+			InputStream input = new FileInputStream("C://Users/Administrator/Desktop/ex.xlsx");
+			IOUtils.copy(input,response.getOutputStream());
+			response.flushBuffer();
+	        input.close();
+	        File file = new File("C:/Users/Administrator/Desktop/ex.xlsx");
+	        file.delete();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return "redirect:/lop";
+	}
+	
+	
 	@RequestMapping(value="/lop/{id}",method = RequestMethod.GET)
-	public ModelAndView viewHocsinh(@PathVariable(value="id") int id,RedirectAttributes redirect){
-		System.out.println("so hoc sinh = "+hocsinhServices.countHocsinhInLop(id));
+	public ModelAndView viewHocsinh(@PathVariable(value="id") int id,@RequestParam(value="pg",defaultValue = "1") String pg){
+		int count = hocsinhServices.countHocsinhInLop(id).intValue();
 		ModelAndView model = new ModelAndView("lop/hocsinhlop");
-		List<Hocsinh> lis = hocsinhServices.getLimitHocsinhInLop(id, 0, 5);
+		List<Hocsinh> lis = null;
+		
+		lis = hocsinhServices.getLimitHocsinhInLop(id, (Integer.parseInt(pg)-1)*hsr, hsr);
+		List<Khoahoc> lisLop = sevices.getLopChange(id);
+
+		List<Hocsinh> lisHS = hocsinhServices.getAllHocsinh();
+		
 		model.addObject("lis",lis);
+		model.addObject("checkadd",checkAddHs);
+		model.addObject("lisHS",lisHS);
+		model.addObject("lenght",lisHS.size());
+		model.addObject("count",count);
+		model.addObject("act",Integer.parseInt(pg));
 		model.addObject("hocsinh",new Hocsinh());
+		model.addObject("lisLop",lisLop);
+		model.addObject("khoahoc",sevices.getKhoahocById(id));
 		return model;
 	}
+	
+	@RequestMapping(value="/lop/{id}/delete/{hsid}")
+	public String deleteHocsinhInLop(@PathVariable(value="id") int id,@PathVariable(value="hsid")int hsid,RedirectAttributes redirect){
+		hocsinhServices.deleteHocsinhInLop(id,hsid);
+		return "redirect:/lop/"+id;
+	}
+	
+	@RequestMapping(value="/lop/{id}/change/{hsid}")
+	public String changeLop(@PathVariable(value="id") int id,@PathVariable(value="hsid")int hsid,
+			RedirectAttributes redirect,@ModelAttribute("chang")int chang){
+		System.out.println("id : "+id);
+		System.out.println("change : "+chang);
+		sevices.changeLop(id,hsid,chang);
+		return "redirect:/lop/"+id;
+	}
+	
+	@RequestMapping(value="/lop/{id}/addIn",method = RequestMethod.POST)
+	public String addInLop(@PathVariable(value="id") int id,
+			RedirectAttributes redirect,@ModelAttribute("addHS")int maso){
+		System.out.println("add "+maso);
+		
+		boolean x = hocsinhServices.addHocsinhToLop(maso, id);
+		System.out.println(x);
+		if(!x)
+			checkAddHs = 1;
+		else
+			checkAddHs = 0;
+		return "redirect:/lop/"+id;
+	}
+	
 	
 	@PostConstruct
 	public void init(){
 		//set Default info to show when begin
-		t = new KhoahocDataTemp("2016-2017","Học Kỳ I","Imic Hoàng Quốc Việt");
+		t = new KhoahocDataTemp(1,1,1);
 	}
 	
 }

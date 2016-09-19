@@ -63,21 +63,21 @@
     	<div class="text">Điểm Trường : </div>
         <div class="select">
         	<form:select class="form-control" path="diemtruong">
-            	<form:options items="${dt}" itemValue="tendiemtruong" />
+            	<form:options items="${dt}" itemValue="madiemtruong" />
             </form:select>
         </div>
         
         <div class="text">Năm học : </div>
         <div class="select">
         	<form:select class="form-control" path="namhoc">
-            	<form:options items="${nam}" itemValue="thoigian"/>
+            	<form:options items="${nam}" itemValue="manamhoc"/>
             </form:select>
         </div>
         
         <div class="text">Học Kỳ :</div>
         <div class="select">
         	<form:select class="form-control" path="hocki">
-            	<form:options items="${hk}" itemValue="tenhocky" />
+            	<form:options items="${hk}" itemValue="mahocky" />
             </form:select>
         </div>
     </div>
@@ -118,8 +118,8 @@
 };
 </script>
         <div class="right">
-        	<a href="#"><button type="button" class="btn btn-outline btn-success fl-r marginR"> <i class="fa fa-upload"></i> Tải lên</button></a>
-            <a href="#"><button type="button" class="btn  btn-success btn-outline fl-r marginR"> <i class="fa fa-download"></i> Tải Xuống File Excel</button></a>
+        	<button type="button" class="btn btn-outline btn-success fl-r marginR" id="up"> <i class="fa fa-upload"></i> Tải lên</button>
+            <a href="/schools/lop/download"><button type="button" class="btn  btn-success btn-outline fl-r marginR"> <i class="fa fa-download"></i> Tải Xuống File Excel</button></a>
             <a href="#"><button type="button" class="btn btn-outline btn-success fl-r marginR"><i class="fa fa-file-pdf-o" ></i> Tải Xuống File PDF</button></a>
         </div>
     </div>
@@ -145,10 +145,10 @@
         	<td class="center">${lop.namhoc.thoigian}</td>
             <td class="center"><a href="/schools/lop/${lop.makhoahoc}" style="color: blue;">${lop.lop.tenlop}</a></td>
             <td class="center">${lop.lop.diemtruong.tendiemtruong}</td>
-            <td class="center">${lop.chunhiem.ten}</td>
+            <td class="center"><button type="button" class="clear-but" onclick="gvcn('${lop.chunhiem.ten}','${lop.chunhiem.ngaysinh}','${lop.chunhiem.diachi}','${lop.chunhiem.quequan}','${lop.chunhiem.email}','${lop.chunhiem.sdt}','${lop.chunhiem.namvaonghe}','${lop.chunhiem.trinhdo}')">${lop.chunhiem.ten}</button></td>
             <td class="center">${ss.get(indexes.index)}</td>
             <td class="center">${lop.lop.sotiethoc}</td>
-            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop.makhoahoc}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
+            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
         </tr>
         </c:forEach>
         </table>
@@ -164,7 +164,7 @@
 </div>
 
 
-<div class="deleteClass"></div>
+<div class="deleteClass" id="div"></div>
 <form>
 <div class="deleteBox delete">
 	<div class="quest delete"><b id="del"></b></div>
@@ -175,6 +175,24 @@
     </div>
 </div>
 </form>
+
+<div class="showClass" id="sh"></div>
+<div class="showBox show" id="info"></div>
+
+<div class="uploadClass"></div>
+<form:form commandName="uploadfile" method="POST">
+<div class="uploadBox upload" id="upload">
+	
+		<div class="quest"><b>Chọn File Upload : </b><input type="file" name="file" style="margin-left: 20%;"/></div>
+		 <hr class="divider" style="margin-top:10px;" />
+    	<div class="uploadBut">
+    		<input type="submit" value="upload" onclick="" class="btn btn-info"/>
+    		<button id="cancel" type="button" class="btn btn-default"><i class="fa fa-ban"> Hủy</i></button>
+    	</div>
+	
+</div>
+</form:form>
+
 <!-- <script src="resources/js/libs/jquery-1.9.1.js"></script> -->
 <!-- <script src="resources/js/libs/bootstrap.min.js"></script> -->
 <script>
@@ -192,6 +210,20 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $("#up").click(function(){
+        $(".uploadClass").fadeToggle("slow");
+		$("#upload").fadeToggle("1000");
+    });
+});
+
+$(document).ready(function(){
+    $("#cancel").click(function(){
+        $(".uploadClass").fadeToggle("slow");
+		$("#upload").fadeToggle("1000");
+    });
+});
+
 var maso;
 var link;
 function fun(id,lop){
@@ -204,6 +236,18 @@ function fun(id,lop){
 
 function delLop(){
 	document.getElementById("aaa").setAttribute("href",link);
+}
+
+function gvcn(ten,ngaysinh,diachi,quequan,email,sdt,namvaonghe,trinhdo){
+		var box = '</div><div class="quest show-none"><b id="del" style="font-size:20px;">Giáo Viên : '+ten+' </b></div><hr class="divider show-none" style="margin-top:10px;" /><p class="mar">Tên giáo viên : '+ten+'</p><p class="mar">Ngày sinh : '+ngaysinh+'</p><p class="mar">Địa Chỉ : '+diachi+'</p><p class="mar">Quê quán : '+quequan+'</p><p class="mar">Email : '+email+'</p><p class="mar">Sđt : '+sdt+'</p><p class="mar">Năm vào nghề : '+namvaonghe+'</p><p class="mar">Trình độ : '+trinhdo+'</p><div class="showBut show-none"><button type="button" class="btn btn-info" onclick="ok()"><i class="fa fa-check"> OK</i></button></div>';
+	document.getElementById("sh").setAttribute("class","showClass show-none");
+	document.getElementById("info").setAttribute("class","showBox show-none");
+	document.getElementById("info").innerHTML=box;
+	}
+
+function ok(){
+	document.getElementById("sh").setAttribute("class","showClass show");
+	document.getElementById("info").setAttribute("class","showBox show");
 }
 
 </script>
