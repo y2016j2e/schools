@@ -2,6 +2,7 @@ package vn.com.imic.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Monhoc {
 	@Column(name="tenmonhoc",nullable=false)
 	private String tenmonhoc;
 	
-	@OneToMany(mappedBy="monhoc")
+	@OneToMany(mappedBy="monhoc",cascade=CascadeType.ALL)
 	private List<Giangday> giangday;
 
 	public int getMamonhoc() {
@@ -46,5 +47,5 @@ public class Monhoc {
 	public void setGiangday(List<Giangday> giangday) {
 		this.giangday = giangday;
 	}
-	
+
 }

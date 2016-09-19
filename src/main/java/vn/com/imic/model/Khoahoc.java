@@ -11,40 +11,45 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="Khoahoc",uniqueConstraints = {@UniqueConstraint(columnNames = {"namhoc", "hocky","lop"})})
+@Table(name = "Khoahoc", uniqueConstraints = { @UniqueConstraint(columnNames = { "namhoc", "hocky", "lop" }) })
 public class Khoahoc {
+
+	public Khoahoc() {
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int makhoahoc;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="lop")
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "lop")
 	private Lop lop;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="namhoc")
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "namhoc")
 	private Namhoc namhoc;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="hocky")
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "hocky")
 	private Hocky hocky;
-	
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(name = "hocsinhkhoa",joinColumns = { @JoinColumn(name = "makhoahoc") }, inverseJoinColumns = {@JoinColumn(name = "mahocsinh") })
+
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "hocsinhkhoa", joinColumns = { @JoinColumn(name = "makhoahoc") }, inverseJoinColumns = {
+			@JoinColumn(name = "mahocsinh") })
 	private List<Hocsinh> hocsinh;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="chunhiem")
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "chunhiem")
 	private Giaovien chunhiem;
-	
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(name = "phancong",joinColumns = { @JoinColumn(name = "makhoahoc") }, inverseJoinColumns = {@JoinColumn(name = "magiangday") })
+
+	@OneToMany(mappedBy = "khoahoc", cascade = CascadeType.ALL)
 	private List<Giangday> giangday;
-	
+
 	public int getMakhoahoc() {
 		return makhoahoc;
 	}
@@ -100,6 +105,5 @@ public class Khoahoc {
 	public void setGiangday(List<Giangday> giangday) {
 		this.giangday = giangday;
 	}
-	
-	
+
 }
