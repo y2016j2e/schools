@@ -28,7 +28,7 @@ public class Cosovatchat {
 	@JoinColumn(name = "banghe")
 	private Banghe banghe;
 
-	@OneToOne(mappedBy = "cosovatchat")
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "phonghoc")
 	private Phonghoc phongHoc;
 

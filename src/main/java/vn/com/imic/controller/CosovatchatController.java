@@ -122,7 +122,7 @@ public class CosovatchatController {
 
 	@ModelAttribute("thietbis")
 	@RequestMapping("cosovatchat/thietbi")
-	public List<Thietbi> gettbById(int iddt) {
+	public List<Thietbi> gettbById() {
 		List<Diemtruong> diemtruongs = diemtruongser.getAllObjects();
 		if (diemtruongs.size() == 0) {
 			System.out.println("Size: " + diemtruongs.size());
