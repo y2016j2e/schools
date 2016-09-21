@@ -121,7 +121,18 @@
 									</c:otherwise>
 								</c:choose>
 							</div>
-							<div class="col-sm-6"></div>
+							<div class="col-sm-6">
+								<div class="taifile">
+									<a style="float: right;" class="btn btn-sm btn-default" href='<spring:url value="/phancong/dowload"></spring:url>'>
+										<span style="color:#337ab7;font-size:14px;" class="fa fa-upload"></span>
+										<span>UpLoad</span>
+									</a>
+									<a style="float: right;margin-right:10px;" class="btn btn-sm btn-default" href='<spring:url value="/phancong/dowload"></spring:url>'>
+										<span style="color:#337ab7;font-size:14px;" class="fa fa-download"></span>
+										<span>DownLoad</span>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 					<table class="table table-bordered table-hover table-condensed">

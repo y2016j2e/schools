@@ -116,25 +116,23 @@ public class GiangDayService implements IGiangDayService {
 	@Override
 	public void updatePhanCong(Giaovien giaoVien) {
 		Giaovien giaovien2 = getGiaoVien(giaoVien.getMagiaovien(), 1);
-		if (giaoVien.getKhoahoc().get(0).getMakhoahoc() == 0) {
-			Khoahoc khoahocDelete = giaovien2.getKhoahoc().get(0);
-			khoahocDelete.setChunhiem(null);
-			if (khoahocDelete != null) {
-				giangdayDAO.upDateKhoaHoc(khoahocDelete);
-			}
-		} else {
-			if (giaovien2.getKhoahoc().size() > 0) {
-				Khoahoc khoahocDelete = giaovien2.getKhoahoc().get(0);
-				khoahocDelete.setChunhiem(null);
-				giangdayDAO.upDateKhoaHoc(khoahocDelete);
-			}
-			Khoahoc khoahoc = findKhoaHoc(giaoVien.getKhoahoc().get(0).getMakhoahoc());
+		Khoahoc khoahoc = findKhoaHoc(giaoVien.getKhoahoc().get(0).getMakhoahoc());
+		
+		if(giaovien2.getKhoahoc().size() > 0) {
+			Khoahoc existedKhoaHoc = giaovien2.getKhoahoc().get(0);
+			existedKhoaHoc.setChunhiem(null);
+			giangdayDAO.upDateKhoaHoc(existedKhoaHoc);
+		}
+		
+		if(khoahoc != null) {
 			khoahoc.setChunhiem(giaovien2);
 			giangdayDAO.upDateKhoaHoc(khoahoc);
 		}
+		
 		for (Giangday giangday : giaovien2.getGiangday()) {
 			giangdayDAO.delete(giangday.getMagiangday());
 		}
+		
 		if (giaoVien.getGiangday() != null) {
 			List<Giangday> giangdays = new ArrayList<>();
 			for (Giangday giangday : giaoVien.getGiangday()) {

@@ -28,7 +28,7 @@
 									<div class="form-group">
 										<label class="control-label col-sm-3">Chủ Nhiệm</label>
 										<div class="col-sm-9">
-											<select name="khoahoc[0].makhoahoc" onchange="chang();"
+											<select name="khoahoc[0].makhoahoc"
 												class="selectpicker form-control chunhiem_selector"
 												data-live-search="true">
 												<option value="0">--------</option>
@@ -68,6 +68,7 @@
 												class="giangDay${s.index}">
 												<div class="col-sm-6">
 													<select name="giangday[${s.index}].khoahoc.makhoahoc"
+														onchange="changeKhoaHoc(this)"
 														class="selectpicker form-control khoahoc-selector"
 														data-live-search="true">
 														<c:forEach items="${khoaHocs}" var="khoaHoc">
@@ -90,7 +91,7 @@
 												</div>
 												<div class="col-sm-6">
 													<select name="giangday[${s.index}].monhoc.mamonhoc"
-														id="giangday${s.index}"
+														id="giangday${s.index}" onchange="changeMonHoc(this)"
 														class="selectpicker form-control monhoc-selector"
 														data-live-search="true">
 														<c:forEach items="${monHocs}" var="monHoc">
@@ -116,9 +117,10 @@
 												onclick="xoa(${s.index})"
 												class="btn btn-sm btn-danger fa fa-times giangDay${s.index}">
 											</button>
-											<div class="clear"></div>
+											
 										</c:forEach>
 									</div>
+									<div class="clear"></div>
 									<button type="button" onclick="them()"
 										style="float: right; margin: 20px; margin-right: 10px;"
 										class="btn btn-sm btn-success fa fa-plus"></button>
@@ -162,14 +164,14 @@
 			var str = "";
 			str = str+"<div style=\"float: left; width: 80%; margin-top: 10px;\" class=\"giangDay"+gSize+"\">";
 			str=str+"<div class=\"col-sm-6\">";
-			str=str+"<select id='slectpicker_khoahoc" + gSize +"' name=\"giangday["+gSize+"].khoahoc.makhoahoc\" class=\"selectpicker form-control khoahoc-selector\" data-live-search=\"true\">";
+			str=str+"<select id='slectpicker_khoahoc" + gSize +"' name=\"giangday["+gSize+"].khoahoc.makhoahoc\" onchange=\"changeKhoaHoc(this)\" class=\"selectpicker form-control khoahoc-selector\" data-live-search=\"true\">";
 			<c:forEach items="${khoaHocs}" var="khoaHoc">
 				str += '<option value="${khoaHoc.makhoahoc}">${khoaHoc.lop.tenlop} - Mã Khóa học:${khoaHoc.makhoahoc}</option>';
 			</c:forEach>
 			str = str+"";
 			str = str+"</select></div>";
 			str = str+"<div class=\"col-sm-6\">";
-			str = str+"<select id='giangday" + gSize +"' name=\"giangday["+gSize+"].monhoc.mamonhoc\"class=\"selectpicker form-control monhoc-selector\" data-live-search=\"true\">";
+			str = str+"<select id='giangday" + gSize +"' name=\"giangday["+gSize+"].monhoc.mamonhoc\" onchange=\"changeMonHoc(this)\" class=\"selectpicker form-control monhoc-selector\" data-live-search=\"true\">";
 			<c:forEach items="${monHocs}" var="monHoc">
 				str += '<option value="${monHoc.mamonhoc}">${monHoc.tenmonhoc}(ma:${monHoc.mamonhoc})</option>';
 			</c:forEach>
@@ -190,57 +192,55 @@
 			$(".giangDay"+index).remove();
 		}
 // SK Chon KhoaHoc
-		$(document).ready(function(){
-			$('.khoahoc-selector').on('change', function(){
-				var listKhoaHoc = $('#phancong-box select.khoahoc-selector');
-				var khoaHocChon = $(this);
-				var listMonHoc = $('#phancong-box select.monhoc-selector');
-				var viTriMonHocKiemTra;
-				for(var i=0; i< listKhoaHoc.length;i++){
-					if(khoaHocChon.prop('name')==$(listKhoaHoc[i]).prop('name')){
-						viTriMonHocKiemTra = i;
-					}
-				}
-				for(var i=0; i< listKhoaHoc.length;i++){
-					if(!(khoaHocChon.prop('name')==$(listKhoaHoc[i]).prop('name')) && khoaHocChon.val()==$(listKhoaHoc[i]).val()
-					&& 	$(listMonHoc[viTriMonHocKiemTra]).val()== $(listMonHoc[i]).val()){
-						var trung = $(listMonHoc[viTriMonHocKiemTra]).prop('id');
-						$("span."+trung).text("Đã Trùng");
-						return;
-					}else{
-						var trung = $(listMonHoc[viTriMonHocKiemTra]).prop('id');
-						$("span."+trung).text("");
-					}
-				}
-			});
-		});
+	function changeKhoaHoc(element){
+		var listKhoaHoc = $('#phancong-box select.khoahoc-selector');
+		var khoaHocChon = $(element);
+		var listMonHoc = $('#phancong-box select.monhoc-selector');
+		var viTriMonHocKiemTra;
+		for(var i=0; i< listKhoaHoc.length;i++){
+			if(khoaHocChon.prop('name')==$(listKhoaHoc[i]).prop('name')){
+				viTriMonHocKiemTra = i;
+			}
+		}
+		for(var i=0; i< listKhoaHoc.length;i++){
+			if(!(khoaHocChon.prop('name')==$(listKhoaHoc[i]).prop('name')) && khoaHocChon.val()==$(listKhoaHoc[i]).val()
+			&& 	$(listMonHoc[viTriMonHocKiemTra]).val()== $(listMonHoc[i]).val()){
+				var trung = $(listMonHoc[viTriMonHocKiemTra]).prop('id');
+				$("span."+trung).text("Đã Trùng");
+				return;
+			}else{
+				var trung = $(listMonHoc[viTriMonHocKiemTra]).prop('id');
+				$("span."+trung).text("");
+			}
+		}
+	}
 	// Su Kien Chon Mon Hoc
-		$(document).ready(function(){
-			$('.monhoc-selector').on('change', function(){
-				var listMonHoc = $('#phancong-box select.monhoc-selector');
-				var monHocChon = $(this);
-				var listKhoaHoc = $('#phancong-box select.khoahoc-selector');
-				var viTriKhoaHocKiemTra;
-				
-				for(var i=0; i< listMonHoc.length;i++){
-					if(monHocChon.prop('name')==$(listMonHoc[i]).prop('name')){
-						viTriKhoaHocKiemTra = i;
-					}
-				}
-				for(var i=0; i< listMonHoc.length;i++){
-					if(!(monHocChon.prop('name')==$(listMonHoc[i]).prop('name')) && monHocChon.val()== $(listMonHoc[i]).val()
-					&& $(listKhoaHoc[i]).val()==$(listKhoaHoc[viTriKhoaHocKiemTra]).val()){
-						var trung = $(listMonHoc[viTriKhoaHocKiemTra]).prop('id');
-						$("span."+trung).text("Đã Trùng");
-						return;
-					}else{
-						var trung = $(listMonHoc[viTriKhoaHocKiemTra]).prop('id');
-						$("span."+trung).text("");
-					}
-				}
-			});
-		});
-
+	
+	function changeMonHoc(element){
+		var listMonHoc = $('#phancong-box select.monhoc-selector');
+		var monHocChon = $(element);
+		var listKhoaHoc = $('#phancong-box select.khoahoc-selector');
+		var viTriKhoaHocKiemTra;
+		
+		for(var i=0; i< listMonHoc.length;i++){
+			if(monHocChon.prop('name')==$(listMonHoc[i]).prop('name')){
+				viTriKhoaHocKiemTra = i;
+			}
+		}
+		for(var i=0; i< listMonHoc.length;i++){
+			if(!(monHocChon.prop('name')==$(listMonHoc[i]).prop('name')) && monHocChon.val()== $(listMonHoc[i]).val()
+			&& $(listKhoaHoc[i]).val()==$(listKhoaHoc[viTriKhoaHocKiemTra]).val()){
+				var trung = $(listMonHoc[viTriKhoaHocKiemTra]).prop('id');
+				$("span."+trung).text("Đã Trùng");
+				return;
+			}else{
+				var trung = $(listMonHoc[viTriKhoaHocKiemTra]).prop('id');
+				$("span."+trung).text("");
+			}
+		}
+		
+	}
+	
 		
 	</script>
 </body>
@@ -270,3 +270,29 @@
 			});
 		});
 		-->
+
+<!-- 		$(document).ready(function(){ -->
+<!-- 			$('.monhoc-selector').on('change', function(){ -->
+<!-- 				var listMonHoc = $('#phancong-box select.monhoc-selector'); -->
+<!-- 				var monHocChon = $(this); -->
+<!-- 				var listKhoaHoc = $('#phancong-box select.khoahoc-selector'); -->
+<!-- 				var viTriKhoaHocKiemTra; -->
+
+<!-- 				for(var i=0; i< listMonHoc.length;i++){ -->
+<!-- 					if(monHocChon.prop('name')==$(listMonHoc[i]).prop('name')){ -->
+<!-- 						viTriKhoaHocKiemTra = i; -->
+<!-- 					} -->
+<!-- 				} -->
+<!-- 				for(var i=0; i< listMonHoc.length;i++){ -->
+<!-- 					if(!(monHocChon.prop('name')==$(listMonHoc[i]).prop('name')) && monHocChon.val()== $(listMonHoc[i]).val() -->
+<!-- 					&& $(listKhoaHoc[i]).val()==$(listKhoaHoc[viTriKhoaHocKiemTra]).val()){ -->
+<!-- 						var trung = $(listMonHoc[viTriKhoaHocKiemTra]).prop('id'); -->
+<!-- 						$("span."+trung).text("Đã Trùng"); -->
+<!-- 						return; -->
+<!-- 					}else{ -->
+<!-- 						var trung = $(listMonHoc[viTriKhoaHocKiemTra]).prop('id'); -->
+<!-- 						$("span."+trung).text(""); -->
+<!-- 					} -->
+<!-- 				} -->
+<!-- 			}); -->
+<!-- 		}); -->

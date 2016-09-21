@@ -68,6 +68,7 @@ public class GiangDayController {
 		model.addAttribute("monHocs", monHocs);
 		model.addAttribute("page", page);
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("record", record);
 		model.addAttribute("totalRecord", totalRecord);
 		return "giangday/phancong";
 
@@ -160,5 +161,12 @@ public class GiangDayController {
 		}
 		model.addAttribute("giaoVien", giaovien);
 		return "giangday/phancong_update";
+	}
+
+	@RequestMapping(value = "/phancong/dowload", method = RequestMethod.GET)
+	public String dowload(Model model) {
+		List<Giaovien> giaoViens = giangDayService.getGiaoVienLimit(0, 13);
+		model.addAttribute("giaoViens", giaoViens);
+		return "excelView";
 	}
 }
