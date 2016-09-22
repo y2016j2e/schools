@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28f974b9-e3bc-43f9-ab5c-c45cdd6c53aa" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Study\WorkSpace\schools\schools.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Study\WorkSpace\schools\src\main\java\vn\com\imic\dao\GiaovienDao.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Study\WorkSpace\schools\src\main\java\vn\com\imic\dao\GiaovienDaoIplm.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Study\WorkSpace\schools\src\main\java\vn\com\imic\model\Giaovien.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Study\WorkSpace\schools\src\main\java\vn\com\imic\service\GiaovienServices.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Study\WorkSpace\schools\src\main\java\vn\com\imic\service\GiaovienServicesIplm.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/config/HibernateConfig.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/config/HibernateConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.properties" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/dao/GiaovienDao.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/dao/GiaovienDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/dao/GiaovienDaoIplm.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/dao/GiaovienDaoIplm.java" />
     </list>
     <ignored path="schools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -716,7 +709,7 @@
       <workItem from="1474567002563" duration="2376000" />
       <workItem from="1474569801878" duration="13000" />
       <workItem from="1474569942233" duration="40000" />
-      <workItem from="1474570534410" duration="30000" />
+      <workItem from="1474570534410" duration="141000" />
     </task>
     <task id="LOCAL-00001" summary="update for views">
       <created>1474537725968</created>
@@ -742,18 +735,25 @@
       <option name="project" value="LOCAL" />
       <updated>1474569507559</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="original sang branch ! &#10;without bug . but nothing to show">
+      <created>1474570619774</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1474570619774</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17917000" />
+    <option name="totallyTimeSpent" value="18028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1052" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -775,7 +775,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25993556" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -833,7 +832,8 @@
     <MESSAGE value="views - coding table" />
     <MESSAGE value="views - coding table 1" />
     <MESSAGE value="views - coding table 1&#10;&#10;error :(" />
-    <option name="LAST_COMMIT_MESSAGE" value="views - coding table 1&#10;&#10;error :(" />
+    <MESSAGE value="original sang branch ! &#10;without bug . but nothing to show" />
+    <option name="LAST_COMMIT_MESSAGE" value="original sang branch ! &#10;without bug . but nothing to show" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
