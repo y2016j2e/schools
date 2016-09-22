@@ -30,7 +30,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     }
 
     @Override
-    public void insertOrupdate(Giaovien giaovien) {
+    public void saveOrupdate(Giaovien giaovien) {
         save(giaovien);
 
     }

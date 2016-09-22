@@ -3,7 +3,6 @@ package vn.com.imic.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,45 +12,41 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Giaovien")
+@Table(name="Giaovien")
 public class Giaovien {
-
-	public Giaovien() {
-		// System.out.println("Khoi Tao GiaoVien");
-	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int magiaovien;
-
-	@Column(name = "ten", nullable = false)
+	
+	@Column(name="ten",nullable=false)
 	private String ten;
-
-	@Column(name = "ngaysinh", nullable = false)
+	
+	@Column(name="ngaysinh",nullable=false)
 	private Date ngaysinh;
-
-	@Column(name = "diachi", nullable = false)
+	
+	@Column(name="diachi",nullable=false)
 	private String diachi;
-
-	@Column(name = "quequan", nullable = false)
+	
+	@Column(name="quequan",nullable=false)
 	private String quequan;
-
-	@Column(name = "email", nullable = false)
+	
+	@Column(name="email",nullable=false)
 	private String email;
-
-	@Column(name = "sdt", nullable = false)
+	
+	@Column(name="sdt",nullable=false)
 	private String sdt;
-
-	@Column(name = "namvaonghe", nullable = false)
+	
+	@Column(name="namvaonghe",nullable=false)
 	private int namvaonghe;
-
-	@Column(name = "trinhdo", nullable = false)
+	
+	@Column(name="trinhdo",nullable=false)
 	private String trinhdo;
-
-	@OneToMany(mappedBy = "chunhiem", cascade = CascadeType.ALL)
+	
+	@OneToMany(mappedBy="chunhiem")
 	private List<Khoahoc> khoahoc;
-
-	@OneToMany(mappedBy = "giaovien", cascade = CascadeType.ALL)
+	
+	@OneToMany(mappedBy="giaovien")
 	private List<Giangday> giangday;
 
 	public int getMagiaovien() {
@@ -141,5 +136,6 @@ public class Giaovien {
 	public void setGiangday(List<Giangday> giangday) {
 		this.giangday = giangday;
 	}
-
+	
+	
 }

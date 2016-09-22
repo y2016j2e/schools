@@ -13,6 +13,7 @@ public class GiaovienServicesIplm implements GiaovienServices {
     @Autowired
     private  GiaovienDao dao;
 
+
     @Override
     public Giaovien getGVbyID(int id) {
         return dao.findbyID(id);
@@ -26,6 +27,18 @@ public class GiaovienServicesIplm implements GiaovienServices {
     @Override
     public int getPage(String namhoc, String hocky, String chunhiem, int max) {
         return 0;
-       
-    }   
+        ///Thieu page
+    }
+
+	@Override
+	public void saveOrupdate(Giaovien giaovien) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteGiaovien(int id) {
+		// TODO Auto-generated method stub
+		
+	}
 }
