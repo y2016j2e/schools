@@ -52,9 +52,9 @@ public class GiaovienController {
     	
     }
     
-    @RequestMapping(value="/giaovien/view", method = RequestMethod.POST) //set info of giaovien to show
+    @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
     public String showData(Model model,@ModelAttribute("gvTemp") Giaovien giaovien,BindingResult result, RedirectAttributes redirectAttributes){
-    	return "redirectAttributes:/giaovien";
+    	return "giaovien/giaovien";
     }
     
     @RequestMapping(value="/giaovien/rows", method = RequestMethod.GET)
@@ -70,11 +70,7 @@ public class GiaovienController {
     	giaovienServices.deleteGiaovien(Integer.parseInt(id));
     	return  "redirectAttributes:/giaovien";
     }
-    
-    // Add an object
-    // Thieu Validated 
-    
-    
+  
     @RequestMapping(value="/giaovien/add", method = RequestMethod.GET)
     public ModelAndView addGiaovien(){
     	ModelAndView model = new ModelAndView("giaovien/addGV");
@@ -105,7 +101,6 @@ public class GiaovienController {
     	return "redirectAttributes:/giaovien";
       	
     }
-    
     
 }
 

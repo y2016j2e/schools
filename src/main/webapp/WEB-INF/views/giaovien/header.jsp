@@ -41,8 +41,8 @@
 			<div class="header_left">
 				<ul class="nav navbar-nav">
 					<li><a data-toggle="tooltip" title="Trở Về Trang Chủ"
-						href="/home" class="logo"><i class="fa fa-home"></i></a></li>
-					<li><p class="ten_truong">Tiểu Học An Khánh</p></li>
+						href="/schools" class="logo"><i class="fa fa-home"></i></a></li>
+					<li><p class="ten_truong">Tiểu Học iMIC</p></li>
 					<li>
 						<div class="dropdown nam_hoc">
 							<a href="#" class="dropdown-toggle namhoc_title"
@@ -61,16 +61,15 @@
 		<div class="col-lg-6">
 			<div class="header_right">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Hello: Bùi Văn Vượng</a></li>
+					<li><a href="#">Hi Administrator</a></li>
 					<li class="dropdown"><a data-toggle="dropdown" href="#"
 						class="setting dropdown-toggle"><i class="fa fa-user"></i><i
 							class="caret"></i></a>
 						<ul class="dropdown-menu nav navbar-nav setting_content">
-							<li><a href="#"><i class="fa fa-gear"></i>Cài Đặt</a></li>
-							<li><a href="#"><i class="fa fa-user"></i>Thông Tin Cá
-									Nhân</a></li>
+							<li><a href="#"><i class="fa fa-gear"></i>Setting</a></li>
+							<li><a href="#"><i class="fa fa-user"></i>Account</a></li>
 							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-power-off"></i>Đăng Xuất</a></li>
+							<li><a href="#"><i class="fa fa-power-off"></i>Log out</a></li>
 						</ul></li>
 				</ul>
 			</div>

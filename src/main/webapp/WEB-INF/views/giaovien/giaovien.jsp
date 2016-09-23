@@ -25,7 +25,7 @@
     <jsp:include page="header.jsp"></jsp:include>
     <div class="clear"></div>
     <div id="content">
-        <div id="phancong">
+        <div id="giaovien">
             <div class="container">
                 <div style="float: left; z-index: 9999;margin-top: 20px;"
                      id="myModal" class="modal fade" role="dialog">
