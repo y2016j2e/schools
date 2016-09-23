@@ -23,4 +23,7 @@ public class DiemtruongDaoIplm extends HibernateDaoSupport implements DaoClass<D
 		return hibernateTemplate.get(Diemtruong.class, id);
 	}
 
+	public Diemtruong findByCondition(String... condition){
+		return null;
+	}
 }

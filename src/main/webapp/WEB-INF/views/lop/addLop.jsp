@@ -15,8 +15,8 @@
 <link href="${lopStyle}" type="text/css" rel="stylesheet" />
 <link href="${fontStyle}" type="text/css" rel="stylesheet" />
 
-<script src="/resources/js/libs/bootstrap.min.js"></script>
-<script src="/resources/js/libs/jquery-1.9.1.js"></script>
+<script src="/schools/resources/js/libs/bootstrap.min.js"></script>
+<script src="/schools/resources/js/libs/jquery-1.9.1.js"></script>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -74,7 +74,7 @@
         <div class="add">
         <form:form action="/schools/lop/addLop" commandName="loptemp" method="POST" id="add">
         	<form:input type="text" class="form-control item" placeholder="Tên Lớp" path="tenlop" />
-			
+			<form:errors cssClass="error" path="tenlop" />
             <form:select class="form-control item" path="diemtruong">
             	<form:options items="${dt}" itemValue="madiemtruong"  />
             </form:select>
@@ -88,6 +88,7 @@
             </form:select>
             
             <form:input type="text" class="form-control item" placeholder="Số Tiết Học" path="sotiethoc" />
+            <form:errors cssClass="error" path="sotiethoc" />
         </form:form>
         
         </div>

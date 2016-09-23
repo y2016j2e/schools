@@ -1,9 +1,9 @@
 package vn.com.imic.model;
 
 public class KhoahocDataTemp {
-	private String namhoc;
-	private String hocki;
-	private String diemtruong;
+	private int namhoc;
+	private int hocki;
+	private int diemtruong;
 	
 	
 	public KhoahocDataTemp() {
@@ -13,7 +13,7 @@ public class KhoahocDataTemp {
 	
 	
 	
-	public KhoahocDataTemp(String namhoc, String hocki, String diemtruong) {
+	public KhoahocDataTemp(int namhoc, int hocki, int diemtruong) {
 		super();
 		this.namhoc = namhoc;
 		this.hocki = hocki;
@@ -22,22 +22,22 @@ public class KhoahocDataTemp {
 
 
 
-	public String getNamhoc() {
+	public int getNamhoc() {
 		return namhoc;
 	}
-	public void setNamhoc(String namhoc) {
+	public void setNamhoc(int namhoc) {
 		this.namhoc = namhoc;
 	}
-	public String getHocki() {
+	public int getHocki() {
 		return hocki;
 	}
-	public void setHocki(String hocki) {
+	public void setHocki(int hocki) {
 		this.hocki = hocki;
 	}
-	public String getDiemtruong() {
+	public int getDiemtruong() {
 		return diemtruong;
 	}
-	public void setDiemtruong(String diemtruong) {
+	public void setDiemtruong(int diemtruong) {
 		this.diemtruong = diemtruong;
 	}
 	
