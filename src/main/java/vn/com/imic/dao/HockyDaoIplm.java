@@ -3,6 +3,7 @@ package vn.com.imic.dao;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Hocky;
@@ -19,8 +20,15 @@ public class HockyDaoIplm extends HibernateDaoSupport implements DaoClass<Hocky>
 
 	@Override
 	public Hocky findObjectById(int id) {
-		// TODO Auto-generated method stub
 		return hibernateTemplate.get(Hocky.class, id);
 	}
 
+	public Hocky findByCondition(String... condition){
+		DetachedCriteria criteria = DetachedCriteria.forClass(Hocky.class,"hocky");
+		for (String co : condition) {
+			criteria.add(Restrictions.or(Restrictions.eq("tenhocky", co)));
+		}
+		
+		return (Hocky) hibernateTemplate.findByCriteria(criteria).get(0);
+	}
 }

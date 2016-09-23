@@ -5,4 +5,5 @@ import java.util.List;
 public interface DaoClass <E>{
 	public List<E> findAll();
 	public E findObjectById(int id);
+	public E findByCondition(String... condition);
 }

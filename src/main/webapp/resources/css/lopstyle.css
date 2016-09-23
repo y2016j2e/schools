@@ -282,7 +282,7 @@ th , td{text-align:center;}
 	margin-bottom:20px;
 }
 
-.show{display:none;}
+.showex{display:none;}
 .show-none{display:block;}
 .showBox{
 	width:40%;
@@ -499,10 +499,11 @@ ul{padding:5%;}
 
 .item{margin-bottom:20px;}
 .fsize{font-size:18px;}
-
+.colp{}
 
 @media (min-width: 600px) and (max-width: 1024px) {
 	.main{width:100%;}	
+	#content .box2{margin-left: 50px;}
 }
 
 @media (min-width: 481px) and (max-width: 600px){
@@ -516,6 +517,8 @@ ul{padding:5%;}
 	#content .box2 .select{width:100%;}
 	.main{width:100%;}
 	.position{left:50px;}
+	.colp{display: none;}
+	.showBox{width: 80%;top: 15%;left: 10%;}
 }
 
 @media (min-width: 305px) and (max-width: 480px){
@@ -529,6 +532,9 @@ ul{padding:5%;}
 	#content .box2 .select{width:100%;}
 	.position{left:20px;}
 	.main{width:100%;}
+	.colp{display: none;}
+	.showBox{width: 90%;top: 10%;left: 5%;}
+	.item{margin-bottom: 50px;}
 }
 @media (max-width: 305px){
 	.main{width:100%;}
@@ -537,4 +543,7 @@ ul{padding:5%;}
 	#content .box2{margin-left:0px;}
 		#content .box2 .text{width:100%;}
 		#content .box2 .select{width:100%;}
+		.colp{display: none;}
+		.showBox{width: 90%;top: 10%;left: 5%;}
+		.item{margin-bottom: 50px;}
 }

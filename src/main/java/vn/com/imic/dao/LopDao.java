@@ -1,5 +1,6 @@
 package vn.com.imic.dao;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import vn.com.imic.model.Khoahoc;
@@ -27,7 +28,8 @@ public interface LopDao {
 	public int Page(String namhoc,String hocki,String diemtruong,int max);
 	public int PageById(int namhoc,int hocki,int diemtruong,int max);
 	
-	public void download();
+	public ByteArrayOutputStream download();
+	public void importFile(String path);
 	public void changeLopById(int id,int hsid,int change);
 	public boolean addHocsinhInLop(int hsid,int id);
 }

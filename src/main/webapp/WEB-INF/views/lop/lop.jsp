@@ -120,7 +120,6 @@
         <div class="right">
         	<button type="button" class="btn btn-outline btn-success fl-r marginR" id="up"> <i class="fa fa-upload"></i> Tải lên</button>
             <a href="/schools/lop/download"><button type="button" class="btn  btn-success btn-outline fl-r marginR"> <i class="fa fa-download"></i> Tải Xuống File Excel</button></a>
-            <a href="#"><button type="button" class="btn btn-outline btn-success fl-r marginR"><i class="fa fa-file-pdf-o" ></i> Tải Xuống File PDF</button></a>
         </div>
     </div>
     
@@ -128,27 +127,27 @@
     	<table class="table table-striped table-bordered" aria-describedby="dataTables-example_info">
         <tr>
         	<th class="center">STT</th>
-        	<th class="center">Học Kỳ</th>
-        	<th class="center">Năm Học</th>
+        	<th class="center colp">Học Kỳ</th>
+        	<th class="center colp">Năm Học</th>
             <th class="center">Lớp</th>
-            <th class="center">Điểm Trường</th>
+            <th class="center colp">Điểm Trường</th>
             <th class="center">Chủ Nhiệm</th>
             <th class="center">Sĩ Số</th>
-            <th class="center">Số Tiết học / Tuần</th>
+            <th class="center colp">Số Tiết học / Tuần</th>
             <th><a href="http://localhost:8081/schools/lop/add"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></th>
         </tr>
         
         <c:forEach var="lop" items="${lis}" varStatus="indexes">
         <tr>
         	<td class="center">${indexes.index + 1}</td>
-        	<td class="center">${lop.hocky.tenhocky}</td>
-        	<td class="center">${lop.namhoc.thoigian}</td>
+        	<td class="center colp">${lop.hocky.tenhocky}</td>
+        	<td class="center colp">${lop.namhoc.thoigian}</td>
             <td class="center"><a href="/schools/lop/${lop.makhoahoc}" style="color: blue;">${lop.lop.tenlop}</a></td>
-            <td class="center">${lop.lop.diemtruong.tendiemtruong}</td>
+            <td class="center colp">${lop.lop.diemtruong.tendiemtruong}</td>
             <td class="center"><button type="button" class="clear-but" onclick="gvcn('${lop.chunhiem.ten}','${lop.chunhiem.ngaysinh}','${lop.chunhiem.diachi}','${lop.chunhiem.quequan}','${lop.chunhiem.email}','${lop.chunhiem.sdt}','${lop.chunhiem.namvaonghe}','${lop.chunhiem.trinhdo}')">${lop.chunhiem.ten}</button></td>
             <td class="center">${ss.get(indexes.index)}</td>
-            <td class="center">${lop.lop.sotiethoc}</td>
-            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
+            <td class="center colp">${lop.lop.sotiethoc}</td>
+            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop.makhoahoc}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
         </tr>
         </c:forEach>
         </table>
@@ -180,18 +179,18 @@
 <div class="showBox show" id="info"></div>
 
 <div class="uploadClass"></div>
-<form:form commandName="uploadfile" method="POST">
+<form id="uploadFile" action="/schools/lop/upload" enctype="multipart/form-data"  method="POST">
 <div class="uploadBox upload" id="upload">
 	
 		<div class="quest"><b>Chọn File Upload : </b><input type="file" name="file" style="margin-left: 20%;"/></div>
 		 <hr class="divider" style="margin-top:10px;" />
     	<div class="uploadBut">
-    		<input type="submit" value="upload" onclick="" class="btn btn-info"/>
+    		<input type="submit" value="upload" onclick="document.getElementById('uploadFile').submit();" class="btn btn-info"/>
     		<button id="cancel" type="button" class="btn btn-default"><i class="fa fa-ban"> Hủy</i></button>
     	</div>
 	
 </div>
-</form:form>
+</form>
 
 <!-- <script src="resources/js/libs/jquery-1.9.1.js"></script> -->
 <!-- <script src="resources/js/libs/bootstrap.min.js"></script> -->
@@ -246,8 +245,8 @@ function gvcn(ten,ngaysinh,diachi,quequan,email,sdt,namvaonghe,trinhdo){
 	}
 
 function ok(){
-	document.getElementById("sh").setAttribute("class","showClass show");
-	document.getElementById("info").setAttribute("class","showBox show");
+	document.getElementById("sh").setAttribute("class","showClass showex");
+	document.getElementById("info").setAttribute("class","showBox showex");
 }
 
 </script>

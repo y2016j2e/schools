@@ -43,15 +43,31 @@ public class HocsinhDaoIplm extends HibernateDaoSupport implements DaoClass<Hocs
 	}
 
 	@Override
-	public Long CountHocsinhInKhoahoc(int khoahoc) {
+	public int CountHocsinhInKhoahoc(int khoahoc,int max) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Hocsinh.class,"hocsinh");
 		criteria.createAlias("hocsinh.khoahoc","khoahoc")
 		.add(Restrictions.eq("khoahoc.makhoahoc",khoahoc))
 		.setProjection(Projections.rowCount());
 		@SuppressWarnings("rawtypes")
 		List lis = hibernateTemplate.findByCriteria(criteria);
-		return (Long) lis.get(0);
+		Long x = (Long) lis.get(0);
+		int c = x.intValue();
+		if(c%max!=0)
+			return 1+(c/max);
+		return c/max;
 	}
+	
+	@Override
+	public int CountHocsinhInKhoahoc(int khoahoc) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Hocsinh.class,"hocsinh");
+		criteria.createAlias("hocsinh.khoahoc","khoahoc")
+		.add(Restrictions.eq("khoahoc.makhoahoc",khoahoc))
+		.setProjection(Projections.rowCount());
+		@SuppressWarnings("rawtypes")
+		List lis = hibernateTemplate.findByCriteria(criteria);
+		Long x = (Long) lis.get(0);
+		return x.intValue();
+		}
 	
 	public void deleteHocsinhInKhoahoc(int lop, int hocsinh){
 
@@ -95,5 +111,9 @@ public class HocsinhDaoIplm extends HibernateDaoSupport implements DaoClass<Hocs
 	public List<Hocsinh> findAllHocsinh(){
 		DetachedCriteria criteria = DetachedCriteria.forClass(Hocsinh.class);
 		return (List<Hocsinh>) hibernateTemplate.findByCriteria(criteria);
+	}
+	
+	public Hocsinh findByCondition(String... condition){
+		return null;
 	}
 }

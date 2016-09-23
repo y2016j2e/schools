@@ -1,5 +1,6 @@
 package vn.com.imic.controller;
 
+import java.beans.PropertyEditorSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,33 @@ public class AddLopController {
 	@InitBinder
 	protected void InitBinder(WebDataBinder binder){
 		binder.setValidator(lopValidate);
+		binder.registerCustomEditor(Diemtruong.class,"diemtruong",new PropertyEditorSupport(){ //add object for selected option in jsp file
+			@Override
+			public void setAsText(String text) throws IllegalArgumentException {
+				Diemtruong diemtruong = diemtruongServices.getObjectById(Integer.parseInt(text));
+				setValue(diemtruong);
+			}
+		});
+		
+		binder.registerCustomEditor(Namhoc.class,"namhoc", new PropertyEditorSupport(){
+
+			@Override
+			public void setAsText(String text) throws IllegalArgumentException {
+				Namhoc namhoc = namhocServices.getNamhocById(Integer.parseInt(text));
+				setValue(namhoc);
+			}
+			
+		});
+		
+		binder.registerCustomEditor(Hocky.class,"hocky", new PropertyEditorSupport(){
+
+			@Override
+			public void setAsText(String text) throws IllegalArgumentException {
+				Hocky hocky = hockiServices.getObjectById(Integer.parseInt(text));
+				setValue(hocky);
+			}
+			
+		});
 	}
 	
 	@RequestMapping(value="/lop/add",method = RequestMethod.GET)
@@ -76,9 +104,11 @@ public class AddLopController {
 	public String addLop(Model model,@ModelAttribute("loptemp") @Validated LopDataTemp loptemp,BindingResult result,
 			RedirectAttributes redirect){
 		System.out.println(loptemp.getTenlop());
-		lopValidate.validate(loptemp, result);
+//		lopValidate.validate(loptemp, result);
 		if(result.hasErrors()){
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+			for(int i=0;i<result.getErrorCount();i++){
+				System.out.println(result.getAllErrors().get(i).getDefaultMessage());
+			}
 			List<Namhoc> nam = new ArrayList<>();
 			nam = namhocServices.getAllNamhoc();
 			
@@ -91,7 +121,7 @@ public class AddLopController {
 			model.addAttribute("nam", nam);
 			model.addAttribute("hk", hk);
 			model.addAttribute("dt", dt);
-			model.addAttribute("loptemp", new LopDataTemp());
+			//model.addAttribute("loptemp", new LopDataTemp());
 			return "lop/addLop";
 		}
 		

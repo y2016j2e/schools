@@ -92,7 +92,6 @@
         <div class="right">
         	<a href="#"><button type="button" class="btn btn-outline btn-success fl-r marginR"> <i class="fa fa-upload"></i> Tải lên</button></a>
             <a href="#"><button type="button" class="btn  btn-success btn-outline fl-r marginR"> <i class="fa fa-download"></i> Tải Xuống File Excel</button></a>
-            <a href="#"><button type="button" class="btn btn-outline btn-success fl-r marginR"><i class="fa fa-file-pdf-o" ></i> Tải Xuống File PDF</button></a>
         </div>
     </div>
     
@@ -100,26 +99,26 @@
     	<table class="table table-striped table-bordered" aria-describedby="dataTables-example_info" style="margin-bottom: 200px;">
         <tr>
         	<th class="center">STT</th>
-        	<th class="center">Mã Học Sinh</th>
+        	<th class="center colp">Mã Học Sinh</th>
         	<th class="center">Họ Và Tên</th>
             <th class="center">Ngày Sinh</th>
             <th class="center">Địa Chỉ</th>
-            <th class="center">Quê Quán</th>
-            <th class="center">Họ Tên Bố</th>
-            <th class="center">Họ Tên Mẹ</th>
+            <th class="center colp">Quê Quán</th>
+            <th class="center colp">Họ Tên Bố</th>
+            <th class="center colp">Họ Tên Mẹ</th>
             <th><button id="addIn" type="button" class="btn btn-success cir" onclick="selector()"><i class="fa fa-plus"></i></button></th>
         </tr>
         
         <c:forEach var="hocsinh" items="${lis}" varStatus="indexes">
         <tr>
         	<td class="center">${indexes.index + 1}</td>
-        	<td class="center">${hocsinh.maso}</td>
+        	<td class="center colp">${hocsinh.maso}</td>
         	<td class="center">${hocsinh.ten}</td>
             <td class="center"><fmt:formatDate pattern="dd-MM-yyyy" value="${hocsinh.ngaysinh}"/></td>
             <td class="center">${hocsinh.diachi}</td>
-            <td class="center">${hocsinh.quequan}</td>
-            <td class="center">${hocsinh.bo}</td>
-            <td class="center">${hocsinh.me}</td>
+            <td class="center colp">${hocsinh.quequan}</td>
+            <td class="center colp">${hocsinh.bo}</td>
+            <td class="center colp">${hocsinh.me}</td>
             <td class="center"><button type="button" class="btn btn-danger btn-del cir" onclick="fun('${khoahoc.makhoahoc}','${hocsinh.maso}','${hocsinh.ten}')"><i class="fa fa-trash-o"></i></button>
             	<button type="button" class="btn btn-info btn-del cir" onclick="change('${hocsinh.maso}','${khoahoc.makhoahoc}','${hocsinh.ten}')"><i class="fa fa-sign-out"></i></button>
             </td>
@@ -145,7 +144,7 @@
     <hr class="divider delete" style="margin-top:10px;" />
     <div class="deleteBut delete">
     	<a href="" id="aaa"><button id="dele" type="button" class="btn btn-info" onclick="delLop()"><i class="fa fa-trash-o"> Xóa</i></button></a>
-        <button id="change" type="button" class="btn btn-info" onclick="document.getElementById('change').submit();"><i class="fa fa-trash-o"> Chuyển</i></button>
+        <button id="changeb" type="button" class="btn btn-info" onclick="document.getElementById('change').submit();"><i class="fa fa-trash-o"> Chuyển</i></button>
         <button type="button" class="btn btn-default btn-can"><i class="fa fa-ban"> Hủy</i></button>
     </div>
 </div>
@@ -166,7 +165,7 @@
         	<input type="hidden" name="addHS" value="" id="pos"/>
         </form>
     <button type="button" class="btn btn-info but-design" onclick="document.getElementById('adIn').submit();">Chuyển</button>
-    <button id="addIn" type="button" class="btn btn-default btn-can but-design">Hủy</button>
+    <button id="a" type="button" class="btn btn-default but-design">Hủy</button>
 </div>
 
 <script src="/schools/resources/js/libs/jquery-1.9.1.js"></script>
@@ -200,7 +199,8 @@ var ac;
 function fun(lopid,id,hs){
 	var x = "Bạn có chắc chắn muốn xóa học sinh " +hs+ " ?"
 	document.getElementById("del").innerHTML = x;
-	document.getElementById("change").setAttribute("style","display:none;");
+	document.getElementById("changeb").setAttribute("style","display:none;");
+	document.getElementById("dele").setAttribute("style","display:inline-block;");
 	var l = "http://localhost:8081/schools/lop/"+lopid+"/delete/"+id;
 	link = l;
 }		
@@ -214,7 +214,8 @@ function change(id,lopid,name){
 	var x = 'Chuyển học sinh '+name+' đến lớp : <select name="chang" class="form-control fl-r" style="width:100px;margin-right:10%;"><c:forEach var="lop" items="${lisLop}" varStatus="indexes"><option value="${lop.makhoahoc}" >${lop.lop.tenlop}</option></c:forEach></select>';
 	document.getElementById("del").innerHTML = x;
 	var l = "/schools/lop/"+lopid+"/change/"+id;
-	document.getElementById("dele").setAttribute("style","display:none;")
+	document.getElementById("dele").setAttribute("style","display:none;");
+	document.getElementById("changeb").setAttribute("style","display:inline-block;");
 	ac = l;
 	document.getElementById("change").setAttribute("action",ac);
 }
@@ -228,6 +229,15 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#addIn").click(function(){
+        $(".bg").fadeToggle();
+		$(".box").fadeToggle();
+		
+    });
+});
+
+
+$(document).ready(function(){
+    $("#a").click(function(){
         $(".bg").fadeToggle();
 		$(".box").fadeToggle();
 		

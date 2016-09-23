@@ -1,5 +1,6 @@
 package vn.com.imic.service;
 
+import java.io.InputStream;
 import java.util.List;
 
 import vn.com.imic.model.Khoahoc;
@@ -19,4 +20,5 @@ public interface LopServices {
 	public List<Khoahoc> getAllKhoahoc();
 	public List<Khoahoc> getLopChange(int id);
 	public void changeLop(int id,int hsid,int change);
+	public void importLopFromFile(InputStream fis);
 }

@@ -1,8 +1,7 @@
 package vn.com.imic.dao;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -247,8 +246,8 @@ public class LopDaoIplm extends HibernateDaoSupport implements LopDao{
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void download(){
-
+	public ByteArrayOutputStream download(){
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		SessionFactoryImplementor iplm =  (SessionFactoryImplementor)getSession();
 		ConnectionProvider cp = iplm.getConnectionProvider();
 		Connection con = null;
@@ -299,11 +298,7 @@ public class LopDaoIplm extends HibernateDaoSupport implements LopDao{
 			}
 		}
 		
-			File file =  new File("C:/Users/Administrator/Desktop/ex.xlsx");
-			file.createNewFile();
-			FileOutputStream fos = new FileOutputStream(file);
-			workbook.write(fos);
-			fos.close();
+			workbook.write(outputStream);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -315,6 +310,11 @@ public class LopDaoIplm extends HibernateDaoSupport implements LopDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return outputStream;
+	}
+	
+	public void importFile(String path){
 		
 	}
 }

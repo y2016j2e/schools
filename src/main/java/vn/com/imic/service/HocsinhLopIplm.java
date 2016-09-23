@@ -26,10 +26,12 @@ public class HocsinhLopIplm implements HocsinhLopServices{
 	}
 
 	@Override
-	public Long countHocsinhInLop(int lop) {
+	public int countHocsinhInLop(int lop,int max) {
+		return hocsinhDao.CountHocsinhInKhoahoc(lop,max);
+	}
+	public int countHocsinhInLop(int lop){
 		return hocsinhDao.CountHocsinhInKhoahoc(lop);
 	}
-	
 	public void deleteHocsinhInLop(int lop,int hocsinh){
 		hocsinhDao.deleteHocsinhInKhoahoc(lop,hocsinh);
 	}

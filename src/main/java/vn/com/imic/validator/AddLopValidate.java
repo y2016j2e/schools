@@ -20,10 +20,9 @@ public class AddLopValidate implements Validator{
 	public void validate(Object arg0, Errors arg1) {
 		LopDataTemp lop = (LopDataTemp)arg0;
 		System.out.println("validate");
-		ValidationUtils.rejectIfEmpty(arg1, "tenlop", "Invalid Class name");
+		ValidationUtils.rejectIfEmpty(arg1, "tenlop", "lop.form.empty.tenlop", "Not empty");
 		if(lop.getSotiethoc()<10)
-			System.out.println("out");
 			arg1.rejectValue("sotiethoc","lop.form.more.sotiethoc");
 	}
-
+	
 }

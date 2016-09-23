@@ -1,29 +1,15 @@
 package vn.com.imic.controller;
 
 import java.beans.PropertyEditorSupport;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.util.IOUtils;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,16 +22,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import vn.com.imic.dao.LopDao;
 import vn.com.imic.model.Diemtruong;
+import vn.com.imic.model.FileUpload;
 import vn.com.imic.model.Hocky;
 import vn.com.imic.model.Hocsinh;
 import vn.com.imic.model.Khoahoc;
 import vn.com.imic.model.KhoahocDataTemp;
-import vn.com.imic.model.Lop;
 import vn.com.imic.model.LopDataTemp;
 import vn.com.imic.model.Namhoc;
 import vn.com.imic.service.HocsinhLopServices;
@@ -182,6 +169,7 @@ public class LopController {
 //		dt.add("Imic Cầu Giấy");
 		
 		model.addObject("nrow", r);
+		model.addObject("fileUp", new FileUpload());
 		model.addObject("lastpage",count);
 		model.addObject("lop", new Khoahoc());
 		model.addObject("lis", lis);
@@ -320,33 +308,41 @@ public class LopController {
 	
 	
 	@RequestMapping(value="/lop/download")
-	public String downloadFile(HttpServletResponse response){
-		dao.download();
+	public void downloadFile(HttpServletResponse response) throws IOException{
+		ByteArrayOutputStream fileOutputStream = dao.download();
 		response.setContentType("application/xlsx");
 		response.setHeader("Content-Disposition", "attachment; filename=excelfile.xlsx");
-		try {
-			InputStream input = new FileInputStream("C://Users/Administrator/Desktop/ex.xlsx");
-			IOUtils.copy(input,response.getOutputStream());
-			response.flushBuffer();
-	        input.close();
-	        File file = new File("C:/Users/Administrator/Desktop/ex.xlsx");
-	        file.delete();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		fileOutputStream.writeTo(response.getOutputStream());
+		fileOutputStream.flush();
+	}
+	
+	@RequestMapping(value="/lop/upload",method = RequestMethod.POST)
+	protected String onSubmit(HttpServletRequest request,
+		HttpServletResponse response,@RequestParam(value="file",required=false)MultipartFile file,RedirectAttributes redirect)
+		throws Exception {
+
+		
+		String fileName="";
+		
+		if(file!=null){
+			fileName = file.getOriginalFilename();
+			System.out.println("file "+fileName);
+			if(!fileName.endsWith(".xlsx"))
+				return "lop/lop";
+			
+//			String path = "C:/Users/Administrator/Desktop/fileUpload.xlsx";
+//			file.transferTo(new File(path));
+			sevices.importLopFromFile(file.getInputStream());
 		}
 		
-		
 		return "redirect:/lop";
+ 
 	}
 	
 	
 	@RequestMapping(value="/lop/{id}",method = RequestMethod.GET)
 	public ModelAndView viewHocsinh(@PathVariable(value="id") int id,@RequestParam(value="pg",defaultValue = "1") String pg){
-		int count = hocsinhServices.countHocsinhInLop(id).intValue();
+		int count = hocsinhServices.countHocsinhInLop(id,10);
 		ModelAndView model = new ModelAndView("lop/hocsinhlop");
 		List<Hocsinh> lis = null;
 		
