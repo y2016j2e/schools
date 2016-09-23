@@ -61,7 +61,7 @@
 										<span>MônHoc</span>
 									</div>
 									<div class="clear"></div>
-									<div id="phancong-box">
+									<div id="phancong-box" style="float: left;width: 100%;">
 										<c:forEach items="${giaoVien.giangday}" var="giangDay"
 											varStatus="s">
 											<div style="float: left; width: 80%; margin-top: 10px;"
@@ -117,7 +117,7 @@
 												onclick="xoa(${s.index})"
 												class="btn btn-sm btn-danger fa fa-times giangDay${s.index}">
 											</button>
-											
+
 										</c:forEach>
 									</div>
 									<div class="clear"></div>
