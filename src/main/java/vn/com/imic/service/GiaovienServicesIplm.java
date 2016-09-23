@@ -34,7 +34,7 @@ public class GiaovienServicesIplm implements GiaovienServices {
 
 	@Override
 	public void saveOrupdate(Giaovien giaovien) {
-
+        dao.saveOrupdate(giaovien);
 
     }
 

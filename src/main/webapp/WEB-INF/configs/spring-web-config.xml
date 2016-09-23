@@ -23,8 +23,9 @@
 	<bean id="viewResolver1" class="org.springframework.web.servlet.view.XmlViewResolver">
 		<property name="order" value="1" />
 		<property name="location" value="/WEB-INF/configs/views.xml" />
-	</bean>
 
+	</bean>
+	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="com.sun.org.apache.xerces.internal.impl.msg.JAXPValidationMessages" />

@@ -55,6 +55,7 @@
 								<div class="col-sm-8">
 									<form:input class="form-control" placeholder="Email" type="text" path="email" id="email"/>
 								</div>
+
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="sdt">Số điện thoại</label>

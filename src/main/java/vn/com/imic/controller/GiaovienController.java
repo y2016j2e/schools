@@ -46,11 +46,11 @@ public class GiaovienController {
 
     @InitBinder
     public void dataBinding(WebDataBinder binder){
-    	binder.addValidators(gvValidator);
+
     	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
     	dateFormat.setLenient(false);
     	binder.registerCustomEditor(Date.class, "ngaysinh", new CustomDateEditor(dateFormat, true));
-    	
+        binder.addValidators(gvValidator);
     }
     
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
@@ -85,7 +85,7 @@ public class GiaovienController {
     @RequestMapping(value="/giaovien/addGV", method = RequestMethod.POST) //add giaovien Object
     public String addLop(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirect){
     	if (result.hasErrors()){
-            System.out.println(giaovien.getTen()+giaovien.getDiachi()+giaovien.getTrinhdo());
+            return "giaovien/addGiaoVien";
         }
         giaovienServices.saveOrupdate(giaovien);
     	return "redirect:/giaovien";

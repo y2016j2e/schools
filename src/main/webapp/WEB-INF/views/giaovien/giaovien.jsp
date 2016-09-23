@@ -107,7 +107,7 @@
                                                 href='<spring:url value="/giaovien/pagesize?record=4"></spring:url>'>4
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=6"></spring:url>'>8
+                                                href='<spring:url value="/giaovien/pagesize?record=6"></spring:url>'>6
                                             dòng</a></li>
                                     </ul>
                                 </div>
