@@ -116,20 +116,22 @@
 									</c:when>
 									<c:otherwise>
 										<span
-											style="float: left; margin-left: 10px; margin-top: 10px;">${(page-1)*record+1} - ${totalRecord}/${totalRecord}
-											Giáo Viên</span>
+											style="float: left; margin-left: 10px; margin-top: 10px;">${(page-1)*record+1}
+											- ${totalRecord}/${totalRecord} Giáo Viên</span>
 									</c:otherwise>
 								</c:choose>
 							</div>
 							<div class="col-sm-6">
 								<div class="taifile">
-									<a style="float: right;" class="btn btn-sm btn-default" href='<spring:url value="/phancong/dowload"></spring:url>'>
-										<span style="color:#337ab7;font-size:14px;" class="fa fa-upload"></span>
-										<span>UpLoad</span>
-									</a>
-									<a style="float: right;margin-right:10px;" class="btn btn-sm btn-default" href='<spring:url value="/phancong/dowload"></spring:url>'>
-										<span style="color:#337ab7;font-size:14px;" class="fa fa-download"></span>
-										<span>DownLoad</span>
+									<a style="float: right;" class="btn btn-sm btn-default"
+										href='<spring:url value="/phancong/dowload"></spring:url>'>
+										<span style="color: #337ab7; font-size: 14px;"
+										class="fa fa-upload"></span> <span>UpLoad</span>
+									</a> <a style="float: right; margin-right: 10px;"
+										class="btn btn-sm btn-default"
+										href='<spring:url value="/phancong/dowload"></spring:url>'>
+										<span style="color: #337ab7; font-size: 14px;"
+										class="fa fa-download"></span> <span>DownLoad</span>
 									</a>
 								</div>
 							</div>

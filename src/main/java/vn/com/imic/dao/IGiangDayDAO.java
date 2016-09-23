@@ -37,9 +37,11 @@ public interface IGiangDayDAO {
 	public void upDatePhanCong(Giaovien giaovien);
 
 	public void upDateKhoaHoc(Khoahoc khoahoc);
-	
+
 	public int countGiaoVien();
-	
+
 	public List<Giaovien> getGVCN();
+
+	public void updateGiangDay(Giangday giangday);
 
 }

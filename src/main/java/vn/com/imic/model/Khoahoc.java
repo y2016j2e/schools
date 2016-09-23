@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Khoahoc {
 	@JoinColumn(name = "chunhiem")
 	private Giaovien chunhiem;
 
-	@OneToMany(mappedBy = "khoahoc", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "khoahoc",fetch=FetchType.LAZY)
 	private List<Giangday> giangday;
 
 	public int getMakhoahoc() {
@@ -104,6 +105,28 @@ public class Khoahoc {
 
 	public void setGiangday(List<Giangday> giangday) {
 		this.giangday = giangday;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + makhoahoc;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Khoahoc other = (Khoahoc) obj;
+		if (makhoahoc != other.makhoahoc)
+			return false;
+		return true;
 	}
 
 }

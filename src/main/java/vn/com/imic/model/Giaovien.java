@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,10 +49,10 @@ public class Giaovien {
 	@Column(name = "trinhdo", nullable = false)
 	private String trinhdo;
 
-	@OneToMany(mappedBy = "chunhiem", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "chunhiem",fetch=FetchType.LAZY)
 	private List<Khoahoc> khoahoc;
 
-	@OneToMany(mappedBy = "giaovien", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "giaovien",fetch=FetchType.LAZY,cascade=CascadeType.PERSIST)
 	private List<Giangday> giangday;
 
 	public int getMagiaovien() {
