@@ -12,7 +12,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Giaovien> findAll() {
+    public List<Giaovien> getAll() {
 
         DetachedCriteria criteria = DetachedCriteria.forClass(Giaovien.class);
         List<Giaovien> list = (List<Giaovien>) hibernateTemplate.findByCriteria(criteria);
@@ -30,7 +30,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     }
 
     @Override
-    public void insertOrupdate(Giaovien giaovien) {
+    public void saveOrupdate(Giaovien giaovien) {
         save(giaovien);
 
     }

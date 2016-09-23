@@ -55,7 +55,6 @@
 			<div class="under"></div>
 		</div>
 
-		<!-- end header -->
 
 		<!-- content -->
 		<div id="content">
