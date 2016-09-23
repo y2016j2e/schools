@@ -42,6 +42,9 @@ public class Diemtruong {
 	@OneToMany(mappedBy="diemtruong")
 	private List<Cosovatchat> cosovatchat;
 
+	@OneToMany(mappedBy="diemtruong")
+	private List<Giaovien> giaovien;
+	
 	public int getMadiemtruong() {
 		return madiemtruong;
 	}
@@ -106,6 +109,15 @@ public class Diemtruong {
 		this.cosovatchat = cosovatchat;
 	}
 	
+	
+	public List<Giaovien> getGiaovien() {
+		return giaovien;
+	}
+
+	public void setGiaovien(List<Giaovien> giaovien) {
+		this.giaovien = giaovien;
+	}
+
 	@Override
 	public String toString(){
 		return this.tendiemtruong;
