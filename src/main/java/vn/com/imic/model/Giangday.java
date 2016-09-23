@@ -7,25 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Giangday")
+@Table(name = "Giangday")
 public class Giangday {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int magiangday;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Giaovien giaovien;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Monhoc monhoc;
-	
-	@ManyToMany(mappedBy="giangday")
-	private List<Khoahoc> khoahoc;
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Khoahoc khoahoc;
 
 	public int getMagiangday() {
 		return magiangday;
@@ -51,12 +52,12 @@ public class Giangday {
 		this.monhoc = monhoc;
 	}
 
-	public List<Khoahoc> getKhoahoc() {
+	public Khoahoc getKhoahoc() {
 		return khoahoc;
 	}
 
-	public void setKhoahoc(List<Khoahoc> khoahoc) {
+	public void setKhoahoc(Khoahoc khoahoc) {
 		this.khoahoc = khoahoc;
 	}
-	
+
 }

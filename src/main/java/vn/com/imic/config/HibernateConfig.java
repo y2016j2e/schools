@@ -1,3 +1,4 @@
+
 package vn.com.imic.config;
 
 import java.util.Properties;
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class HibernateConfig {
-	
+
 	@Value("${jdbc.driverClassName}")
 	private String driverClass;
 
@@ -23,10 +24,10 @@ public class HibernateConfig {
 
 	@Value("${jdbc.username}")
 	private String username;
-	
+
 	@Value("${hibernate.dialect}")
 	private String hibernateDialert;
-	
+
 	@Value("${jdbc.url}")
 	private String url;
 
@@ -34,7 +35,7 @@ public class HibernateConfig {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "vn.com.imic.model" });
+		sessionFactory.setPackagesToScan(new String[]{"vn.com.imic.model"});
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
@@ -48,27 +49,26 @@ public class HibernateConfig {
 		dataSource.setUrl(url);
 		return dataSource;
 	}
-	
-    @Bean
-    public HibernateTransactionManager transactionManager() {
-       HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(sessionFactory().getObject());
-       return txManager;
-    }
-    
-    @Bean
-    public HibernateTemplate hibernateTemplate() {
-    	return new HibernateTemplate(sessionFactory().getObject());
-    }
-    
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", hibernateDialert);
-        properties.put("hibernate.show_sql", false);
-        properties.put("hibernate.format_sql", false);
-        //TODO Comment dong nay sau khi chay chuong trinh de tao database
-//        properties.put("hibernate.hbm2ddl.auto", "create");
-        return properties;        
-    }
 
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		HibernateTransactionManager txManager = new HibernateTransactionManager();
+		txManager.setSessionFactory(sessionFactory().getObject());
+		return txManager;
+	}
+
+	@Bean
+	public HibernateTemplate hibernateTemplate() {
+		return new HibernateTemplate(sessionFactory().getObject());
+	}
+
+	private Properties hibernateProperties() {
+		Properties properties = new Properties();
+		properties.put("hibernate.dialect", hibernateDialert);
+		properties.put("hibernate.show_sql", false);
+		properties.put("hibernate.format_sql", false);
+		//TODO Comment dong nay sau khi chay chuong trinh de tao database
+//        properties.put("hibernate.hbm2ddl.auto", "create");
+		return properties;
+	}
 }
