@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 <spring:url value="/resources/css/bootrap.min.csss" var="boottrap" />
@@ -30,45 +31,52 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 well form-small">
-						<form class="form-horizontal" role="form" id="add" action="/giaovien/addGV" accept-charset="UTF-8" method="POST">
+						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="add" action="/giaovien/addGV" accept-charset="UTF-8" method="POST" >
 
 
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="tenGiaoVien">Họ và tên</label>
+								<label class="control-label col-sm-4" for="tenGiaoVien">Họ và Tên</label>
 								<div class="col-sm-8">
-									<input class="form-control" placeholder="Họ và tên" type="text"  path="tenGiaovien" id="tenGiaoVien">
+									<form:input class="form-control" placeholder="Họ và tên" type="text"  path="tenGiaoVien" id="tenGiaoVien"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="teacher_dob">Ngày sinh</label>
 								<div class="col-sm-8">
-									<input class="form-control datepicker" placeholder="Ngày sinh" type="text" name="teacher[dob]" id="teacher_dob">
+									<form:input class="form-control datepicker" placeholder="Ngày sinh" type="text" path="ngaysinh" id="teacher_dob"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="teacher_address">Địa chỉ</label>
 								<div class="col-sm-8">
-									<input class="form-control" placeholder="Địa chỉ" type="text" name="teacher[address]" id="teacher_address">
+									<form:input class="form-control" placeholder="Địa chỉ" type="text" path="diachi" id="teacher_address"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="teacher_phone">Số điện thoại</label>
+								<label class="control-label col-sm-4" for="teacher_hometown">Quê quán</label>
 								<div class="col-sm-8">
-									<input class="form-control" placeholder="Số điện thoại" type="text" name="teacher[phone]" id="teacher_phone">
+									<form:input class="form-control" placeholder="Địa chỉ" type="text" path="quenquan" id="teacher_hometown"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="teacher_email">Email</label>
 								<div class="col-sm-8">
-									<input class="form-control" placeholder="Email" type="text" name="teacher[email]" id="teacher_email">
+									<form:input class="form-control" placeholder="Email" type="text" path="email" id="teacher_email"/>
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="control-label col-sm-4" for="teacher_phone">Số điện thoại</label>
+								<div class="col-sm-8">
+									<form:input class="form-control" placeholder="Số điện thoại" type="text" path="sdt" id="teacher_phone"/>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label class="control-label col-sm-4" for="teacher_career_year">Năm vào nghề</label>
 								<div class="col-sm-8">
-									<input class="form-control" placeholder="Năm vào nghề" type="number" name="teacher[career_year]" id="teacher_career_year">
+									<form:input class="form-control" placeholder="Năm vào nghề" type="number" path="namvaonghe" id="teacher_career_year"/>
 								</div>
 							</div>
 
@@ -76,7 +84,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="teacher_degree">Trình độ đào tạo</label>
 								<div class="col-sm-8">
-									<select class="form-control selectpicker bs-select-hidden" name="teacher[degree]" id="teacher_degree"><option value="">------</option>
+									<select class="form-control selectpicker bs-select-hidden" patch="trinhdo" id="teacher_degree"><option value="">------</option>
 										<option value="Cấp tốc">Cấp tốc</option>
 										<option value="Sơ cấp">Sơ cấp</option>
 										<option value="TH 12+2">TH 12+2</option>
@@ -98,22 +106,22 @@
 							<hr>
 							<div class="row no-margin">
 								<div class="pull-left">
-									<a class="btn btn-info" href="http://truongnha.com/school_manager/teachers">Hủy</a>
+									<a class="btn btn-info" href="/shools/giaovien">Hủy</a>
 								</div>
 								<div class="pull-right">
-									<input type="submit" name="commit" value="Tạo mới" class="btn btn-success" id="create_teacher">
+									<input type="submit" name="commit" value="Tạo mới" class="btn btn-success" id="create_teacher"/>
 								</div>
 							</div>
-						</form>  </div>
+						</form:form>  </div>
 				</div>
 
-				<form id="esc_cancel" action="http://truongnha.com/school_manager/teachers" method="GET">
+				<form id="esc_cancel" action="/shools/giaovien" method="GET">
 					<script type="text/javascript">
 						$('body').keyup(function(e) {
 							if (e.keyCode == 27) {$("#esc_cancel").submit();}
 						});
 					</script>
-
+				</form>
 			</div>
 
 

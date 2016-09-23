@@ -75,7 +75,7 @@ public class GiaovienController {
     public ModelAndView addGiaovien(){
     	ModelAndView model = new ModelAndView("giaovien/addGV");
     	  	/////// ???????????
-    	model.addObject("update", new Giaovien());    	
+    	model.addObject("giaovien", new Giaovien());
     	return model;
     }
     
