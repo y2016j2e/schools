@@ -6,6 +6,7 @@ import java.lang.annotation.Annotation;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -53,14 +54,16 @@ public class GiaovienController {
     }
     
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
-    public String showData(Model model,@ModelAttribute("gvTemp") Giaovien giaovien,BindingResult result, RedirectAttributes redirectAttributes){
+    public String showData(Model model){
+        List<Giaovien> giaovienList = giaovienServices.getALL();
+        model.addAttribute("giaovienList", giaovienList);
     	return "giaovien/giaovien";
     }
     
     @RequestMapping(value="/giaovien/rows", method = RequestMethod.GET)
-    public String selectedRow(Model model,@ModelAttribute("rows") String row , BindingResult result, RedirectAttributes redirectAttributes){
+    public String selectedRow(Model model,@ModelAttribute("rows") String row , BindingResult result, RedirectAttributes redirect){
       r = Integer.parseInt(row);
-    return "redirectAttributes:/giaovien";
+    return "redirect:/giaovien";
     }
     
     
@@ -71,18 +74,18 @@ public class GiaovienController {
     	return  "redirectAttributes:/giaovien";
     }
   
-    @RequestMapping(value="/giaovien/add", method = RequestMethod.GET)
+    @RequestMapping(value="/giaovien/addGiaoVien", method = RequestMethod.GET)
     public ModelAndView addGiaovien(){
-    	ModelAndView model = new ModelAndView("giaovien/addGV");
+    	ModelAndView model = new ModelAndView("giaovien/addGiaoVien");
     	  	/////// ???????????
     	model.addObject("giaovien", new Giaovien());
     	return model;
     }
     
     @RequestMapping(value="/giaovien/addGV", method = RequestMethod.POST) //add giaovien Object
-    public String addLop(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirectAttributes){
+    public String addLop(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirect){
     	giaovienServices.saveOrupdate(giaovien);
-    	return "redirectAttributes:/giaovien";
+    	return "redirect:/giaovien";
     }
     
     
@@ -96,9 +99,9 @@ public class GiaovienController {
     	        
     
     @RequestMapping(value="/giaovien/update", method =  RequestMethod.POST)
-    public String updateGV(Model model , @ModelAttribute("update") Giaovien giaovien, BindingResult  result,RedirectAttributes redirectAttributes){
+    public String updateGV(Model model , @ModelAttribute("update") Giaovien giaovien, BindingResult  result,RedirectAttributes redirect){
     			giaovienServices.saveOrupdate(giaovien);
-    	return "redirectAttributes:/giaovien";
+    	return "redirect:/giaovien";
       	
     }
     

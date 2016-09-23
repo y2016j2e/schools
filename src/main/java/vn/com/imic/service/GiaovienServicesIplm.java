@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.com.imic.model.Giaovien;
 import  vn.com.imic.dao.GiaovienDao;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly=false)
 public class GiaovienServicesIplm implements GiaovienServices {
@@ -36,7 +38,12 @@ public class GiaovienServicesIplm implements GiaovienServices {
 		
 	}
 
-	@Override
+    @Override
+    public List<Giaovien> getALL() {
+      return   dao.getAll();
+    }
+
+    @Override
 	public void deleteGiaovien(int id) {
 		// TODO Auto-generated method stub
 		

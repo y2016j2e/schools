@@ -8,8 +8,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <title>Giáo Viên</title>
+    <script src="<c:url value="/resources/js/libs/jquery.min.js"/>"
+            type="text/javascript"></script>
     <script type="text/javascript">
         function showInfo(ten,ngaysinh,diachi,email,quequan,sdt,trinhdo,namvaonghe){
+
             $(".tenGV").text(ten);
             $(".ngaySinh").text(ngaysinh);
             $(".diaChi").text(diachi);
@@ -37,29 +40,30 @@
                                     style="text-align: center;font-family: Georgia,Serif;"></h4></div>
                             <div class="modal-body">
                                 <p>
-                                    Họ Và Tên: <span class="ho_va_ten" style="font-weight: bold"></span>
+                                    Họ Và Tên: <span class="tenGV" style="font-weight: bold"></span>
                                 </p>
                                 <p>
-                                    Ngày Sinh: <span class="ngay_sinh" style="font-weight: bold"></span>
+                                    Ngày Sinh: <span class="ngaySinh" style="font-weight: bold"></span>
                                 </p>
                                 <p>
-                                    Địa Chỉ: <span class="dia_chi" style="font-weight: bold"></span>
+                                    Địa Chỉ: <span class="diaChi" style="font-weight: bold"></span>
+                                </p>
+                                <p>
+                                    Quê Quán:<span class="queQuan" style="font-weight: bold"></span>
                                 </p>
                                 <p>
                                     Email: <span class="email" style="font-weight: bold"></span>
                                 </p>
 
-                                <p>
-                                    Quê Quán:<span class="quen_quan" style="font-weight: bold"></span>
-                                </p>
+
                                 <p>
                                     Số Điện Thoại : <span class="sdt" style="font-weight: bold"></span>
                                 </p>
                                 <p>
-                                    Trình Độ: <span class="trinh_do" style="font-weight: bold"></span>
+                                    Trình Độ: <span class="trinhDo" style="font-weight: bold"></span>
                                 </p>
                                 <p>
-                                    Năm Vào Nghề: <span class="vaonghe" style="font-weight: bold"></span>
+                                    Năm Vào Nghề: <span class="vaoNghe" style="font-weight: bold"></span>
                                 </p>
                             </div>
                             <div class="modal-footer">
@@ -97,13 +101,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a
-                                                href='<spring:url value="/pagesize?record=2"></spring:url>'>3
+                                                href='<spring:url value="/giaovien/pagesize?record=2"></spring:url>'>2
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/pagesize?record=4"></spring:url>'>5
+                                                href='<spring:url value="/giaovien/pagesize?record=4"></spring:url>'>4
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/pagesize?record=6"></spring:url>'>7
+                                                href='<spring:url value="/giaovien/pagesize?record=6"></spring:url>'>8
                                             dòng</a></li>
                                     </ul>
                                 </div>
@@ -147,18 +151,26 @@
                                 <th>Số Điện Thoại</th>
                                 <th>Trình Độ</th>
                                 <th>Năm Kinh Ngiệm</th>
-                                <td>Action</td>
+                                <td><a href="/giaovien/addGiaoVien"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></td>
                             </tr>
                      </thead>
                      <tbody>
-                        <c:forEach items="${giaovien}" var="giaoVien" varStatus="s">
+                        <c:forEach items="${giaovienList}" var="giaoVien" varStatus="s">
                             <tr>
                                 <td>${s.count}</td>
                                 <td><a data-toggle="modal" data-target="#myModal"
-                                      onclick="showInfo('$(giaoVien.ten)','$(giaoVien.ngaySinh)','$(giaoVien.diaChi)','$(giaoVien.queQuan)','$(giaoVien.email)',
-                                      '$(giaoVien.sdt)','$(giaoVien.trinhDo)','$(giaoVien.vaoNghe)');"
+                                      onclick="showInfo('${giaoVien.ten}','${giaoVien.ngaysinh}','${giaoVien.diachi}','${giaoVien.quequan}','${giaoVien.email}',
+                                              '${giaoVien.sdt}','${giaoVien.trinhdo}','${giaoVien.namvaonghe}');"
                                         style="text-decoration: none;" href="#">${giaoVien.ten}</a>
                                 </td>
+                                <td>${giaoVien.ngaysinh}</td>
+                                <td>${giaoVien.diachi}</td>
+                                <td>${giaoVien.quequan}</td>
+                                <td>${giaoVien.email}</td>
+                                <td>${giaoVien.sdt}</td>
+                                <td>${giaoVien.trinhdo}</td>
+                                <td>${giaoVien.namvaonghe}</td>
+
                             </tr>
                         </c:forEach>
                      </tbody>

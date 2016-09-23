@@ -5,7 +5,7 @@ import java.util.List;
 import vn.com.imic.model.Giaovien;
 
 public interface GiaovienDao {
-    public List<Giaovien> findAll();
+    public List<Giaovien> getAll();
 
     public List<Giaovien> findLimit(int first, int max);
 
