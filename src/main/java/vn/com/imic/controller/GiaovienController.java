@@ -84,7 +84,10 @@ public class GiaovienController {
     
     @RequestMapping(value="/giaovien/addGV", method = RequestMethod.POST) //add giaovien Object
     public String addLop(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirect){
-    	giaovienServices.saveOrupdate(giaovien);
+    	if (result.hasErrors()){
+            System.out.println(giaovien.getTen()+giaovien.getDiachi()+giaovien.getTrinhdo());
+        }
+        giaovienServices.saveOrupdate(giaovien);
     	return "redirect:/giaovien";
     }
     

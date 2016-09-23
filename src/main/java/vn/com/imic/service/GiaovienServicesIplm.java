@@ -34,9 +34,9 @@ public class GiaovienServicesIplm implements GiaovienServices {
 
 	@Override
 	public void saveOrupdate(Giaovien giaovien) {
-		// TODO Auto-generated method stub
-		
-	}
+
+
+    }
 
     @Override
     public List<Giaovien> getALL() {

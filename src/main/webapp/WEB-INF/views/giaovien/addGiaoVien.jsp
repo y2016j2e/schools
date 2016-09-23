@@ -8,17 +8,8 @@
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-<spring:url value="/resources/css/bootrap.min.csss" var="boottrap" />
-<spring:url value="resources/css/lopstyle.css" var="lopStyle" />
-<spring:url value="/resources/font-awesome-4.1.0/css/font-awesome.css"
-	var="fontStyle" />
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
 
-<link href="${bootrap}" type="text/css" rel="stylesheet" />
-<link href="${lopStyle}" type="text/css" rel="stylesheet" />
-<script src="/schools/resources/js/libs/bootstrap.min.js"></script>
-<script src="/schools/resources/js/libs/jquery-1.9.1.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thêm Giáo Viên</title>
 </head>
 
@@ -83,7 +74,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="trinhdo">Trình độ đào tạo</label>
 								<div class="col-sm-8">
-									<select class="form-control selectpicker bs-select-hidden" patch="trinhdo" id="trinhdo"><option value="">------</option>
+									<form:select class="form-control selectpicker bs-select-hidden" path="trinhdo" id="trinhdo" ><option value=""/>------</option>
 										<option value="Cấp tốc">Cấp tốc</option>
 										<option value="Sơ cấp">Sơ cấp</option>
 										<option value="TH 12+2">TH 12+2</option>
@@ -92,28 +83,23 @@
 										<option value="Cao đẳng">Cao đẳng</option>
 										<option value="Đại học">Đại học</option>
 										<option value="Thạc sĩ">Thạc sĩ</option>
-										<option value="Tiến sĩ">Tiến sĩ</option></select>
+										<option value="Tiến sĩ">Tiến sĩ</option></form:select>
 								</div>
 							</div>
-
-
-
-
-
 
 							<hr>
 							<div class="row no-margin">
 								<div class="pull-left">
-									<a class="btn btn-info" href="/shools/giaovien">Hủy</a>
+									<a class="btn btn-info" href="/giaovien">Hủy</a>
 								</div>
 								<div class="pull-right">
-									<input type="submit" name="commit" value="Tạo mới" class="btn btn-success" id="newGiaoVien"/>
+									<button type="button" class="btn btn-success btn-block item fsize" style="height:50px;width:90%;margin-left:5%;" onclick="document.getElementById('add').submit();"><i class="fa fa-plus-square-o"> Hoàn Tất</i></button>
 								</div>
 							</div>
 						</form:form>  </div>
 				</div>
 
-				<form id="esc_cancel" action="/shools/giaovien" method="GET">
+				<form id="esc_cancel" action="/giaovien" method="GET">
 					<script type="text/javascript">
 						$('body').keyup(function(e) {
 							if (e.keyCode == 27) {$("#esc_cancel").submit();}
