@@ -110,9 +110,14 @@ public class GiangDayDAO extends HibernateDaoSupport implements IGiangDayDAO {
 				.add(Restrictions.eq("namhoc.manamhoc", 1));
 		List<Giaovien> list = (List<Giaovien>) hibernateTemplate.findByCriteria(criteria);
 		for (Giaovien giaovien : list) {
-			System.out.println(giaovien.getTen()+ "Ma: "+giaovien.getMagiaovien());
+			System.out.println(giaovien.getTen() + "Ma: " + giaovien.getMagiaovien());
 		}
 		return list;
+	}
+
+	@Override
+	public void updateGiangDay(Giangday giangday) {
+		save(giangday);
 	}
 
 }

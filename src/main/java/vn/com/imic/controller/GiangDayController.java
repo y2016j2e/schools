@@ -1,9 +1,14 @@
 package vn.com.imic.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -81,17 +86,17 @@ public class GiangDayController {
 	}
 
 	@RequestMapping(value = "/phancong/confirmUpdate", method = RequestMethod.POST)
-	public String conFirmupdate(@ModelAttribute("giaoVien") Giaovien giaoVien, RedirectAttributes redirectAttributes) {
-		// System.out.println("Size KhoaHoc: " + giaoVien.getKhoahoc().size());
-		// System.out.println("Khoa Hoc Chua Tim Kiem: " +
-		// giaoVien.getKhoahoc());
-		// System.out.println("MaKhoaHocChuNhiem: " +
-		// giaoVien.getKhoahoc().get(0).getMakhoahoc());
+	public String conFirmupdate(@ModelAttribute("giaoVien") Giaovien giaoVien, RedirectAttributes redirectAttributes,
+			Model model) {
+		// i là biến dùng để đánh số thứ tự lỗi
 		int i = 1;
+		// Map chứa các erro hiển thị về cho client
 		Map<Integer, String> erros = new HashMap<>();
+
 		int maKhoaHoc = giaoVien.getKhoahoc().get(0).getMakhoahoc();
+
 		Khoahoc khoahoc = giangDayService.findKhoaHoc(maKhoaHoc);
-		System.out.println("KhoaHocChuNhiem: " + khoahoc);
+		// thực hiện kiểm tra lớp học đã được chủ nhiệm bởi một giáo viên nào đó
 		if (khoahoc != null) {
 			Giaovien giaoVienChuNhiem = khoahoc.getChunhiem();
 			if (giaoVienChuNhiem != null && giaoVien.getMagiaovien() != giaoVienChuNhiem.getMagiaovien()) {
@@ -103,10 +108,10 @@ public class GiangDayController {
 
 			List<Giangday> listGiangDay = giaoVien.getGiangday();
 
-			// System.out.println("Truoc luc remove: " + listGiangDay.size());
-
 			Iterator<Giangday> iteratorListGiangDay = listGiangDay.iterator();
 
+			// xóa bỏ những giảng dạy đã xóa khi người dùng tương tác trên giao
+			// diện ( giảng dạy bị xóa thì sẽ = null)
 			while (iteratorListGiangDay.hasNext()) {
 				Giangday giangday = iteratorListGiangDay.next();
 				if (giangday.getKhoahoc() == null) {
@@ -114,18 +119,23 @@ public class GiangDayController {
 				}
 			}
 
-			// System.out.println("Sau Khi remove: " + listGiangDay.size());
-			// System.out.println("SizeGiangDay cua GiaoVien Ma: " +
-			// giaoVien.getMagiaovien() + "La: "
-			// + giaoVien.getGiangday().size());
-			// for (Giangday giangday : giaoVien.getGiangday()) {
-			// System.out.println("KhoaHoc: " +
-			// giangday.getKhoahoc().getMakhoahoc() + " MonHoc: "
-			// + giangday.getMonhoc().getMamonhoc());
-			// }
+			// loại bỏ danh sách giảng dạy bì trùng do người dùng nhập trên giao
+			// diện bằng cách cho vào Set
+			Set<Giangday> giangdayTmp = new HashSet<>();
+			for (Giangday giangday : listGiangDay) {
+				giangdayTmp.add(giangday);
+			}
+			// lấy các phần tử trong set cho vào một list rồi thiết lập lại danh
+			// sách giảng dạy cho giáo viên
+			List<Giangday> giangdayArraysList = new ArrayList<>();
+			giangdayArraysList.addAll(giangdayTmp);
+			giaoVien.setGiangday(giangdayArraysList);
 
+			// lấy ra danh sách giảng dạy trong csdl rồi kiểm tra xem giảng dạy
+			// mà người dùng nhập có bị trùng hay không
 			List<Giangday> giangdays = giangDayService.getAll(1);
 			for (Giangday giangday : giangdays) {
+				// kiểm tra trùng giảng dạy
 				if (giangDayService.checkPhanCong(listGiangDay, giangday) == true) {
 					Giaovien giaovienGiangDay = giangday.getGiaovien();
 					if (giangday.getGiaovien().getMagiaovien() != giaoVien.getMagiaovien()) {
@@ -136,10 +146,26 @@ public class GiangDayController {
 				}
 			}
 		}
+		// nếu có lỗi quay về giao diện update giảng dạy
 		if (!erros.isEmpty()) {
-			redirectAttributes.addFlashAttribute("erros", erros);
-			return "redirect:/phancong/" + giaoVien.getMagiaovien() + "/update";
+			if (giaoVien.getGiangday() != null) {
+				Giaovien giaovien2 = giangDayService.getGiaoVien(giaoVien.getMagiaovien(), 1);
+				giaoVien.setTen(giaovien2.getTen());
+				List<Giangday> giangdays = new ArrayList<>();
+				for (Giangday giangday : giaoVien.getGiangday()) {
+					Khoahoc khoahoc2 = giangDayService.findKhoaHoc(giangday.getKhoahoc().getMakhoahoc());
+					Monhoc monhoc = giangDayService.findMonHoc(giangday.getMonhoc().getMamonhoc());
+					giangday.setKhoahoc(khoahoc2);
+					giangday.setMonhoc(monhoc);
+					giangday.setGiaovien(giaoVien);
+					giangdays.add(giangday);
+				}
+				giaoVien.setGiangday(giangdays);
+			}
+			model.addAttribute("erros", erros);
+			return "giangday/phancong_update";
 		}
+		// không có lỗi thực hiện update
 		giangDayService.updatePhanCong(giaoVien);
 		return "redirect:/phancong";
 	}

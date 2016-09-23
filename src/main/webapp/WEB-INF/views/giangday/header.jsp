@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,7 +42,7 @@
 			<div class="header_left">
 				<ul class="nav navbar-nav">
 					<li><a data-toggle="tooltip" title="Trở Về Trang Chủ"
-						href="/home" class="logo"><i class="fa fa-home"></i></a></li>
+						href='<spring:url value="/home"></spring:url>' class="logo"><i class="fa fa-home"></i></a></li>
 					<li><p class="ten_truong">Tiểu Học An Khánh</p></li>
 					<li>
 						<div class="dropdown nam_hoc">
