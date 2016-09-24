@@ -9,10 +9,16 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
-
+	
 <title>Thêm Giáo Viên</title>
-</head>
 
+  <script>
+  $( function() {
+    $( "#ngaysinh" ).datepicker();
+  } );
+  </script>
+  
+</head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<div id="content">
@@ -34,8 +40,9 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="ngaysinh">Ngày sinh</label>
 								<div class="col-sm-8">
-									<form:input class="form-control datepicker" placeholder="Ngày sinh" type="text" path="ngaysinh" id="ngaysinh"/>
+									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="ngaysinh"/>
 								</div>
+								
 							</div>
 
 							<div class="form-group">

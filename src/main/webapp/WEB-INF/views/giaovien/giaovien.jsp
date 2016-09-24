@@ -151,7 +151,7 @@
                                 <th>Số Điện Thoại</th>
                                 <th>Trình Độ</th>
                                 <th>Năm Kinh Ngiệm</th>
-                                <td><a href="/giaovien/addGiaoVien"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></td>
+                                <td><a href="giaovien/addGiaoVien"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></td>
                             </tr>
                      </thead>
                      <tbody>
