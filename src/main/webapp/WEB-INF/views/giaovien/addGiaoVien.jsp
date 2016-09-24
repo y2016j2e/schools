@@ -11,11 +11,12 @@
 	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
 	
 <title>Thêm Giáo Viên</title>
-
+<link rel="stylesheet" href="/resources/css/jquery-ui.css">
+  <script src="/resources/js/libs/jquery-1.9.1.js"></script>
+  <script src="/resources/js/libs/jquery-ui.js"></script>
   <script>
-  $( function() {
-    $( "#ngaysinh" ).datepicker();
-  } );
+  $(document).ready(function() {
+    $( "ngaysinh" ).datepicker();});
   </script>
   
 </head>
@@ -98,10 +99,10 @@
 							<hr>
 							<div class="row no-margin">
 								<div class="pull-left">
-									<a class="btn btn-info" href="/giaovien">Hủy</a>
+									<a class="btn btn-info	item btn-lg" href="/giaovien">Hủy</a>
 								</div>
-								<div class="pull-right">
-									<button type="button" class="btn btn-success btn-block item fsize" style="height:50px;width:90%;margin-left:5%;" onclick="document.getElementById('add').submit();"><i class="fa fa-plus-square-o"> Hoàn Tất</i></button>
+								<div class="pull-right" >
+									<button type="button"  class="btn btn-success btn-block btn-lg "  onclick="document.getElementById('add').submit();"> Hoàn Tất</button>
 								</div>
 							</div>
 						</form:form>  </div>

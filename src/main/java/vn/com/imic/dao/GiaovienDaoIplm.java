@@ -38,7 +38,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     @Override
     public void deleteGiaovien(int id) {
         delete(hibernateTemplate.get(Giaovien.class, id));
-
+        delete(id);
     }
 
     @Override

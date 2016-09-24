@@ -45,7 +45,7 @@ public class GiaovienServicesIplm implements GiaovienServices {
 
     @Override
 	public void deleteGiaovien(int id) {
-		// TODO Auto-generated method stub
+		 dao.deleteGiaovien(id);
 		
 	}
 }

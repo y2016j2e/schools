@@ -101,13 +101,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a
+                                                href='<spring:url value="/giaovien/pagesize?record=1"></spring:url>'>1
+                                            dòng</a></li>
+                                        <li><a
                                                 href='<spring:url value="/giaovien/pagesize?record=2"></spring:url>'>2
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=4"></spring:url>'>4
-                                            dòng</a></li>
-                                        <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=6"></spring:url>'>6
+                                                href='<spring:url value="/giaovien/pagesize?record=3"></spring:url>'>3
                                             dòng</a></li>
                                     </ul>
                                 </div>
@@ -141,7 +141,7 @@
                     --------Table-----
                     <table  class="table table-bordered table-hover table-condensed">
                      <thead>
-                            <tr class="active">
+                            <tr align="center" class="active">
                                 <th>STT</th>
                                 <th>Họ và Tên</th>
                                 <th>Ngày Sinh</th>
@@ -150,8 +150,8 @@
                                 <th>Email</th>
                                 <th>Số Điện Thoại</th>
                                 <th>Trình Độ</th>
-                                <th>Năm Kinh Ngiệm</th>
-                                <td><a href="giaovien/addGiaoVien"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></td>
+                                <th align="center">Năm Kinh Ngiệm</th>
+                                <td align="center"><a href="giaovien/addGiaoVien"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"></i></button></a></td>
                             </tr>
                      </thead>
                      <tbody>
@@ -169,7 +169,11 @@
                                 <td>${giaoVien.email}</td>
                                 <td>${giaoVien.sdt}</td>
                                 <td>${giaoVien.trinhdo}</td>
-                                <td>${giaoVien.namvaonghe}</td>
+                                <td align="center">${giaoVien.namvaonghe}</td>
+                                <td align="center">
+                                    <a href="/giaovien/edit/${giaoVien.magiaovien}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+                                    <button type="button" class="btn btn-danger" onclick="fun('${giaoVien}','${giaovien.ten}')"><i class="fa fa-trash-o"></i></button>
+                                </td>
 
                             </tr>
                         </c:forEach>
@@ -180,6 +184,9 @@
             </div>
         </div>
     </div>
+
+
+
     <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
