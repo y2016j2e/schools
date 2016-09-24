@@ -28,7 +28,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 well form-small">
-						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="add" action="/giaovien/addGV" accept-charset="UTF-8" method="POST" >
+						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="/giaovien/addGV" accept-charset="UTF-8" method="POST" >
 
 
 							<div class="form-group">
@@ -99,16 +99,16 @@
 							<hr>
 							<div class="row no-margin">
 								<div class="pull-left">
-									<a class="btn btn-info	item btn-lg" href="/giaovien">Hủy</a>
+									<a class="btn btn-info	item btn-lg" href="../giaovien">Hủy</a>
 								</div>
 								<div class="pull-right" >
-									<button type="button"  class="btn btn-success btn-block btn-lg "  onclick="document.getElementById('add').submit();"> Hoàn Tất</button>
+									<button type="button"  class="btn btn-success btn-block btn-lg "  onclick="document.getElementById('addGV').submit();"> Hoàn Tất</button>
 								</div>
 							</div>
 						</form:form>  </div>
 				</div>
 
-				<form id="esc_cancel" action="/giaovien" method="GET">
+				<form id="esc_cancel" action="../giaovien" method="GET">
 					<script type="text/javascript">
 						$('body').keyup(function(e) {
 							if (e.keyCode == 27) {$("#esc_cancel").submit();}

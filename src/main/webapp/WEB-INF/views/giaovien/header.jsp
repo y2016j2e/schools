@@ -45,7 +45,7 @@
 			<div class="header_left">
 				<ul class="nav navbar-nav">
 					<li><a data-toggle="tooltip" title="Trở Về Trang Chủ"
-						href="/home" class="logo"><i class="fa fa-home"></i></a></li>
+						href="/schools/home" class="logo"><i class="fa fa-home"></i></a></li>
 					<li><p class="ten_truong">Tiểu Học iMIC</p></li>
 					<li>
 						<div class="dropdown nam_hoc">
