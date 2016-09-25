@@ -169,7 +169,7 @@ $(document).ready(function(){
 var maso;
 var link;
 function fun(id,lop){
-	var x = "Bạn có chắc chắn muốn xóa lớp " +lop+ " ?"
+	var x = "Bạn có chắc chắn muốn xóa lớp " +lop+ " ?";
 	document.getElementById("del").innerHTML = x;
 	maso = id;
 	var l = "http://localhost:8081/schools/lop/delete/"+id;

@@ -65,9 +65,7 @@ public class Monhoc {
 		if (getClass() != obj.getClass())
 			return false;
 		Monhoc other = (Monhoc) obj;
-		if (mamonhoc != other.mamonhoc)
-			return false;
-		return true;
+		return mamonhoc == other.mamonhoc;
 	}
 
 }

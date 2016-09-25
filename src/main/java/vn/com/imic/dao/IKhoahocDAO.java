@@ -5,11 +5,11 @@ import java.util.List;
 import vn.com.imic.model.Khoahoc;
 
 public interface IKhoahocDAO {
-	public List<Khoahoc> getAll();
+	List<Khoahoc> getAll();
 
-	public void saveOrUpdate(Khoahoc khoahoc);
+	void saveOrUpdate(Khoahoc khoahoc);
 
-	public void delete(int makhoahoc);
+	void delete(int makhoahoc);
 
-	public Khoahoc findByID(int makhoahoc);
+	Khoahoc findByID(int makhoahoc);
 }

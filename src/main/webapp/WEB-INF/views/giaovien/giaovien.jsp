@@ -171,7 +171,7 @@
                                 <td>${giaoVien.trinhdo}</td>
                                 <td align="center">${giaoVien.namvaonghe}</td>
                                 <td align="center">
-                                    <a href="/giaovien/edit/${giaoVien.magiaovien}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+                                    <a href="/schools/giaovien/edit/${giaovien.magiaovien}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
                                     <button type="button" class="btn btn-danger" onclick="fun('${giaoVien}','${giaovien.ten}')"><i class="fa fa-trash-o"></i></button>
                                 </td>
 

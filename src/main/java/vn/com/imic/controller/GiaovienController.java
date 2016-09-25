@@ -75,7 +75,7 @@ public class GiaovienController {
     }
   
     @RequestMapping(value="/giaovien/addGiaoVien", method = RequestMethod.GET)
-    public ModelAndView addGiaovien(){
+    public ModelAndView setAndView(){
     	ModelAndView model = new ModelAndView("giaovien/addGiaoVien");
     	  	/////// ???????????
     	model.addObject("giaovien", new Giaovien());
@@ -83,9 +83,9 @@ public class GiaovienController {
     }
     
     @RequestMapping(value="/giaovien/addGV", method = RequestMethod.POST) //add giaovien Object
-    public String addLop(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirect){
+    public String addGiaoVien(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirect){
     	if (result.hasErrors()){
-            return "schools/giaovien/addGiaoVien";
+            return "/giaovien/addGiaoVien";
         }
         giaovienServices.saveOrupdate(giaovien);
     	return "redirect:/giaovien";

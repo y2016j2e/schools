@@ -8,17 +8,10 @@
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	
 <title>Thêm Giáo Viên</title>
-<link rel="stylesheet" href="/resources/css/jquery-ui.css">
-  <script src="/resources/js/libs/jquery-1.9.1.js"></script>
-  <script src="/resources/js/libs/jquery-ui.js"></script>
-  <script>
-  $(document).ready(function() {
-    $( "ngaysinh" ).datepicker();});
-  </script>
-  
+
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -28,7 +21,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 well form-small">
-						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="/giaovien/addGV" accept-charset="UTF-8" method="POST" >
+						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="/schools/giaovien/addGV" accept-charset="UTF-8" method="POST" >
 
 
 							<div class="form-group">
