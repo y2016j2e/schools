@@ -171,8 +171,9 @@
                                 <td>${giaoVien.trinhdo}</td>
                                 <td align="center">${giaoVien.namvaonghe}</td>
                                 <td align="center">
-                                    <a href="/schools/giaovien/edit/${giaovien.magiaovien}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
-                                    <button type="button" class="btn btn-danger" onclick="fun('${giaoVien}','${giaovien.ten}')"><i class="fa fa-trash-o"></i></button>
+                                    <a href="/schools/giaovien/editGiaoVien/${giaovien.magiaovien}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+                                   <a href="/schools/giaovien/delete/${giaovien.magiaovien}">
+                                    <button type="submit" class="btn btn-danger" ><i class="fa fa-trash-o"></i></button></a>
                                 </td>
 
                             </tr>
@@ -185,7 +186,15 @@
         </div>
     </div>
 
+---- JavaScrip-----
 
+<script type="text/javascript">
+	function remove(index) {
+		
+		$(".giaovien.magiaovien").remove();
+	}
+
+</script>
 
     <jsp:include page="footer.jsp"></jsp:include>
 </body>

@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 
@@ -51,6 +54,16 @@ public class GiaovienController {
     	dateFormat.setLenient(false);
     	binder.registerCustomEditor(Date.class, "ngaysinh", new CustomDateEditor(dateFormat, true));
         binder.addValidators(gvValidator);
+
+//        binder.registerCustomEditor(Namhoc.class,"namhoc", new PropertyEditorSupport(){
+//
+//            @Override
+//            public void setAsText(String text) throws IllegalArgumentException {
+//                Namhoc namhoc = namhocServices.getNamhocById(Integer.parseInt(text));
+//                setValue(namhoc);
+//            }
+//
+//        });
     }
     
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
@@ -67,7 +80,7 @@ public class GiaovienController {
     }
     
     
-    @RequestMapping(value="/giaovien/delete/{id}")//delete Object
+    @RequestMapping(value="/giaovien/delete/{id}")//delete Giao vien
     public String deleteIndex(@PathVariable(value="id")String id , Model model , RedirectAttributes redirectAttributes){
     	System.out.println("Giao vien ID : "+ id);
     	giaovienServices.deleteGiaovien(Integer.parseInt(id));
@@ -92,7 +105,7 @@ public class GiaovienController {
     }
     
     
-    @RequestMapping(value="/giaovien/edit/{id}" , method = RequestMethod.GET)// edit giao vien 
+    @RequestMapping(value="/giaovien/editGiaoVien/{id}" , method = RequestMethod.GET)// edit giao vien 
     public ModelAndView editGiaovien(@PathVariable(value="id") String id){
     	ModelAndView model = new ModelAndView("giaovien/editGiaovien");
 		model.addObject("giaovien", new Giaovien());
@@ -101,12 +114,26 @@ public class GiaovienController {
     }
     	        
     
-    @RequestMapping(value="/giaovien/update", method =  RequestMethod.POST)
-    public String updateGV(Model model , @ModelAttribute("update") Giaovien giaovien, BindingResult  result,RedirectAttributes redirect){
+    @RequestMapping(value="/giaovien/update", method =  RequestMethod.POST) /// update giao vien trong edit form
+    public String updateGV(Model model , @ModelAttribute("update")  @Validated Giaovien giaovien, BindingResult  result,RedirectAttributes redirect){
     			giaovienServices.saveOrupdate(giaovien);
     	return "redirect:/giaovien";
       	
     }
+    
+//    @RequestMapping(value="/giaovien/validate", method = RequestMethod.GET)
+//    public String displayError(Model model){
+//    	Giaovien giaovien = new Giaovien();
+//    	model.addAttribute("giaovien", giaovien);
+//    	return "/giaovien";
+//    }
+//    @RequestMapping(value="/giaovien/validate",method = RequestMethod.POST)
+//    public String processError(@Valid  Giaovien giaovien, BindingResult result, Model m){
+//    	if(result.hasErrors()){
+//    		return "";
+//    	}
+//    	return "redirect:giaovien";
+//    }
     
 }
 

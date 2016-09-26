@@ -11,7 +11,7 @@ import vn.com.imic.model.Giaovien;
 public class GiaovienValidator	implements Validator {
 
 	@Override
-	public boolean supports(Class<?> clazz) {
+	public boolean supports(Class<?> clazz) { 
 		
 		return  Giaovien.class.isAssignableFrom(clazz);
 	}
@@ -19,20 +19,13 @@ public class GiaovienValidator	implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Giaovien giaovien = (Giaovien)target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "magiaovien", "", "Giao Vien ID is empty");
-		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "diachi", "", "Adress is empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "", "Email is empty");
-		if(!giaovien.getEmail().contains("@")){
-			errors.rejectValue("email", "", "Email is not valid.");
-		}
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ngaysinh", "", "Date of Birth is empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "quequan", "", "Place was born is empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sdt", "", "Phone number is empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ten", "", "Name is empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "trinhdo", "", "Level is empty");
+		ValidationUtils.rejectIfEmpty(errors, "giaovien.form.emty.ten", "Not empty");
+		ValidationUtils.rejectIfEmpty(errors, "giaovien.form.emty.diachi", "Not empty");
 
-		
+//		if{
+//			
+//		}
+//		
 	}
 		
 

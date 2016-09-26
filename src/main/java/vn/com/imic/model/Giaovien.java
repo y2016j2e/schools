@@ -12,6 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="Giaovien")
@@ -22,6 +26,7 @@ public class Giaovien {
 	private int magiaovien;
 	
 	@Column(name="ten",nullable=false)
+	@Size(min =2, max= 30)
 	private String ten;
 	
 	@Column(name="ngaysinh",nullable=false)
@@ -32,10 +37,11 @@ public class Giaovien {
 	
 	@Column(name="quequan",nullable=false)
 	private String quequan;
-	
+	@NotEmpty	@Email
 	@Column(name="email",nullable=false)
 	private String email;
 	
+	@Size(min=9,max=11)
 	@Column(name="sdt",nullable=false)
 	private String sdt;
 	
