@@ -148,7 +148,9 @@
             <td class="center">${lop.chunhiem.ten}</td>
             <td class="center">${ss.get(indexes.index)}</td>
             <td class="center">${lop.lop.sotiethoc}</td>
-            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir"><i class="fa fa-pencil"></i></button></a> <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop.makhoahoc}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
+            <td class="center"><a href="/schools/lop/edit/${lop.makhoahoc}"><button type="button" class="btn btn-info cir">
+            <i class="fa fa-pencil"></i></button></a>
+             <button type="button" class="btn btn-danger btn-del cir" onclick="fun('${lop.makhoahoc}','${lop.lop.tenlop}')"><i class="fa fa-trash-o"></i></button></td>
         </tr>
         </c:forEach>
         </table>

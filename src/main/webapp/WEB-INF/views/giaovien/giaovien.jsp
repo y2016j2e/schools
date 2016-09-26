@@ -8,8 +8,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <title>Giáo Viên</title>
-    <script src="<c:url value="/resources/js/libs/jquery.min.js"/>"
-            type="text/javascript"></script>
+    <script src="<c:url value="/resources/js/libs/jquery.min.js"/>" />
+    <script src="resources/js/libs/jquery-1.9.1.js"></script>
     <script type="text/javascript">
         function showInfo(ten,ngaysinh,diachi,email,quequan,sdt,trinhdo,namvaonghe){
 
@@ -171,9 +171,10 @@
                                 <td>${giaoVien.trinhdo}</td>
                                 <td align="center">${giaoVien.namvaonghe}</td>
                                 <td align="center">
-                                    <a href="/schools/giaovien/editGiaoVien/${giaovien.magiaovien}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
-                                   <a href="/schools/giaovien/delete/${giaovien.magiaovien}">
-                                    <button type="submit" class="btn btn-danger" ><i class="fa fa-trash-o"></i></button></a>
+                                   <a href="<spring:url value="/giaovien/editGiaoVien/${giaoVien.magiaovien}"></spring:url> ">
+                                       <button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+
+                                    <a> <button type="submit" onclick="comfirmDelete('${giaoVien.magiaovien}')" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></button></a>
                                 </td>
 
                             </tr>
@@ -188,6 +189,39 @@
 
 ---- JavaScrip-----
 
+
+<script type="text/javascript">
+//    let currentComfirmDeleteGV = void(0);
+//		function go_Click(e){
+//            console.log(e);
+//            return currentComfirmDeleteGV = e;
+//			}
+        function comfirmDelete(maGV){
+           // console.log(currentComfirmDeleteGV);
+                $("#urlDelete").attr("href","/giaovien/delete/" +maGV);
+            document.getElementById("close-modal").click();
+        }
+		
+</script>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+
+      <div class="modal-footer">
+        <button id="close-modal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <a class="btn btn-primary"  id="urlDelete">Save changes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+----------------------
 <script type="text/javascript">
 	function remove(index) {
 		

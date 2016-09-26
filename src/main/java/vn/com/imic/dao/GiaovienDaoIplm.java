@@ -36,7 +36,10 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
 
     @Override
     public void deleteGiaovien(int id) {
-        delete(hibernateTemplate.get(Giaovien.class, id));
+        Giaovien giaovien = findbyID(id);
+        System.out.println("Giao Vien: "+giaovien.getTen()+giaovien.getMagiaovien());
+
+        delete(giaovien);
        
     }
 
@@ -49,7 +52,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     public Giaovien findbyID(int id) {
 
         Giaovien giaovien = hibernateTemplate.get(Giaovien.class, id);
-        return null;
+        return giaovien;
     }
 
     @Override
@@ -57,8 +60,6 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
         // TODO Auto-generated method stub
         return null;
     }
-
-
 
 
 }

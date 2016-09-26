@@ -16,13 +16,14 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="content">
-    <div class="addGiaoVien">
+    <div class="editGiaoVien">
         <h2 style="text-align: center;">Cập Nhật Thông Tin Giáo Viên </h2>
 
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 well form-small">
-                    <form:form modelAttribute="update" class="form-horizontal" role="form" id="updateGV"
+
+                    <form:form modelAttribute="giaovien" class="form-horizontal" role="form" id="updateGV"
                                action="/schools/giaovien/update" accept-charset="UTF-8" method="POST">
 
 

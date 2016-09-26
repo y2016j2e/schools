@@ -55,20 +55,12 @@ public class GiaovienController {
     	binder.registerCustomEditor(Date.class, "ngaysinh", new CustomDateEditor(dateFormat, true));
         binder.addValidators(gvValidator);
 
-//        binder.registerCustomEditor(Namhoc.class,"namhoc", new PropertyEditorSupport(){
-//
-//            @Override
-//            public void setAsText(String text) throws IllegalArgumentException {
-//                Namhoc namhoc = namhocServices.getNamhocById(Integer.parseInt(text));
-//                setValue(namhoc);
-//            }
-//
-//        });
     }
     
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
     public String showData(Model model){
         List<Giaovien> giaovienList = giaovienServices.getALL();
+        System.out.println(giaovienList.get(0).getMagiaovien());
         model.addAttribute("giaovienList", giaovienList);
     	return "giaovien/giaovien";
     }
@@ -81,10 +73,10 @@ public class GiaovienController {
     
     
     @RequestMapping(value="/giaovien/delete/{id}")//delete Giao vien
-    public String deleteIndex(@PathVariable(value="id")String id , Model model , RedirectAttributes redirectAttributes){
+    public String deleteIndex(@PathVariable("id") int id ,RedirectAttributes redirect){
     	System.out.println("Giao vien ID : "+ id);
-    	giaovienServices.deleteGiaovien(Integer.parseInt(id));
-    	return  "redirectAttributes:/giaovien";
+    	giaovienServices.deleteGiaovien(id);
+    	return  "redirect:/giaovien";
     }
   
     @RequestMapping(value="/giaovien/addGiaoVien", method = RequestMethod.GET)
@@ -106,8 +98,10 @@ public class GiaovienController {
     
     
     @RequestMapping(value="/giaovien/editGiaoVien/{id}" , method = RequestMethod.GET)// edit giao vien 
-    public ModelAndView editGiaovien(@PathVariable(value="id") String id){
-    	ModelAndView model = new ModelAndView("giaovien/editGiaovien");
+    public ModelAndView editGiaovien(@PathVariable("id") int id ){
+        // tim giao vien theo ID
+    	ModelAndView model = new ModelAndView("giaovien/editGiaoVien");
+        // add giao vien vao model
 		model.addObject("giaovien", new Giaovien());
 		return model;
     	
@@ -120,20 +114,6 @@ public class GiaovienController {
     	return "redirect:/giaovien";
       	
     }
-    
-//    @RequestMapping(value="/giaovien/validate", method = RequestMethod.GET)
-//    public String displayError(Model model){
-//    	Giaovien giaovien = new Giaovien();
-//    	model.addAttribute("giaovien", giaovien);
-//    	return "/giaovien";
-//    }
-//    @RequestMapping(value="/giaovien/validate",method = RequestMethod.POST)
-//    public String processError(@Valid  Giaovien giaovien, BindingResult result, Model m){
-//    	if(result.hasErrors()){
-//    		return "";
-//    	}
-//    	return "redirect:giaovien";
-//    }
     
 }
 
