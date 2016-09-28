@@ -24,7 +24,7 @@
                 <div class="col-md-6 col-md-offset-3 well form-small">
 
                     <form:form modelAttribute="giaovien" class="form-horizontal" role="form" id="updateGV"
-                               action="/schools/giaovien/update" accept-charset="UTF-8" method="POST">
+                               action="/giaovien/update" accept-charset="UTF-8" method="POST">
 
 
                     <div class="form-group">
@@ -57,7 +57,7 @@
                             <label class="control-label col-sm-4" for="quequan">Quê quán</label>
 
                             <div class="col-sm-8">
-                                <form:input class="form-control" placeholder="Địa chỉ" type="text"
+                                <form:input class="form-control" placeholder="Quê quán" type="text"
                                             value="${giaoVien.quequan}" path="quequan" id="quequan"/>
                             </div>
                         </div>
