@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b580b522-96c9-4f37-8fac-581617c5c256" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/model/Giaovien.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/model/Giaovien.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/controller/GiaovienController.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/controller/GiaovienController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/dao/GiaovienDaoIplm.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/dao/GiaovienDaoIplm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vn/com/imic/service/GiaovienValidator.java" afterPath="$PROJECT_DIR$/src/main/java/vn/com/imic/service/GiaovienValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/giaovien/addGiaoVien.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/giaovien/addGiaoVien.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/giaovien/editGiaoVien.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/giaovien/editGiaoVien.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/giaovien/giaovien.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/giaovien/giaovien.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/lop/lop.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/lop/lop.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="schools.iws" />
@@ -983,7 +975,7 @@
       <workItem from="1475056213306" duration="1572000" />
       <workItem from="1475062872983" duration="3524000" />
       <workItem from="1475066418563" duration="911000" />
-      <workItem from="1475067646275" duration="960000" />
+      <workItem from="1475067646275" duration="997000" />
     </task>
     <task id="LOCAL-00001" summary="new update">
       <created>1475058208166</created>
@@ -991,11 +983,17 @@
       <option name="project" value="LOCAL" />
       <updated>1475058208166</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish project lan 1 &#10;">
+      <created>1475068640871</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1475068640871</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7274000" />
+    <option name="totallyTimeSpent" value="7311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1052" extended-state="6" />
@@ -1074,7 +1072,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new update" />
-    <option name="LAST_COMMIT_MESSAGE" value="new update" />
+    <MESSAGE value="finish project lan 1 &#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish project lan 1 &#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1202,6 +1201,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="169" column="6" selection-start-line="169" selection-start-column="6" selection-end-line="169" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,6 +1270,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="68.51613">
           <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
