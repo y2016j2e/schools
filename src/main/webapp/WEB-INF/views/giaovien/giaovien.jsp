@@ -8,8 +8,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <title>Giáo Viên</title>
-    <script src="<c:url value="/resources/js/libs/jquery.min.js"/>"
-            type="text/javascript"></script>
+    <script src="<c:url value="/resources/js/libs/jquery.min.js"/>" />
+    <script src="resources/js/libs/jquery-1.9.1.js"></script>
     <script type="text/javascript">
         function showInfo(ten,ngaysinh,diachi,email,quequan,sdt,trinhdo,namvaonghe){
 
@@ -101,13 +101,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a
+                                                href='<spring:url value="/giaovien/pagesize?record=1"></spring:url>'>1
+                                            dòng</a></li>
+                                        <li><a
                                                 href='<spring:url value="/giaovien/pagesize?record=2"></spring:url>'>2
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=4"></spring:url>'>4
-                                            dòng</a></li>
-                                        <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=6"></spring:url>'>8
+                                                href='<spring:url value="/giaovien/pagesize?record=3"></spring:url>'>3
                                             dòng</a></li>
                                     </ul>
                                 </div>
@@ -138,10 +138,9 @@
                             </div>
                         </div>
                     </div>
-                    --------Table-----
                     <table  class="table table-bordered table-hover table-condensed">
                      <thead>
-                            <tr class="active">
+                            <tr align="center" class="active">
                                 <th>STT</th>
                                 <th>Họ và Tên</th>
                                 <th>Ngày Sinh</th>
@@ -150,8 +149,8 @@
                                 <th>Email</th>
                                 <th>Số Điện Thoại</th>
                                 <th>Trình Độ</th>
-                                <th>Năm Kinh Ngiệm</th>
-                                <td><a href="/giaovien/addGiaoVien"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></td>
+                                <th align="center">Năm Kinh Ngiệm</th>
+                                <td align="center"><a href="giaovien/addGiaoVien"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"></i></button></a></td>
                             </tr>
                      </thead>
                      <tbody>
@@ -169,7 +168,13 @@
                                 <td>${giaoVien.email}</td>
                                 <td>${giaoVien.sdt}</td>
                                 <td>${giaoVien.trinhdo}</td>
-                                <td>${giaoVien.namvaonghe}</td>
+                                <td align="center">${giaoVien.namvaonghe}</td>
+                                <td align="center">
+                                   <a href="<spring:url value="/giaovien/editGiaoVien/${giaoVien.magiaovien}"></spring:url> ">
+                                       <button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+
+                                    <a> <button type="submit" onclick="comfirmDelete('${giaoVien.magiaovien}')" class="btn btn-primary btn-md" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></button></a>
+                                </td>
 
                             </tr>
                         </c:forEach>
@@ -180,6 +185,48 @@
             </div>
         </div>
     </div>
+
+
+<script type="text/javascript">
+//    let currentComfirmDeleteGV = void(0);
+//		function go_Click(e){
+//            console.log(e);
+//            return currentComfirmDeleteGV = e;
+//			}
+        function comfirmDelete(maGV){
+           // console.log(currentComfirmDeleteGV);
+                $("#urlDelete").attr("href","giaovien/delete/" +maGV);
+            document.getElementById("close-modal").click();
+        }
+		
+</script>
+
+<div class="modal fade" id="confirm-delete" style="margin-top: 200px" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Comfirm Delete </h4>
+      </div>
+        <div class="modal-body">
+            <p>Bạn có chắc chắn xóa chứ ?&hellip;</p>
+        </div>
+      <div class="modal-footer">
+        <button id="close-modal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <a class="btn btn-primary"  id="urlDelete">Xóa ngay và luôn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	function remove(index) {
+		
+		$(".giaovien.magiaovien").remove();
+	}
+
+</script>
+
     <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

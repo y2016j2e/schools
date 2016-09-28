@@ -9,7 +9,11 @@
 
 <link href="<c:url value="/resources/css/bootstrap.min.css"/>"
 	rel="stylesheet" type="text/css" />
-
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 <link
 	href="<c:url value="/resources/font-awesome-4.1.0/css/font-awesome.css"/>"
 	rel="stylesheet" type="text/css" />
@@ -41,7 +45,7 @@
 			<div class="header_left">
 				<ul class="nav navbar-nav">
 					<li><a data-toggle="tooltip" title="Trở Về Trang Chủ"
-						href="/home" class="logo"><i class="fa fa-home"></i></a></li>
+						href="/schools/home" class="logo"><i class="fa fa-home"></i></a></li>
 					<li><p class="ten_truong">Tiểu Học iMIC</p></li>
 					<li>
 						<div class="dropdown nam_hoc">

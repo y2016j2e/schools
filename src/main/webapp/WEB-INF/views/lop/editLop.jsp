@@ -65,7 +65,6 @@
         
         <div class="tit">
         	<div class="text">Tên Lớp Học :</div>
-            <div class="text">Điểm Trường :</div>
             <div class="text">Năm Học :</div>
             <div class="text">Học Kỳ :</div>
             <div class="text">Số Tiết Học :</div>
@@ -74,19 +73,6 @@
         <div class="add">
         <form:form action="/schools/lop/update" commandName="update" method="POST" id="update">
         	<form:label class="form-control item" path="tenlop">${khoahoc.lop.tenlop}</form:label>
-			
-            <form:select class="form-control item" path="diemtruong">
-            	<c:forEach items="${dt}" var="d" varStatus="status">
-        			<c:choose>
-            			<c:when test="${d.madiemtruong eq khoahoc.lop.diemtruong.madiemtruong}">
-                			<option value="${d.madiemtruong}" selected="true">${d}</option>
-            			</c:when>
-            			<c:otherwise>
-                			<option value="${d.madiemtruong}">${d}</option>
-            			</c:otherwise>
-        			</c:choose> 
-    			</c:forEach>
-            </form:select>
             
            <form:select class="form-control item" path="namhoc">
             	<c:forEach items="${nam}" var="n" varStatus="status">

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +20,7 @@ public class Monhoc {
 	@Column(name="tenmonhoc",nullable=false)
 	private String tenmonhoc;
 	
-	@OneToMany(mappedBy="monhoc",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="monhoc")
 	private List<Giangday> giangday;
 
 	public int getMamonhoc() {
@@ -70,4 +69,5 @@ public class Monhoc {
 		return true;
 	}
 
+	
 }

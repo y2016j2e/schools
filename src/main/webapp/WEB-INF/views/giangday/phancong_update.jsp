@@ -10,7 +10,7 @@
 <title>Phân Công</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../layouts/header.jsp"></jsp:include>
 	<div class="clear"></div>
 	<div id="content">
 		<div id="phancong_update">
@@ -156,7 +156,7 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="../layouts/footer.jsp"></jsp:include>
 	<script type="text/javascript">
 		var gSize = parseInt('${giaoVien.giangday.size()}');
 		function them(){
@@ -186,8 +186,7 @@
 			
 			$('#giangday'+gSize).selectpicker('refresh');
 			$('#giangday'+gSize).selectpicker('render');
-		};
-		
+		}
 		function xoa(index) {
 			$(".giangDay"+index).remove();
 		}

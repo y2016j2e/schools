@@ -7,12 +7,13 @@ import java.util.List;
 public interface GiaovienServices {
 
   
-    public Giaovien  getGVbyID(int id);
-    public Giaovien findGiaovienbyName(String ten);
-    public void saveOrupdate(Giaovien giaovien);
-    public List<Giaovien> getALL();
-    public void deleteGiaovien(int id);
+    Giaovien  getGVbyID(int id);
 
-    public int getPage(String namhoc,String hocky,String chunhiem,int max);
+    Giaovien findGiaovienbyName(String ten);
+    void saveOrupdate(Giaovien giaovien);
+    List<Giaovien> getALL();
+    void deleteGiaovien(int id);
+
+    int getPage(String namhoc, String hocky, String chunhiem, int max);
 
 }

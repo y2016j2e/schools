@@ -11,7 +11,6 @@ function post(path, params, method) {
 			hiddenField.setAttribute("type", "hidden");
 			hiddenField.setAttribute("name", key);
 			hiddenField.setAttribute("value", params[key]);
-
 			form.appendChild(hiddenField);
 		}
 	}
@@ -19,4 +18,4 @@ function post(path, params, method) {
 	document.body.appendChild(form);
 	form.submit();
 	document.body.removeChild(form);
-};
+}

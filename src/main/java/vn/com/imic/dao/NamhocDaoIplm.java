@@ -3,6 +3,7 @@ package vn.com.imic.dao;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Namhoc;
@@ -22,4 +23,14 @@ public class NamhocDaoIplm extends HibernateDaoSupport implements NamhocDao{
 		return hibernateTemplate.get(Namhoc.class, manamhoc);
 	}
 
+	public Namhoc findByTime(String time){
+		DetachedCriteria criteria = DetachedCriteria.forClass(Namhoc.class,"namhoc");
+		criteria.add(Restrictions.eq("thoigian",time));
+		return (Namhoc) hibernateTemplate.findByCriteria(criteria).get(0);
+	}
+
+	@Override
+	public void save(Namhoc namhoc) {
+		hibernateTemplate.save(namhoc);
+	}
 }

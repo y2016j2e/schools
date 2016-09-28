@@ -7,7 +7,7 @@
 <title>Trang Chủ</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../layouts/header.jsp" />
 	<div id="content">
 		<div class="row">
 		
@@ -59,6 +59,6 @@
 	
 	</div>
 	
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="../layouts/footer.jsp" />
 </body>
 </html>

@@ -124,9 +124,7 @@ public class Khoahoc {
 		if (getClass() != obj.getClass())
 			return false;
 		Khoahoc other = (Khoahoc) obj;
-		if (makhoahoc != other.makhoahoc)
-			return false;
-		return true;
+		return makhoahoc == other.makhoahoc;
 	}
 
 }
