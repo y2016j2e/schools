@@ -129,6 +129,7 @@ public class AddLopController {
 		kh.setHocky(loptemp.getHocky());
 		kh.setNamhoc(loptemp.getNamhoc());
 		Lop lop = null;
+		//TODO check diem truong == null;
 		//check Lop, if Lop already exists , do nothing , else add new Lop
 		if(null == sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong())){ 
 			lop = new Lop();

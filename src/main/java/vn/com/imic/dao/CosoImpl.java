@@ -10,13 +10,17 @@ public class CosoImpl extends HibernateDaoSupport implements DaoClass<Cosovatcha
 
 	@Override
 	public List<Cosovatchat> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Cosovatchat findObjectById(int id) {
 		return hibernateTemplate.get(Cosovatchat.class, id);
+	}
+
+	@Override
+	public Cosovatchat findByCondition(String... condition) {
+		return null;
 	}
 
 }

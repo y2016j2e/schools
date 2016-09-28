@@ -23,6 +23,7 @@ public class HockyDaoIplm extends HibernateDaoSupport implements DaoClass<Hocky>
 		return hibernateTemplate.get(Hocky.class, id);
 	}
 
+	@Override
 	public Hocky findByCondition(String... condition){
 		DetachedCriteria criteria = DetachedCriteria.forClass(Hocky.class,"hocky");
 		for (String co : condition) {

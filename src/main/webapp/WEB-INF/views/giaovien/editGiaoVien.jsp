@@ -22,10 +22,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 well form-small">
-
+					<spring:url value="/giaovien/update" var="updateGvAction"></spring:url>
                     <form:form modelAttribute="giaovien" class="form-horizontal" role="form" id="updateGV"
-                               action="/giaovien/update" accept-charset="UTF-8" method="POST">
-
+                               action="${updateGvAction}" accept-charset="UTF-8" method="POST">
 
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="tengv">Họ và tên</label>

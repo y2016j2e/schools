@@ -23,7 +23,7 @@ public class GiaovienServicesIplm implements GiaovienServices {
 
     @Override
     public Giaovien findGiaovienbyName(String ten) {
-        return dao.findGVbyCondition(ten);
+        return dao.findByCondition(ten);
     }
 
     @Override

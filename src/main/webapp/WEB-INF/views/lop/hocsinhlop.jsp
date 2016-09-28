@@ -89,11 +89,7 @@
     document.getElementById("hsrow").submit();
 };
 </script>
-        <div class="right">
-        	<a href="#"><button type="button" class="btn btn-outline btn-success fl-r marginR"> <i class="fa fa-upload"></i> Tải lên</button></a>
-            <a href="#"><button type="button" class="btn  btn-success btn-outline fl-r marginR"> <i class="fa fa-download"></i> Tải Xuống File Excel</button></a>
-        </div>
-    </div>
+        
     
     <div class="box4 marginT">
     	<table class="table table-striped table-bordered" aria-describedby="dataTables-example_info" style="margin-bottom: 200px;">

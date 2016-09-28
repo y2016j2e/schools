@@ -7,4 +7,5 @@ import vn.com.imic.model.Namhoc;
 public interface NamhocServices {
 	List<Namhoc> getAllNamhoc();
 	Namhoc getNamhocById(int id);
+	void save(Namhoc namhoc);
 }

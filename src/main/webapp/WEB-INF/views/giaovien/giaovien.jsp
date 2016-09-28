@@ -138,7 +138,6 @@
                             </div>
                         </div>
                     </div>
-                    --------Table-----
                     <table  class="table table-bordered table-hover table-condensed">
                      <thead>
                             <tr align="center" class="active">
@@ -174,7 +173,7 @@
                                    <a href="<spring:url value="/giaovien/editGiaoVien/${giaoVien.magiaovien}"></spring:url> ">
                                        <button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
 
-                                    <a> <button type="submit" onclick="comfirmDelete('${giaoVien.magiaovien}')" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></button></a>
+                                    <a> <button type="submit" onclick="comfirmDelete('${giaoVien.magiaovien}')" class="btn btn-primary btn-md" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></button></a>
                                 </td>
 
                             </tr>
@@ -187,8 +186,6 @@
         </div>
     </div>
 
----- JavaScrip-----
-
 
 <script type="text/javascript">
 //    let currentComfirmDeleteGV = void(0);
@@ -198,7 +195,7 @@
 //			}
         function comfirmDelete(maGV){
            // console.log(currentComfirmDeleteGV);
-                $("#urlDelete").attr("href","/giaovien/delete/" +maGV);
+                $("#urlDelete").attr("href","giaovien/delete/" +maGV);
             document.getElementById("close-modal").click();
         }
 		
@@ -222,8 +219,6 @@
   </div>
 </div>
 
-
-----------------------
 <script type="text/javascript">
 	function remove(index) {
 		

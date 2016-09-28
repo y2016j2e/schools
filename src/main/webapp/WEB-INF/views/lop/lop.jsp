@@ -22,11 +22,12 @@
 <script src="resources/js/libs/bootstrap.min.js"></script>
 </head>
 <body>
+
 <div class="wapper">
 <!-- header -->
 <div id="header">
 	<div class="left">
-    	<a href="#" class="box1" >
+    	<a href="home" class="box1" >
         	<i class="fa fa-3x fa-home"></i>
         </a>
         <div class="box2">
@@ -39,7 +40,6 @@
             <li><a href="#">Danh sách năm học</a></li>
         </ul> 
     </div>
-    
     <div class="right dropdown">
     	<div class="box1 dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> username <span class="caret"></span></div>
         <ul class="dropdown-menu" style="top:65px; right:0px; left:inherit;">
@@ -51,7 +51,6 @@
     
     <div class="under"></div>
 </div>
-
 <!-- end header -->
 <!-- content -->
 <div id="content">
@@ -89,7 +88,7 @@
     <form>
     	<div class="left">
         	<ul class="pagination pagination-sm fl-l cl">
-            	<li><a href="http://localhost:8081/schools/lop">«</a></li>
+            	<li><a href="lop">«</a></li>
 				<c:forEach begin="1" end="${lastpage}" var="i">
 					<c:choose>
 					<c:when test="${act eq i}">
@@ -134,7 +133,7 @@
             <th class="center">Chủ Nhiệm</th>
             <th class="center">Sĩ Số</th>
             <th class="center colp">Số Tiết học / Tuần</th>
-            <th><a href="http://localhost:8081/schools/lop/add"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></th>
+            <th><a href="lop/add"><button type="button" class="btn btn-success cir"><i class="fa fa-plus"></i></button></a></th>
         </tr>
         
         <c:forEach var="lop" items="${lis}" varStatus="indexes">

@@ -68,7 +68,7 @@ public class HibernateConfig {
         properties.put("hibernate.format_sql", false);
         properties.put("hibernate.enable_lazy_load_no_trans", true);
         //TODO Comment dong nay sau khi chay chuong trinh de tao database
-		//properties.put("hibernate.hbm2ddl.auto", "create");
+//		properties.put("hibernate.hbm2ddl.auto", "create");
         return properties;        
     }
 

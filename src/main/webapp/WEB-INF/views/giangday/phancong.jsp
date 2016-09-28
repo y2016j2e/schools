@@ -25,7 +25,7 @@
 </script>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../layouts/header.jsp"></jsp:include>
 	<div class="clear"></div>
 	<div id="content">
 		<div id="phancong">
@@ -186,6 +186,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="../layouts/footer.jsp"></jsp:include>
 </body>
 </html>

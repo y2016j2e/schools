@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
@@ -51,6 +52,9 @@ public class Giaovien {
 	@OneToMany(mappedBy = "giaovien",fetch=FetchType.LAZY,cascade=CascadeType.PERSIST)
 	private List<Giangday> giangday;
 
+	@ManyToOne
+	private Diemtruong diemtruong;
+	
 	public int getMagiaovien() {
 		return magiaovien;
 	}
@@ -137,6 +141,14 @@ public class Giaovien {
 
 	public void setGiangday(List<Giangday> giangday) {
 		this.giangday = giangday;
+	}
+
+	public Diemtruong getDiemtruong() {
+		return diemtruong;
+	}
+
+	public void setDiemtruong(Diemtruong diemtruong) {
+		this.diemtruong = diemtruong;
 	}
 	
 	

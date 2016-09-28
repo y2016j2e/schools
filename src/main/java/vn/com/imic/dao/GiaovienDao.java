@@ -4,7 +4,7 @@ import java.util.List;
 
 import vn.com.imic.model.Giaovien;
 
-public interface GiaovienDao {
+public interface GiaovienDao extends DaoClass<Giaovien> {
     List<Giaovien> getAll();
 
     List<Giaovien> findLimit(int first, int max);
@@ -16,8 +16,5 @@ public interface GiaovienDao {
     boolean statusGiaovien(boolean status);
     //public void dfPass();
     Giaovien findbyID(int id);
-
-    Giaovien findGVbyCondition(String ten);
-    //public Giaovien Page();
 
 }

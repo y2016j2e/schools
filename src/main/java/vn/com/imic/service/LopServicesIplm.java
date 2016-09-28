@@ -26,7 +26,7 @@ import vn.com.imic.model.Namhoc;
 
 @Service
 @Transactional(readOnly=false)
-public class LopServicesIplm implements LopServices{
+public class LopServicesIplm implements LopServices {
 
 	@Autowired
 	private LopDao dao;

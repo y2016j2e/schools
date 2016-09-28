@@ -86,7 +86,7 @@
 							href="#" class="box"><div>
 								<i class="fa fa-2x fa-child inside"></i>
 							</div>
-							<div class="space">Danh sách học sinh</div></a> <a href="#"
+							<div class="space">Danh sách học sinh</div></a> <a href="cosovatchat/khuonvien"
 							class="box"><div>
 								<i class="fa fa-2x fa-archive inside"></i>
 							</div>

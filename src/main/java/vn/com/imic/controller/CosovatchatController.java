@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import vn.com.imic.model.Banghe;
 import vn.com.imic.model.Diemtruong;
@@ -146,27 +145,23 @@ public class CosovatchatController {
 		ModelAndView model = new ModelAndView("cosovatchat/khuonvien");
 		Khuonvienform khuonvienform = new Khuonvienform();
 		List<Diemtruong> diemtruongs = diemtruongser.getAllObjects();
-		if (diemtruongs.size() == 0) {
-			System.out.println("Size: " + diemtruongs.size());
-			return null;
-		} else {
-			 List<Double> lissum = new ArrayList<>();
-			List<Khuonvien> khuonviens = new ArrayList<>();
-			for (Diemtruong diemtruong : diemtruongs) {
-				Khuonvien kv = new Khuonvien();
-				kv = khuonvienser.FindById(diemtruong.getMadiemtruong());
-				double Ssum = kv.getDithue() + kv.getDuoccap() + kv.getSanchoi() + kv.getSantap();
-				System.out.println(Ssum);
-				khuonviens.add(kv);
-				lissum.add(Ssum);
+		List<Double> lissum = new ArrayList<>();
+		List<Khuonvien> khuonviens = new ArrayList<>();
+		for (Diemtruong diemtruong : diemtruongs) {
+			Khuonvien kv = new Khuonvien();
+			kv = khuonvienser.FindById(diemtruong.getMadiemtruong());
+			if(kv == null) {
+				continue;
 			}
-			System.out.println("sizee:" +lissum.size());
-			model.addObject("listsum", lissum);
-			model.addObject("khuonviens", khuonviens);
-			model.addObject("khuonvientemp", khuonvienform);
-
-			return model;
+			double Ssum = kv.getDithue() + kv.getDuoccap() + kv.getSanchoi() + kv.getSantap();
+			khuonviens.add(kv);
+			lissum.add(Ssum);
 		}
+		model.addObject("listsum", lissum);
+		model.addObject("khuonviens", khuonviens);
+		model.addObject("khuonvientemp", khuonvienform);
+
+		return model;
 	}
 
 	@RequestMapping(value = "cosovatchat/thietbi", method = RequestMethod.GET)
@@ -186,7 +181,7 @@ public class CosovatchatController {
 	}
 
 	@RequestMapping(value = "cosovatchat/nhavesinh", method = RequestMethod.POST)
-	public String EditNvs(Model model, @ModelAttribute("nhavesinh") Nhavesinh nhavesinh ) {
+	public String EditNvs(Model model, @ModelAttribute("nhavesinh") Nhavesinh nhavesinh) {
 		Nhavesinh nvs = nvsser.FindById(nhavesinh.getMaNvs());
 		nvs.setGvnamchuadatchuan(nhavesinh.getGvnamchuadatchuan());
 		nvs.setGvnamdatchuan(nhavesinh.getGvnamdatchuan());
@@ -212,7 +207,7 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/nhaxe", method = RequestMethod.POST)
 	public String EditNxe(Model model, @ModelAttribute("nhaxetemp") NhaxeTG nhaxetg) {
 		int id = Integer.parseInt(nhaxetg.getManhaxe());
-		System.out.println("id:" +id);
+		System.out.println("id:" + id);
 		NhaXe nxe = nxeser.FindById(id);
 		if (nhaxetg.getNhaxegv() == "") {
 			nxe.setNhaxegv(0);
@@ -241,13 +236,12 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/khuonvien", method = RequestMethod.POST)
 	public String EditKv(@ModelAttribute("khuonvientemp") Khuonvienform khuonvienform) {
 		Khuonvien kv = khuonvienser.FindById(khuonvienform.getMakhuonvien());
-		if(khuonvienform.getDieukienngoaitroi().equals("x")==true||khuonvienform.getDieukienngoaitroi().equals("X")==true )
-		{
+		if (khuonvienform.getDieukienngoaitroi().equals("x") == true
+				|| khuonvienform.getDieukienngoaitroi().equals("X") == true) {
 			kv.setDieukienngoaitroi(true);
 			System.out.println("X");
-		}
-		else kv.setDieukienngoaitroi(false);
-		System.out.println(kv.isDieukienngoaitroi());
+		} else
+			kv.setDieukienngoaitroi(false);
 		kv.setDithue(khuonvienform.getDithue());
 		kv.setDuoccap(khuonvienform.getDuoccap());
 		kv.setSanchoi(khuonvienform.getSanchoi());
@@ -260,12 +254,11 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/phonghoc", method = RequestMethod.POST)
 	public String Editph(@ModelAttribute("phonghoctemp") phonghocform phonghocform) {
 		Phonghoc ph = phonghocser.FindById(phonghocform.getMaP());
-		if(phonghocform.getXaymoi().equals("x")==true||phonghocform.getXaymoi().equals("X")==true )
-		{
+		if (phonghocform.getXaymoi().equals("x") == true || phonghocform.getXaymoi().equals("X") == true) {
 			ph.setXaymoi(true);
 			System.out.println("X");
-		}
-		else ph.setXaymoi(false);
+		} else
+			ph.setXaymoi(false);
 		ph.setCapdoxd(phonghocform.getCapdoxd());
 		ph.setDientich(phonghocform.getDientich());
 		ph.setTenPhong(phonghocform.getTenPhong());
@@ -287,10 +280,10 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/thietbi", method = RequestMethod.POST)
 	public String Edittb(@ModelAttribute("thietbitemp") Thietbiform thietbiform) {
 		Thietbi thietbi = thietbiser.FindById(thietbiform.getMaTbi());
-		if(thietbiform.getInternet().equals("x")||thietbiform.equals("x")){
+		if (thietbiform.getInternet().equals("x") || thietbiform.equals("x")) {
 			thietbi.setInternet(true);
-		}
-		else thietbi.setInternet(false);
+		} else
+			thietbi.setInternet(false);
 		thietbi.setMaygv(thietbiform.getMaygv());
 		thietbi.setMayhs(thietbiform.getMayhs());
 		thietbi.setMaychieu(thietbiform.getMaychieu());
