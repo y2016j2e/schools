@@ -30,7 +30,6 @@ public class ThietBiImpl extends HibernateDaoSupport implements csvcInterface<Th
 		DetachedCriteria criteria = DetachedCriteria.forClass(Thietbi.class, "tb");
 		criteria.createAlias("tb.cosovatchat", "cosovatchat")
 				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
-
 		return (List<Thietbi>) hibernateTemplate.findByCriteria(criteria);
 	}
 

@@ -46,6 +46,10 @@ public class Nhavesinh {
 	private double Shsnamchuan;
 	@Column(name = "dthsnuchuan")
 	private double Shsnuchuan;
+	@Column(name = "dthsnamchuachuan")
+	private double Shsnamchuachuan;
+	@Column(name = "dthsnuchuachuan")
+	private double Shsnuchuachuan;
 	public int getGvnamdatchuan() {
 		return gvnamdatchuan;
 	}
@@ -173,11 +177,6 @@ public class Nhavesinh {
 	public void setShsnuchuachuan(double shsnuchuachuan) {
 		Shsnuchuachuan = shsnuchuachuan;
 	}
-
-	@Column(name = "dthsnamchuachuan")
-	private double Shsnamchuachuan;
-	@Column(name = "dthsnuchuachuan")
-	private double Shsnuchuachuan;
 
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "cosovatchat")

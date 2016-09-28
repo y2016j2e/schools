@@ -24,12 +24,13 @@ public class NhaxeImpl extends HibernateDaoSupport implements csvcInterface<NhaX
 		return hibernateTemplate.get(NhaXe.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<NhaXe> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(NhaXe.class, "nx");
 		criteria.createAlias("nx.cosovatchat", "cosovatchat")
 				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
-		return null;
+		return (List<NhaXe>) hibernateTemplate.findByCriteria(criteria);
 	}
 
 	@Override

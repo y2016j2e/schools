@@ -2,15 +2,16 @@ package vn.com.imic.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.csvcInterface;
 import vn.com.imic.model.NhaXe;
-import vn.com.imic.model.Nhavesinh;
-@Service
-public class Nhaxeimpl implements CosovatchatService<NhaXe> {
+@Service("nhaxeS")
+@Transactional
+public class Nhaxeimpl  implements CosovatchatService<NhaXe> {
 
 	@Autowired
 	private csvcInterface<NhaXe> nxdao;
@@ -31,15 +32,14 @@ public class Nhaxeimpl implements CosovatchatService<NhaXe> {
 		// TODO Auto-generated method stub
 		return nxdao.findByCondition(iddt);
 	}
-
 	@Override
 	public void SaveOrUpdate(NhaXe e) {
-		SaveOrUpdate(e);
+		nxdao.SaveOrUpdate(e);
 	}
 
 	@Override
 	public void deleteByid(int id) {
-		deleteByid(id);
+		nxdao.deleteByid(id);
 	}
 
 }

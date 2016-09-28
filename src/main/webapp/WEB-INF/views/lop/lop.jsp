@@ -8,11 +8,12 @@
 <html>
 <head>
 <spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
-<spring:url value="resources/css/lopstyle.css" var="lopStyle" />
-<spring:url value="resources/font-awesome-4.1.0/css/font-awesome.css" var="fontStyle" />
 
-<link href="${bootstrap}" type="text/css" rel="stylesheet" />
+<spring:url value="resources/font-awesome-4.1.0/css/font-awesome.css" var="fontStyle" />
+<spring:url value="resources/css/lopstyle.css" var="lopStyle" />
 <link href="${lopStyle}" type="text/css" rel="stylesheet" />
+<link href="${bootstrap}" type="text/css" rel="stylesheet" />
+
 <link href="${fontStyle}" type="text/css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">

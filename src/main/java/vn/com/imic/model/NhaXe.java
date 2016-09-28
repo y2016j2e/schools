@@ -11,22 +11,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="nhaxe")
+@Table(name = "nhaxe")
 public class NhaXe {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maNhaxe;
-	
-	@Column(name="nhaxegv")
+	@Column(name = "nhaxegv")
 	private int nhaxegv;
-	@Column(name="nhaxehs")
+	@Column(name = "nhaxehs")
 	private int nhaxehs;
-	@Column(name="Sgv")
+	@Column(name = "Sgv")
 	private double Sgv;
-	@Column(name="Shs")
+	@Column(name = "Shs")
 	private double Shs;
-	
-	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "cosovatchat")
+	private Cosovatchat cosovatchat;
+
 	public int getNhaxegv() {
 		return nhaxegv;
 	}
@@ -59,10 +60,6 @@ public class NhaXe {
 		Shs = shs;
 	}
 
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="cosovatchat")
-	private Cosovatchat cosovatchat;
-
 	public int getMaNhaxe() {
 		return maNhaxe;
 	}
@@ -70,7 +67,6 @@ public class NhaXe {
 	public void setMaNhaxe(int maNhaxe) {
 		this.maNhaxe = maNhaxe;
 	}
-
 
 	public Cosovatchat getCosovatchat() {
 		return cosovatchat;

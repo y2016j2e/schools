@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.csvcInterface;
 import vn.com.imic.model.Nhavesinh;
-@Service
+@Service("nhavesinhS")
+@Transactional
 public class Nhavesinhimpl implements CosovatchatService<Nhavesinh>{
 
 	@Autowired

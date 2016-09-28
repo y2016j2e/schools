@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.csvcInterface;
 import vn.com.imic.model.Nhavesinh;
 import vn.com.imic.model.Phonghoc;
-@Service
+
+@Service("phonghocS")
+@Transactional
 public class Phonghocimpl implements CosovatchatService<Phonghoc> {
 	@Autowired
 	csvcInterface<Phonghoc> phdao;
@@ -32,18 +35,14 @@ public class Phonghocimpl implements CosovatchatService<Phonghoc> {
 		return phdao.findByCondition(iddt);
 	}
 
-
 	@Override
 	public void SaveOrUpdate(Phonghoc e) {
-		// TODO Auto-generated method stub
-		
+		phdao.SaveOrUpdate(e);
 	}
 
 	@Override
 	public void deleteByid(int id) {
-		// TODO Auto-generated method stub
-		
+		phdao.deleteByid(id);
 	}
-
 
 }

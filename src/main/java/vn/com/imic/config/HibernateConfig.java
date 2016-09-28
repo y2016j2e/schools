@@ -61,12 +61,14 @@ public class HibernateConfig {
     	return new HibernateTemplate(sessionFactory().getObject());
     }
     
+    
+    
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", hibernateDialert);
         properties.put("hibernate.show_sql", false);
         properties.put("hibernate.format_sql", false);
-        properties.put("hibernate.enable_lazy_load_no_trans", true);
+        //properties.put("hibernate.enable_lazy_load_no_trans", true);
         //TODO Comment dong nay sau khi chay chuong trinh de tao database
         //properties.put("hibernate.hbm2ddl.auto", "create");
         return properties;        

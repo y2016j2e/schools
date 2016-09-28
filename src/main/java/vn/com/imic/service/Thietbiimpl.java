@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.ThietBiImpl;
 import vn.com.imic.dao.csvcInterface;
 import vn.com.imic.model.Nhavesinh;
 import vn.com.imic.model.Thietbi;
-@Service
+@Service("thietbiS")
+@Transactional
 public class Thietbiimpl implements CosovatchatService<Thietbi>{
 
 	@Autowired
@@ -36,12 +38,12 @@ public class Thietbiimpl implements CosovatchatService<Thietbi>{
 	@Override
 	public void SaveOrUpdate(Thietbi e) {
 		// TODO Auto-generated method stub
-		SaveOrUpdate(e);
+		tbdao.SaveOrUpdate(e);
 	}
 
 	@Override
 	public void deleteByid(int id) {
-		deleteByid(id);
+		tbdao.deleteByid(id);
 	}
 	
 	

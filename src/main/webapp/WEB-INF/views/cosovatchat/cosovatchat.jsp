@@ -7,16 +7,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 <spring:url value="resources/css/lopstyle.css" var="lopStyle" />
+<spring:url value="resources/css/bootstrap.min.css" var="bootstrap" />
 <spring:url value="resources/font-awesome-4.1.0/css/font-awesome.css"
 	var="fontStyle" />
 
 <link href="${bootstrap}" type="text/css" rel="stylesheet" />
-<link href="${lopStyle}" type="text/css" rel="stylesheet" />
+
 <link href="${fontStyle}" type="text/css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="${lopStyle}" type="text/css" rel="stylesheet" />
 <title>Cosovatchat</title>
 
 <script src="resources/js/libs/jquery-1.9.1.js"></script>
@@ -58,80 +59,87 @@
 			<div class="under"></div>
 		</div>
 
-		<div class="content">
-			<div class="main">
-				<%-- <table class="table table-striped table-bordered" aria-describedby="dataTables-exemple_info">
-			<c:forEach var="diemtruong" items="${listdt}" varStatus="indexes">
-			<tr>
-				<th class="center">${diemtruong.tendiemtruong}</th>
-				<th class="center">${diemtruong.madiemtruong } </th>
-				<th class="center">${diemtruong.email } </th>
-			</tr>
-			</c:forEach>
-		
-		</table> --%>
-				<ul class="tab">
-					<li><a href="#" class="tablinks"
-						onclick="openCity(event, 'London')">London</a></li>
-					<li><a href="#" class="tablinks"
-						onclick="openCity(event, 'Paris')">Paris</a></li>
-					<li><a href="#" class="tablinks"
-						onclick="openCity(event, 'Tokyo')">Tokyo</a></li>
-				</ul>
-
-				<div id="London" class="tabcontent">
-					<h3>London</h3>
-					<p>London is the capital city of England.</p>
+		<div class="main">
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="nav nav-tabs h-tab-selection" style="text-align: center;">
+						<li role="presentation" class="active"><a data-toggle
+							href="#">Khuôn Viên</a></li>
+						<li role="presentation" class="active"><a data-toggle
+							href="#">Phòng Học</a></li>
+						<li role="presentation" class="active"><a data-toggle
+							href="#">Bàn Ghế</a></li>
+						<li role="presentation" class="active"><a data-toggle
+							href="#">Nhà Vệ Sinh</a></li>
+						<li role="presentation" class="active"><a data-toggle
+							href="#">Nhà Xe</a></li>
+					</ul>
 				</div>
-
-				<div id="Paris" class="tabcontent">
-					<h3>Paris</h3>
-					<p>Paris is the capital of France.</p>
-				</div>
-
-				<div id="Tokyo" class="tabcontent">
-					<h3>Tokyo</h3>
-					<p>Tokyo is the capital of Japan.</p>
+				<div class="col-md-12">
+					<div class="tab-content">
+						<div id="/cosovatchat" class="tab-pane fade in active">
+							<div id="infracstructure_save" class="btn btn-default pull-right"
+								style="display: none">
+								<i class="fa fa-remove"></i>"Hủy"
+							</div>
+							
+							<form id="form_infrastructure"
+								action="/cosovatchat/khuonvien"
+								accept-charset="UTF-8" method="post">
+								<input name="utf8" style="display:none" value="✓"><input style="display:none"
+									name="authenticity_token"
+									value="i/3TTTJqr9LdcTlTDM8ZHupvQyeYQwCVofvpaYR82gMvvhgF3d5hqsBZ33nxAOTu00V8KOc+nKsLAYDbHykNBQ==">
+								<input style="display:none" name="category" id="category" value="khuonvien">
+								<input style="display:none" name="content_csv" id="content_csv" value="">
+								<div id="infrastructures_save"
+									class="btn btn-default pull-right" style="display: none">
+									<i class="fa fa-save"></i> Lưu
+								</div>
+								<div id="infrastructures_edit"
+									class="btn btn-default pull-right">
+									<i class="fa fa-pencil"></i> Sửa
+								</div>
+							</form>
+							<div class="table-responsive">
+  <table class="table table-bordered table-condensed table-infrastructure">
+    <thead>
+      <tr>
+        <th rowspan="2">Điểm trường</th>
+        <th rowspan="2">Tổng diện tích (m2)</th>
+        <th rowspan="2">Được cấp (m2)</th>
+        <th rowspan="2">Đi thuê (m2)</th>
+        <th rowspan="2">Sân chơi (m2)</th>
+        <th rowspan="2">Sân tập (m2)</th>
+        <th colspan="2">Vườn trường</th>
+      </tr>
+      <tr>
+        <th>Số lượng</th>
+        <th>
+          <div data-toggle="tooltip" data-placement="top" title="" data-original-title="Điền 'x' nếu có.
+Để trống nếu không.">
+            Đủ điều kiện tổ chức dạy ngoài trời? (x)
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${listdt}" var="dt" varStatus="s">
+        <tr>
+          <td class="cell-header">${dt.tendiemtruong}</td>
+            <td class="cell-edit" id="infrast_info_0_0">
+              34
+            </td>
+            
+        </tr>
+        </c:forEach> 
+        
+    </tbody>
+  </table>
+</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<%-- <form:form action="cosovatchat" id="xem"  method="GET">
-				<div class="center">
-
-					<form:select class="form-control" path="diemtruong">
-						<form:options items="${listdt}" />
-					</form:select>
-					<div class="select">
-					<form:select class="form-control" path="namhoc">
-						<form:options items="${listnh}" />
-					</form:select>
-					</div>
-
-				</div>
-				<div class="but center"><button type="button" class="btn btn-success" onclick="document.getElementById('xem').submit();"><i class="fa fa-pencil"> Xem Danh Sách</i></input></div>
-			</form:form> --%>
 		</div>
-	</div>
-	<script>
-	function openCity(evt, cityName) {
-	    // Declare all variables
-	    var i, tabcontent, tablinks;
-
-	    // Get all elements with class="tabcontent" and hide them
-	    tabcontent = document.getElementsByClassName("tabcontent");
-	    for (i = 0; i < tabcontent.length; i++) {
-	        tabcontent[i].style.display = "none";
-	    }
-
-	    // Get all elements with class="tablinks" and remove the class "active"
-	    tablinks = document.getElementsByClassName("tablinks");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace(" active", "");
-	    }
-
-	    // Show the current tab, and add an "active" class to the link that opened the tab
-	    document.getElementById(cityName).style.display = "block";
-	    evt.currentTarget.className += " active";
-	}
-	</script>
 </body>
 </html>

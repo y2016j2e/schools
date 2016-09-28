@@ -2,6 +2,8 @@ package vn.com.imic.dao;
 
 import java.util.List;
 
+import vn.com.imic.model.NhaXe;
+
 public interface csvcInterface<E> {
 
 	public List<E> findAll();

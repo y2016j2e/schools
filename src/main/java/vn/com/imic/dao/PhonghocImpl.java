@@ -22,18 +22,19 @@ public class PhonghocImpl extends HibernateDaoSupport implements csvcInterface<P
 		return hibernateTemplate.get(Phonghoc.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Phonghoc> findByCondition(int iddt) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Phonghoc.class, "ph");
 		criteria.createAlias("ph.cosovatchat", "cosovatchat")
 				.add(Restrictions.eq("cosovatchat.diemtruong.madiemtruong", iddt));
-
-		return null;
+		List<Phonghoc> lis= (List<Phonghoc>) hibernateTemplate.findByCriteria(criteria);
+		return lis;
 	}
 
 	@Override
 	public void SaveOrUpdate(Phonghoc e) {
-		save(e);
+		hibernateTemplate.saveOrUpdate(e);
 	}
 
 	@Override

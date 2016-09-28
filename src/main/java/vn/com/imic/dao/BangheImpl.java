@@ -34,7 +34,7 @@ public class BangheImpl extends HibernateDaoSupport implements csvcInterface<Ban
 
 	@Override
 	public void SaveOrUpdate(Banghe e) {
-		save(e);
+		hibernateTemplate.saveOrUpdate(e);
 	}
 
 	@Override

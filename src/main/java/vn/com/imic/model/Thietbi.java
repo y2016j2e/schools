@@ -22,6 +22,11 @@ public class Thietbi {
 	private int maygv;
 	@Column(name="maychieu")
 	private int maychieu;
+	@Column(name="internet")
+	private boolean internet;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="cosovatchat")
+	private Cosovatchat cosovatchat;
 	public int getMayhs() {
 		return mayhs;
 	}
@@ -40,11 +45,6 @@ public class Thietbi {
 	public void setMaychieu(int maychieu) {
 		this.maychieu = maychieu;
 	}
-	@Column(name="internet")
-	private boolean internet;
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="cosovatchat")
-	private Cosovatchat cosovatchat;
 	public int getMaTbi() {
 		return maTbi;
 	}
