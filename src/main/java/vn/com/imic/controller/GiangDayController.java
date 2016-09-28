@@ -148,10 +148,10 @@ public class GiangDayController {
 		}
 		// nếu có lỗi quay về giao diện update giảng dạy
 		if (!erros.isEmpty()) {
+			Giaovien giaovien2 = giangDayService.getGiaoVien(giaoVien.getMagiaovien(), 1);
+			giaoVien.setTen(giaovien2.getTen());
+			List<Giangday> giangdays = new ArrayList<>();
 			if (giaoVien.getGiangday() != null) {
-				Giaovien giaovien2 = giangDayService.getGiaoVien(giaoVien.getMagiaovien(), 1);
-				giaoVien.setTen(giaovien2.getTen());
-				List<Giangday> giangdays = new ArrayList<>();
 				for (Giangday giangday : giaoVien.getGiangday()) {
 					Khoahoc khoahoc2 = giangDayService.findKhoaHoc(giangday.getKhoahoc().getMakhoahoc());
 					Monhoc monhoc = giangDayService.findMonHoc(giangday.getMonhoc().getMamonhoc());
@@ -160,8 +160,9 @@ public class GiangDayController {
 					giangday.setGiaovien(giaoVien);
 					giangdays.add(giangday);
 				}
-				giaoVien.setGiangday(giangdays);
 			}
+			giaoVien.setGiangday(giangdays);
+			model.addAttribute("giaoVien", giaoVien);
 			model.addAttribute("erros", erros);
 			return "giangday/phancong_update";
 		}
