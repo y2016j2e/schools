@@ -27,15 +27,30 @@
                                action="/giaovien/update" accept-charset="UTF-8" method="POST">
 
 
-                    <div class="form-group">
+                        <div hidden class="form-group">
+                            <label class="control-label col-sm-4" for="magiaovien">Magiaovien</label>
+
+                            <div class="col-sm-8">
+                                <form:input class="form-control" placeholder="Họ tên" type="text"
+                                            path="magiaovien" id="magiaovien"/>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
                         <label class="control-label col-sm-4" for="tengv">Họ và tên</label>
 
                         <div class="col-sm-8">
-                            <form:input class="form-control" placeholder="Họ tên" type="text"
-                                        path="ten" id="tengv"/>
+
+                           <td><form:input  class="form-control" placeholder="Họ tên" type="text"
+                                        path="ten" id="tengv"/></td>
+                            <td>  <form:errors path="ten" cssClass="error"></form:errors></td>
                         </div>
                     </div>
 
+
+                        <%--<form:input id="datepicker" ... cho id cua ngay sinh la datepicker--%>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="ngaysinh">Ngày sinh</label>
 
@@ -52,6 +67,7 @@
                         <div class="col-sm-8">
                             <form:input class="form-control" placeholder="Địa chỉ" type="text"
                                        path="diachi" id="diachi"/>
+                            <form:errors path="diachi" cssClass="error"></form:errors>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="quequan">Quê quán</label>
@@ -116,7 +132,7 @@
                                 <a class="btn btn-info	item btn-lg" href="../giaovien">Hủy</a>
                             </div>
                             <div class="pull-right">
-                              <button type="button"  class="btn btn-success btn-block btn-md "  onclick="document.getElementById('updateGV').submit();">Cập nhật</button>
+                              <button type="button"  class="btn btn-success btn-block btn-lg "  onclick="document.getElementById('updateGV').submit();">Cập nhật</button>
                             </div>
                         </div>
                         </form:form>  </div>
