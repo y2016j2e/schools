@@ -186,8 +186,7 @@
 			
 			$('#giangday'+gSize).selectpicker('refresh');
 			$('#giangday'+gSize).selectpicker('render');
-		};
-		
+		}
 		function xoa(index) {
 			$(".giangDay"+index).remove();
 		}

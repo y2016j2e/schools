@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 @Entity
 @Table(name="Giaovien")
 public class Giaovien {
@@ -35,6 +34,7 @@ public class Giaovien {
 	
 	@Column(name="email",nullable=false)
 	private String email;
+	
 	
 	@Column(name="sdt",nullable=false)
 	private String sdt;

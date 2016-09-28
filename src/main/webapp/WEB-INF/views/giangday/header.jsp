@@ -15,6 +15,7 @@
 	href="<c:url value="/resources/font-awesome-4.1.0/css/font-awesome.css"/>"
 	rel="stylesheet" type="text/css" />
 
+	
 <link
 	href="<c:url value="/resources/font-awesome-4.1.0/css/font-awesome.min.css"/>"
 	rel="stylesheet" type="text/css" />

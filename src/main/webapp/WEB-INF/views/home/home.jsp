@@ -54,6 +54,8 @@
 
 			<div class="under"></div>
 		</div>
+
+
 		<!-- content -->
 		<div id="content">
 
@@ -61,23 +63,27 @@
 
 				<div class="box1 row">
 					<div class="center">
-						<a href="#" class="box"><div>
+						<a href='<spring:url value="/home"></spring:url>' class="box">
+						<div>
 								<i class="fa fa-2x fa-university inside"></i>
 							</div>
-							<div class="space">Thông tin nhà trường</div></a> <a href="#"
-							class="box"><div>
+							<div class="space">Thông tin nhà trường</div> </a>
+						<a href='<spring:url value="/giaovien"></spring:url>'	class="box"><div>
 								<i class="fa fa-2x fa-users inside"></i>
 							</div>
-							<div class="space">Danh sách đội ngũ</div></a> <a href="<spring:url value='/lop'></spring:url>"
-							class="box"><div>
+							<div class="space">Danh sách đội ngũ</div></a>
+						<a
+							href='<spring:url value="/lop"></spring:url>' class="box"><div>
 								<i class="fa fa-2x fa-th-large inside"></i>
 							</div>
-							<div class="space">Danh mục lớp học</div></a> <a
-							href='<spring:url value="/phancong"/>' class="box"><div>
+							<div class="space">Danh mục lớp học</div></a>
+						<a
+							href='<spring:url value="/phancong"></spring:url>' class="box"><div>
 								<i class="fa fa-2x fa-calendar inside"></i>
 							</div>
-							<div class="space">Phân công giảng dạy</div></a> <a href="#"
-							class="box"><div>
+							<div class="space">Phân công giảng dạy</div></a>
+						<a
+							href="#" class="box"><div>
 								<i class="fa fa-2x fa-child inside"></i>
 							</div>
 							<div class="space">Danh sách học sinh</div></a> <a href="#"
