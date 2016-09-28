@@ -122,7 +122,7 @@ a{color:#FFF;}
 	width:100%;
 	height:auto;
 	margin-top:20px;
-	margin-left:350px;
+	padding-left:350px;
 }
 
 #content .box2 .text{
@@ -512,7 +512,7 @@ ul{padding:5%;}
 	#header .right{width:110px; margin-right:0px;}
 	#header .left .box2{height:20px; display:block; margin-top:5px;}
 	#header .left .box3{margin-top:0px; height:20px;}
-	#content .box2{margin-left:0px;}
+	#content .box2{padding-left:0px;}
 	#content .box2 .text{width:100%;}
 	#content .box2 .select{width:100%;}
 	.main{width:100%;}
@@ -527,7 +527,7 @@ ul{padding:5%;}
 	#header .right{width:110px; margin-right:0px;}
 	#header .left .box2{height:20px; display:block; margin-top:5px;}
 	#header .left .box3{margin-top:0px; height:20px;}
-	#content .box2{margin-left:0px;}
+	#content .box2{padding-left:0px;}
 	#content .box2 .text{width:100%;}
 	#content .box2 .select{width:100%;}
 	.position{left:20px;}
@@ -540,7 +540,7 @@ ul{padding:5%;}
 	.main{width:100%;}
 	#content .box2 {display:none;}
 	.position{left:0px; top:100px;}
-	#content .box2{margin-left:0px;}
+	#content .box2{padding-left:0px;}
 		#content .box2 .text{width:100%;}
 		#content .box2 .select{width:100%;}
 		.colp{display: none;}

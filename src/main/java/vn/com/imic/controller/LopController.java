@@ -105,30 +105,6 @@ public class LopController {
 		});
 	}
 	
-	
-//	@RequestMapping(value="/lop/row/{num}",method = RequestMethod.GET)
-//	public ModelAndView setViewLop(@RequestParam(value="page",required=false) String page, HttpServletRequest request,@PathVariable("num") int num){
-//		System.out.println(num);
-//		ModelAndView model = new ModelAndView("lop/lop");
-//		int count = sevices.getPage("2016-2017","Học Kỳ I","Imic Hoàng Quốc Việt",num);
-//		System.out.println(count+"so page");
-//		List<Khoahoc> lis = new ArrayList<>();
-//		if(page!=null){
-//			int pg = Integer.parseInt(page);
-//			lis = sevices.getLimitLopInKhoahoc("2016-2017","Học Kỳ I","Imic Hoàng Quốc Việt",num*(pg-1),num);
-//			model.addObject("act",pg);
-//		}
-//		else{
-//			lis = sevices.getLimitLopInKhoahoc("2016-2017","Học Kỳ I","Imic Hoàng Quốc Việt",0,num);
-//			model.addObject("act",1);
-//		}
-//		model.addObject("lastpage",count);
-//		model.addObject("lop", new Khoahoc());
-//		model.addObject("lis", lis);
-//		return model;
-//	}
-//	
-	
 	//Show info 
 	
 	@RequestMapping(value="/lop",method = RequestMethod.GET)
@@ -155,18 +131,12 @@ public class LopController {
 		
 		List<Namhoc> nam = new ArrayList<>();
 		nam = namhocServices.getAllNamhoc();
-//		nam.add("2016-2017");
-//		nam.add("2015-2016");
 		
 		List<Hocky> hk = new ArrayList<>();
 		hk = hockiServices.getAllObjects();
-//		hk.add("Học Kỳ I");
-//		hk.add("Học Kỳ II");
 		
 		List<Diemtruong> dt = new ArrayList<>();
 		dt = diemtruongServices.getAllObjects();
-//		dt.add("Imic Hoàng Quốc Việt");
-//		dt.add("Imic Cầu Giấy");
 		
 		model.addObject("nrow", r);
 		model.addObject("fileUp", new FileUpload());
@@ -204,68 +174,7 @@ public class LopController {
 		return "redirect:/lop";
 	}
 	
-	//show add object's view
-//	@RequestMapping(value="/lop/add",method = RequestMethod.GET)
-//	public ModelAndView setAddView(){
-//		ModelAndView model = new ModelAndView("lop/addLop");
-//		List<Namhoc> nam = new ArrayList<>();
-//		nam = namhocServices.getAllNamhoc();
-//		
-//		List<Hocky> hk = new ArrayList<>();
-//		hk = hockiServices.getAllObjects();
-//		
-//		List<Diemtruong> dt = new ArrayList<>();
-//		dt = diemtruongServices.getAllObjects();
-//		
-//		model.addObject("nam", nam);
-//		model.addObject("hk", hk);
-//		model.addObject("dt", dt);
-//		model.addObject("loptemp", new LopDataTemp());
-//		return model;
-//	}
-//	
-//	@RequestMapping(value="/lop/addLop",method = RequestMethod.POST) //add object
-//	public String addLop(Model model,@ModelAttribute("loptemp") @Validated LopDataTemp loptemp,BindingResult result,
-//			RedirectAttributes redirect){
-////		System.out.println(loptemp.getTenlop());
-////		if(result.hasErrors()){
-////			List<Namhoc> nam = new ArrayList<>();
-////			nam = namhocServices.getAllNamhoc();
-////			
-////			List<Hocky> hk = new ArrayList<>();
-////			hk = hockiServices.getAllObjects();
-////			
-////			List<Diemtruong> dt = new ArrayList<>();
-////			dt = diemtruongServices.getAllObjects();
-////			
-////			model.addAttribute("nam", nam);
-////			model.addAttribute("hk", hk);
-////			model.addAttribute("dt", dt);
-////			model.addAttribute("loptemp", new LopDataTemp());
-////			return "lop/addLop";
-////		}
-////		
-//		Khoahoc kh = new Khoahoc();
-//		kh.setHocky(loptemp.getHocky());
-//		kh.setNamhoc(loptemp.getNamhoc());
-//		Lop lop = null;
-//		//check Lop, if Lop already exists , do nothing , else add new Lop
-//		if(null == sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong())){ 
-//			lop = new Lop();
-//			lop.setDiemtruong(loptemp.getDiemtruong());
-//			lop.setSotiethoc(loptemp.getSotiethoc());
-//			lop.setTenlop(loptemp.getTenlop());
-//			kh.setLop(lop);
-//		}
-//		else {
-//			lop = sevices.findLop(loptemp.getTenlop(),loptemp.getDiemtruong().getTendiemtruong());
-//			lop.setSotiethoc(loptemp.getSotiethoc());
-//			kh.setLop(lop);
-//		}
-//		
-//		sevices.SaveOrUpdateLopInKhoahoc(lop, kh);
-//		return "redirect:/lop";
-//	}
+	
 	
 	//show Edit view
 	@RequestMapping(value="/lop/edit/{id}",method = RequestMethod.GET)
