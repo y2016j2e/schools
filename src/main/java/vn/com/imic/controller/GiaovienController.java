@@ -98,10 +98,11 @@ public class GiaovienController {
     
     
     @RequestMapping(value="/giaovien/editGiaoVien/{id}" , method = RequestMethod.GET)// edit giao vien 
-    public ModelAndView editGiaovien(@PathVariable("id") int id ){
+    public ModelAndView editGiaovien(@PathVariable("id") int id  , RedirectAttributes redirect){
         // tim giao vien theo ID
     	ModelAndView model = new ModelAndView("giaovien/editGiaoVien");
         // add giao vien vao model
+        giaovienServices.getGVbyID(id);
 		model.addObject("giaovien", new Giaovien());
 		return model;
     	

@@ -8,6 +8,7 @@ public interface GiaovienServices {
 
   
     Giaovien  getGVbyID(int id);
+
     Giaovien findGiaovienbyName(String ten);
     void saveOrupdate(Giaovien giaovien);
     List<Giaovien> getALL();
