@@ -21,7 +21,7 @@ public class Giaovien {
 	private int magiaovien;
 	
 	@Column(name="ten",nullable=false)
-		private String ten;
+	private String ten;
 	
 	@Column(name="ngaysinh",nullable=false)
 	private Date ngaysinh;

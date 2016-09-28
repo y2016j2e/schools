@@ -38,7 +38,6 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     public void deleteGiaovien(int id) {
         Giaovien giaovien = findbyID(id);
         System.out.println("Giao Vien: "+giaovien.getTen()+giaovien.getMagiaovien());
-
         delete(giaovien);
        
     }

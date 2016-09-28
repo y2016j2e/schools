@@ -102,17 +102,19 @@ public class GiaovienController {
         // tim giao vien theo ID
     	ModelAndView model = new ModelAndView("giaovien/editGiaoVien");
         // add giao vien vao model
-        giaovienServices.getGVbyID(id);
-		model.addObject("giaovien", new Giaovien());
+        Giaovien giaovien = giaovienServices.getGVbyID(id);
+
+		model.addObject("giaovien", giaovien);
 		return model;
     	
     }
     	        
     
     @RequestMapping(value="/giaovien/update", method =  RequestMethod.POST) /// update giao vien trong edit form
-    public String updateGV(Model model , @ModelAttribute("update")  @Validated Giaovien giaovien, BindingResult  result,RedirectAttributes redirect){
+    public String updateGV( @ModelAttribute("giaovien")  @Validated Giaovien giaovien, BindingResult  result,RedirectAttributes redirect,Model model ){
     			giaovienServices.saveOrupdate(giaovien);
-    	return "redirect:/giaovien";
+        System.out.println("GiaoVien: "+giaovien.getTen());
+        return "redirect:/giaovien";
       	
     }
     

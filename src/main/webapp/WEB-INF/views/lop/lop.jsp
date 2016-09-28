@@ -200,7 +200,7 @@ function fun(id,lop){
 	var x = "Bạn có chắc chắn muốn xóa lớp " +lop+ " ?";
 	document.getElementById("del").innerHTML = x;
 	maso = id;
-	var l = "http://localhost:8081/schools/lop/delete/"+id;
+	var l = "/schools/lop/delete/"+id;
 	link = l;
 }		
 

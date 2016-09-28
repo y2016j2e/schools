@@ -21,12 +21,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 well form-small">
-						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="/schools/giaovien/addGV" accept-charset="UTF-8" method="POST" >
+						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="/giaovien/addGV" accept-charset="UTF-8" method="POST" >
 
 
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="ten">Họ và Tên</label>
 								<div class="col-sm-8">
+									<form:errors  ></form:errors>
 									<form:input class="form-control" placeholder="Họ và tên" type="text"  path="ten" id="ten"/>
 								</div>
 							</div>

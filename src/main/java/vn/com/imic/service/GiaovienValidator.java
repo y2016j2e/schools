@@ -19,8 +19,8 @@ public class GiaovienValidator	implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Giaovien giaovien = (Giaovien)target;
-		ValidationUtils.rejectIfEmpty(errors, "giaovien.form.emty.ten", "Not empty");
-		ValidationUtils.rejectIfEmpty(errors, "giaovien.form.emty.diachi", "Not empty");
+		ValidationUtils.rejectIfEmpty(errors, "ten", "giaovien.form.emty.ten");
+		ValidationUtils.rejectIfEmpty(errors, "diachi", "giaovien.form.emty.diachi");
 
 //		if{
 //			
