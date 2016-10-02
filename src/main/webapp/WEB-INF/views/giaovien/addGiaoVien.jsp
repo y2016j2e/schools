@@ -21,13 +21,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 well form-small">
-						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="/giaovien/addGV" accept-charset="UTF-8" method="POST" >
-
-
+						<spring:url value="/giaovien/addGV" var="addGvAction"></spring:url>
+						<form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="addGV" action="${addGvAction}"
+									  accept-charset="UTF-8" method="POST" >
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="ten">Họ và Tên</label>
 								<div class="col-sm-8">
-									<form:errors  ></form:errors>
+
 									<form:input class="form-control" placeholder="Họ và tên" type="text"  path="ten" id="ten"/>
 								</div>
 							</div>
@@ -44,6 +44,7 @@
 								<label class="control-label col-sm-4" for="diachi">Địa chỉ</label>
 								<div class="col-sm-8">
 									<form:input class="form-control" placeholder="Địa chỉ" type="text" path="diachi" id="diachi"/>
+
 								</div>
 							</div>
 							<div class="form-group">
