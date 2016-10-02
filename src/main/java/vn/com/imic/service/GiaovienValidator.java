@@ -26,10 +26,12 @@ public class GiaovienValidator	implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "email", "giaovien.form.emty.email");
 		ValidationUtils.rejectIfEmpty(errors, "sdt", "giaovien.form.emty.sdt");
 		ValidationUtils.rejectIfEmpty(errors, "namvaonghe", "giaovien.form.emty.namvaonghe");
+		ValidationUtils.rejectIfEmpty(errors,"trinhdo","giaovien.form.emty.trinhdo");
 
 		if((giaovien.getTen().length()< 6) |(giaovien.getTen().length()> 30)){
 			errors.rejectValue("ten", "giaovien.form.error.ten");
 		}
+
 
 
 

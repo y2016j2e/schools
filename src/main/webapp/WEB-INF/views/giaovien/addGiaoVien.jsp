@@ -49,14 +49,15 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="diachi">Địa chỉ</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Địa chỉ" type="text" path="diachi" id="diachi"/>
-
+									<td><form:input class="form-control" placeholder="Địa chỉ" type="text" path="diachi" id="diachi"/></td>
+									<td><form:errors path="diachi" cssClass="error"/> </td>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="quenquan">Quê quán</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Quê quán" type="text" path="quequan" id="quenquan"/>
+									<td><form:input class="form-control" placeholder="Quê quán" type="text" path="quequan" id="quenquan"/>	</td>
+									<td><form:errors path="quequan" cssClass="error"/> </td>
 								</div>
 							</div>
 							<div class="form-group">
@@ -70,14 +71,16 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="sdt">Số điện thoại</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Số điện thoại" type="text" path="sdt" id="sdt"/>
+									<td><form:input class="form-control" placeholder="Số điện thoại" type="text" path="sdt" id="sdt"/></td>
+									<td><form:errors path="sdt" cssClass="error" /></td>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="sdt">Năm vào nghề</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Năm vào nghề" type="sdt" path="namvaonghe" id="sdt"/>
+									<td><form:input class="form-control" placeholder="Năm vào nghề" type="sdt" path="namvaonghe" id="sdt"/></td>
+									<td><form:errors path="namvaonghe" cssClass="error" /></td>
 								</div>
 							</div>
 
@@ -85,7 +88,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="trinhdo">Trình độ đào tạo</label>
 								<div class="col-sm-8">
-									<form:select class="form-control selectpicker bs-select-hidden" path="trinhdo" id="trinhdo" ><option value=""/>------</option>
+									<td><form:select class="form-control selectpicker bs-select-hidden" path="trinhdo" id="trinhdo" ><option value=""/>------</option>
 										<option value="Cấp tốc">Cấp tốc</option>
 										<option value="Sơ cấp">Sơ cấp</option>
 										<option value="TH 12+2">TH 12+2</option>
@@ -95,6 +98,8 @@
 										<option value="Đại học">Đại học</option>
 										<option value="Thạc sĩ">Thạc sĩ</option>
 										<option value="Tiến sĩ">Tiến sĩ</option></form:select>
+									</td>
+									<td><form:errors path="trinhdo" cssClass="error" /></td>
 								</div>
 							</div>
 
