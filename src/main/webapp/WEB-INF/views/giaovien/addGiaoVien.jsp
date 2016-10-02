@@ -4,13 +4,18 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	
+
 <title>Thêm Giáo Viên</title>
+<link rel="stylesheet" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" href="/resources/css/style.css">
+<script src="/resources/js/libs/jquery-1.9.1.js"></script>
+<script src="/resources/js/libs/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+		$( function() {
+			$( "#datepicker" ).datepicker();
+		} );
+	</script>
 
 </head>
 <body>
@@ -28,14 +33,15 @@
 								<label class="control-label col-sm-4" for="ten">Họ và Tên</label>
 								<div class="col-sm-8">
 
-									<form:input class="form-control" placeholder="Họ và tên" type="text"  path="ten" id="ten"/>
+									<td><form:input class="form-control" placeholder="Họ và tên" type="text"  path="ten" id="ten"/></td>
+									<td><form:errors path="ten" cssClass="error" /></td>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="ngaysinh">Ngày sinh</label>
+								<label class="control-label col-sm-4" for="datepicker">Ngày sinh</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="ngaysinh"/>
+									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="datepicker"/>
 								</div>
 								
 							</div>
@@ -50,13 +56,14 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="quenquan">Quê quán</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Địa chỉ" type="text" path="quequan" id="quenquan"/>
+									<form:input class="form-control" placeholder="Quê quán" type="text" path="quequan" id="quenquan"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="email">Email</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Email" type="text" path="email" id="email"/>
+									<td><form:input class="form-control" placeholder="Email" type="text" path="email" id="email"/></td>
+									<td><form:errors path="email" cssClass="error" /></td>
 								</div>
 
 							</div>

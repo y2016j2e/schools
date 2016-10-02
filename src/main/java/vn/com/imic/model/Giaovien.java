@@ -1,5 +1,7 @@
 package vn.com.imic.model;
 
+import org.hibernate.validator.constraints.Email;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Entity
 @Table(name="Giaovien")
 public class Giaovien {
@@ -21,18 +26,21 @@ public class Giaovien {
 	private int magiaovien;
 	
 	@Column(name="ten",nullable=false)
+
 	private String ten;
 	
 	@Column(name="ngaysinh",nullable=false)
 	private Date ngaysinh;
 	
 	@Column(name="diachi",nullable=false)
+
 	private String diachi;
 	
 	@Column(name="quequan",nullable=false)
 	private String quequan;
 	
 	@Column(name="email",nullable=false)
+
 	private String email;
 	
 	
