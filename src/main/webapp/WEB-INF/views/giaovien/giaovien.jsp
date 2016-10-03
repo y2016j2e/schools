@@ -138,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                    --------Table-----
+
                     <table  class="table table-bordered table-hover table-condensed">
                      <thead>
                             <tr align="center" class="active">
@@ -223,7 +223,6 @@
 </div>
 
 
-----------------------
 <script type="text/javascript">
 	function remove(index) {
 		

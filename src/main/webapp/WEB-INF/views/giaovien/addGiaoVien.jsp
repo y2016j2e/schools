@@ -11,14 +11,9 @@
 <script src="/resources/js/libs/jquery-1.9.1.js"></script>
 <script src="/resources/js/libs/jquery-ui.js"></script>
 <script src="/resources/js/libs/jquery.min.js"></script>
-<script>
-	$( function() {
-		$( "#ngaysinh" ).datepicker({
-			changeMonth: true,
-			changeYear: true
-		});
-	} );
-</script>
+
+
+
 
 </head>
 <body>
@@ -42,10 +37,10 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="ngaysinh">Ngày sinh</label>
+								<label class="control-label col-sm-4" for="datepicker">Ngày sinh</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" cssClass="datepicker" id="ngaysinh"/>
-									<%--//<input type="text" id="datepicker" class="hasDatepicker">--%>
+									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="datepicker"/>
+
 									<form:errors  path="ngaysinh" cssClass="error"	/>
 								</div>
 								
