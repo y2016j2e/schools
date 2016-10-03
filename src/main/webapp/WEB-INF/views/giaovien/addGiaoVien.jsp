@@ -10,12 +10,13 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 <script src="/resources/js/libs/jquery-1.9.1.js"></script>
 <script src="/resources/js/libs/jquery-ui.js"></script>
+<script src="/resources/js/libs/jquery.min.js"></script>
 
-	<script type="text/javascript">
-		$( function() {
-			$( "#datepicker" ).datepicker();
-		} );
-	</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.datepicker').datepicker();
+	});
+</script>
 
 </head>
 <body>
@@ -33,15 +34,16 @@
 								<label class="control-label col-sm-4" for="ten">Họ và Tên</label>
 								<div class="col-sm-8">
 
-									<td><form:input class="form-control" placeholder="Họ và tên" type="text"  path="ten" id="ten"/></td>
-									<td><form:errors path="ten" cssClass="error" /></td>
+									<form:input class="form-control" placeholder="Họ và tên" type="text"  path="ten" id="ten"/>
+									<form:errors path="ten" cssClass="error" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="datepicker">Ngày sinh</label>
+								<label class="control-label col-sm-4" for="ngaysinh">Ngày sinh</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="datepicker"/>
+									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" cssClass="datepicker" id="ngaysinh"/>
+									<form:errors  path="ngaysinh" cssClass="error"	/>
 								</div>
 								
 							</div>
@@ -49,38 +51,38 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="diachi">Địa chỉ</label>
 								<div class="col-sm-8">
-									<td><form:input class="form-control" placeholder="Địa chỉ" type="text" path="diachi" id="diachi"/></td>
-									<td><form:errors path="diachi" cssClass="error"/> </td>
+								<form:input class="form-control" placeholder="Địa chỉ" type="text" path="diachi"  id="diachi"/>
+									<form:errors path="diachi" cssClass="error"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="quenquan">Quê quán</label>
 								<div class="col-sm-8">
-									<td><form:input class="form-control" placeholder="Quê quán" type="text" path="quequan" id="quenquan"/>	</td>
-									<td><form:errors path="quequan" cssClass="error"/> </td>
+									<form:input class="form-control" placeholder="Quê quán" type="text" path="quequan" id="quenquan"/>
+									<form:errors path="quequan" cssClass="error"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="email">Email</label>
 								<div class="col-sm-8">
-									<td><form:input class="form-control" placeholder="Email" type="text" path="email" id="email"/></td>
-									<td><form:errors path="email" cssClass="error" /></td>
+									<form:input class="form-control" placeholder="Email" type="text" path="email" id="email"/>
+									<form:errors path="email" cssClass="error" />
 								</div>
 
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="sdt">Số điện thoại</label>
 								<div class="col-sm-8">
-									<td><form:input class="form-control" placeholder="Số điện thoại" type="text" path="sdt" id="sdt"/></td>
-									<td><form:errors path="sdt" cssClass="error" /></td>
+									<form:input class="form-control" placeholder="Số điện thoại" type="text" path="sdt" id="sdt"/>
+									<form:errors path="sdt" cssClass="error" />
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="sdt">Năm vào nghề</label>
 								<div class="col-sm-8">
-									<td><form:input class="form-control" placeholder="Năm vào nghề" type="sdt" path="namvaonghe" id="sdt"/></td>
-									<td><form:errors path="namvaonghe" cssClass="error" /></td>
+									<form:input class="form-control" placeholder="Năm vào nghề" type="sdt" path="namvaonghe" id="sdt"/>
+									<form:errors path="namvaonghe" cssClass="error" />
 								</div>
 							</div>
 
@@ -88,7 +90,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="trinhdo">Trình độ đào tạo</label>
 								<div class="col-sm-8">
-									<td><form:select class="form-control selectpicker bs-select-hidden" path="trinhdo" id="trinhdo" ><option value=""/>------</option>
+									<form:select class="form-control selectpicker bs-select-hidden" path="trinhdo" id="trinhdo" ><option value=""/>------</option>
 										<option value="Cấp tốc">Cấp tốc</option>
 										<option value="Sơ cấp">Sơ cấp</option>
 										<option value="TH 12+2">TH 12+2</option>
@@ -98,8 +100,8 @@
 										<option value="Đại học">Đại học</option>
 										<option value="Thạc sĩ">Thạc sĩ</option>
 										<option value="Tiến sĩ">Tiến sĩ</option></form:select>
-									</td>
-									<td><form:errors path="trinhdo" cssClass="error" /></td>
+
+								<form:errors path="trinhdo" cssClass="error" />
 								</div>
 							</div>
 

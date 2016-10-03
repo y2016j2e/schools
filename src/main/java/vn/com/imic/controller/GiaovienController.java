@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -49,14 +48,16 @@ public class GiaovienController {
 
     @InitBinder
     public void dataBinding(WebDataBinder binder){
-        binder.setValidator(gvValidator);
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
-    	dateFormat.setLenient(false);
-    	binder.registerCustomEditor(Date.class, "ngaysinh", new CustomDateEditor(dateFormat, true));
 
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+    	dateFormat.setLenient(true);
+    	binder.registerCustomEditor(Date.class,"ngaysinh",  new CustomDateEditor(dateFormat, true));
+        binder.setValidator(gvValidator);
 
     }
-    
+
+
+
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
     public String showData(Model model){
         List<Giaovien> giaovienList = giaovienServices.getALL();
@@ -106,17 +107,21 @@ public class GiaovienController {
 
 		model.addObject("giaovien", giaovien);
 		return model;
-    	
+
     }
     	        
     
     @RequestMapping(value="/giaovien/update", method =  RequestMethod.POST) /// update giao vien trong edit form
     public String updateGV( @ModelAttribute("giaovien")  @Validated Giaovien giaovien, BindingResult  result,RedirectAttributes redirect,Model model ){
-    			giaovienServices.saveOrupdate(giaovien);
+    	if(result.hasErrors()){
+                return "/giaovien/editGiaoVien";
+        }
+
+        giaovienServices.saveOrupdate(giaovien);
         System.out.println("GiaoVien: "+giaovien.getTen());
         return "redirect:/giaovien";
       	
     }
-    
+
 }
 

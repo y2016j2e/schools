@@ -1,7 +1,5 @@
 package vn.com.imic.model;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -16,9 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="Giaovien")
@@ -33,8 +29,8 @@ public class Giaovien {
 	private String ten;
 
 	@Column(name="ngaysinh",nullable=false)
-
-	@DateTimeFormat(pattern="dd/MM/yyyy") @Past
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Past
 	private Date ngaysinh;
 	
 	@Column(name="diachi",nullable=false)
@@ -45,7 +41,7 @@ public class Giaovien {
 	private String quequan;
 	
 	@Column(name="email",nullable=false)
-	@Email
+
 	private String email;
 	
 	

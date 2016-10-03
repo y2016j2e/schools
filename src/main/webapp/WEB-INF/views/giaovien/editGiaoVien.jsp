@@ -47,9 +47,9 @@
 
                         <div class="col-sm-8">
 
-                           <td><form:input  class="form-control" placeholder="Họ tên" type="text"
-                                        path="ten" id="tengv"/></td>
-                            <td>  <form:errors path="ten" cssClass="error"/></td>
+                           <form:input  class="form-control" placeholder="Họ tên" type="text"
+                                        path="ten" id="tengv"/>
+                            <form:errors path="ten" cssClass="error"/>
                         </div>
                     </div>
 
@@ -69,44 +69,44 @@
                         <label class="control-label col-sm-4" for="diachi">Địa chỉ</label>
 
                         <div class="col-sm-8">
-                           <td> <form:input class="form-control" placeholder="Địa chỉ" type="text"
-                                       path="diachi" id="diachi"/></td>
-                            <td>  <form:errors path="diachi" cssClass="error"/></td>
+                           <form:input class="form-control" placeholder="Địa chỉ" type="text"
+                                       path="diachi" id="diachi"/>
+                            <form:errors path="diachi" cssClass="error"/></td>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="quequan">Quê quán</label>
 
                             <div class="col-sm-8">
-                              <td> <form:input class="form-control" placeholder="Quê quán" type="text"
-                                            path="quequan" id="quequan"/> </td>
-                                <td>  <form:errors path="quequan" cssClass="error"/></td>
+                              <form:input class="form-control" placeholder="Quê quán" type="text"
+                                            path="quequan" id="quequan"/>
+                                  <form:errors path="quequan" cssClass="error"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="sdt">Số điện thoại</label>
 
                             <div class="col-sm-8">
-                               <td> <form:input class="form-control" placeholder="Số điện thoại" type="text"
-                                            path="sdt" id="sdt"/></td>
-                                <td>  <form:errors path="sdt" cssClass="error"/></td>
+                               <form:input class="form-control" placeholder="Số điện thoại" type="text"
+                                            path="sdt" id="sdt"/>
+                              <form:errors path="sdt" cssClass="error"/></td>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="email">Email</label>
 
                             <div class="col-sm-8">
-                                <td>  <form:input class="form-control" placeholder="Email" type="text"
-                                            path="email" id="email"/></td>
-                                <td>  <form:errors path="email" cssClass="error"/></td>
+                               <form:input class="form-control" placeholder="Email" type="text"
+                                            path="email" id="email"/>
+                                 <form:errors path="email" cssClass="error"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="namvaonghe">Năm vào nghề</label>
 
                             <div class="col-sm-8">
-                                <td>  <form:input class="form-control" placeholder="Năm vào nghề" type="number"
-                                      path="namvaonghe" id="namvaonghe"/></td>
-                                <td>  <form:errors path="namvaonghe" cssClass="error"/></td>
+                                <form:input class="form-control" placeholder="Năm vào nghề" type="number"
+                                      path="namvaonghe" id="namvaonghe"/>
+                                 <form:errors path="namvaonghe" cssClass="error"/>
                             </div>
                         </div>
 
@@ -115,7 +115,7 @@
                             <label class="control-label col-sm-4" for="trinhdo">Trình độ đào tạo</label>
 
                             <div class="col-sm-8" id="select_degree">
-                                <td><form:select class="form-control selectpicker bs-select-hidden" path="trinhdo"
+                             <form:select class="form-control selectpicker bs-select-hidden" path="trinhdo"
                                         id="trinhdo">
                                     <option value="">------</option>
                                     <option value="Cấp tốc">Cấp tốc</option>
@@ -128,8 +128,8 @@
                                     <option value="Thạc sĩ">Thạc sĩ</option>
                                     <option value="Tiến sĩ">Tiến sĩ</option>
                                     <option value="Tiến sĩ KH">Tiến sĩ KH</option>
-                                </form:select></td>
-                                <td>  <form:errors path="trinhdo" cssClass="error"/></td>
+                                </form:select>
+                                <form:errors path="trinhdo" cssClass="error"/>
 
                             </div>
                         </div>
