@@ -11,9 +11,11 @@ public interface GiaovienServices {
 
     Giaovien findGiaovienbyName(String ten);
     void saveOrupdate(Giaovien giaovien);
-    List<Giaovien> getALL();
+    List<Giaovien> getALL(int first, int max);
     void deleteGiaovien(int id);
 
     int getPage(String namhoc, String hocky, String chunhiem, int max);
+    int countGiaoVien();
+
 
 }

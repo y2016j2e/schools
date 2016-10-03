@@ -101,13 +101,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=1"></spring:url>'>1
+                                                href='<spring:url value="/pagerows?record=5"></spring:url>'>5
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=2"></spring:url>'>2
+                                                href='<spring:url value="/pagerows?record=10"></spring:url>'>10
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=3"></spring:url>'>3
+                                                href='<spring:url value="/pagerows?record=20"></spring:url>'>20
                                             dòng</a></li>
                                     </ul>
                                 </div>
@@ -149,8 +149,8 @@
                                 <th>Email</th>
                                 <th>Số Điện Thoại</th>
                                 <th>Trình Độ</th>
-                                <th align="center">Năm Kinh Ngiệm</th>
-                                <td align="center"><a href="giaovien/addGiaoVien"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"></i></button></a></td>
+                                <th>Năm Kinh Ngiệm</th>
+                                <td align="center" width="90px"><a href="giaovien/addGiaoVien"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"></i></button></a></td>
                             </tr>
                      </thead>
                      <tbody>
@@ -168,12 +168,12 @@
                                 <td>${giaoVien.email}</td>
                                 <td>${giaoVien.sdt}</td>
                                 <td>${giaoVien.trinhdo}</td>
-                                <td align="center">${giaoVien.namvaonghe}</td>
-                                <td align="center">
-                                   <a href="<spring:url value="/giaovien/editGiaoVien/${giaoVien.magiaovien}"></spring:url> ">
+                                <td >${giaoVien.namvaonghe}</td>
+                                <td >
+                                   <a   style="float: left" href="<spring:url value="/giaovien/editGiaoVien/${giaoVien.magiaovien}"></spring:url> ">
                                        <button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
 
-                                    <a> <button type="submit" onclick="comfirmDelete('${giaoVien.magiaovien}')" class="btn btn-primary btn-md" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></button></a>
+                                    <a  style="float: right"> <button type="submit" onclick="comfirmDelete('${giaoVien.magiaovien}')" class="btn btn-primary btn-md" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></button></a>
                                 </td>
 
                             </tr>
@@ -185,7 +185,6 @@
             </div>
         </div>
     </div>
-
 
 <script type="text/javascript">
 //    let currentComfirmDeleteGV = void(0);
@@ -218,7 +217,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
 	function remove(index) {
 		
