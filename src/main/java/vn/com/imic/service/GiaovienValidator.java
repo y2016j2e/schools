@@ -46,7 +46,7 @@ public class GiaovienValidator	implements Validator {
 			errors.rejectValue("email", "giaovien.userForm.email");
 		}
 
-		if ((giaovien.getSdt().length()< 6) ||(giaovien.getSdt().length()> 30)){
+		if ((giaovien.getSdt().length()< 9) ||(giaovien.getSdt().length()> 12)){
 			errors.rejectValue("sdt","giaovien.userForm.phone");
 		}
 
