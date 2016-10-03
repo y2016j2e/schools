@@ -19,7 +19,7 @@ public interface GiaovienDao {
 
 
     public int countGiaoVien();
-    Giaovien findGVbyCondition(String ten);
+    Giaovien findByCondition(String... condition);
     //public Giaovien Page();
 
 }

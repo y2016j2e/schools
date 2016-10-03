@@ -34,7 +34,7 @@ public class Lop {
 	@Column(name="sotiethoc",nullable=false)
 	private int sotiethoc;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="diemtruong")
 	private Diemtruong diemtruong;
 	

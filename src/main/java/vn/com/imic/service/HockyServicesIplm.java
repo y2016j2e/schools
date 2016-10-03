@@ -16,20 +16,23 @@ public class HockyServicesIplm implements ServicesInterface<Hocky>{
 	
 	@Override
 	public List<Hocky> getAllObjects() {
-		// TODO Auto-generated method stub
 		return hockyDao.findAll();
 	}
 
 	@Override
 	public Hocky getObjectById(int id) {
-		// TODO Auto-generated method stub
 		return hockyDao.findObjectById(id);
 	}
 
 	@Override
-	public void SaveOrUpdate(Hocky e) {
-		// TODO Auto-generated method stub
+	public void deleteObject(Hocky e) {
 		
 	}
+
+	@Override
+	public void saveOrUpdateObject(Hocky e) {
+		
+	}
+
 
 }

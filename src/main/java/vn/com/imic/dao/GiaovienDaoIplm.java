@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Giaovien;
@@ -56,9 +57,14 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     }
 
     @Override
-    public Giaovien findGVbyCondition(String ten) {
-        // TODO Auto-generated method stub
-        return null;
+    public Giaovien findByCondition(String... condition) {
+    	DetachedCriteria criteria = DetachedCriteria.forClass(Giaovien.class, "giaovien");
+		criteria.createAlias("giaovien.diemtruong", "diemtruong")
+		.add(Restrictions.eq("ten",condition[0]))
+		.add(Restrictions.eq("diemtruong.tendiemtruong",condition[1]));
+			if(hibernateTemplate.findByCriteria(criteria).size()!=0)
+				return (Giaovien) hibernateTemplate.findByCriteria(criteria).get(0);
+		return null;
     }
 
     @Override

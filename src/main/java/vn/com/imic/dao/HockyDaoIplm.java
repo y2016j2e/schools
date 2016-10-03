@@ -32,4 +32,16 @@ public class HockyDaoIplm extends HibernateDaoSupport implements DaoClass<Hocky>
 		
 		return (Hocky) hibernateTemplate.findByCriteria(criteria).get(0);
 	}
+
+	@Override
+	public void Delete(Hocky e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void SaveOrUpdate(Hocky e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
