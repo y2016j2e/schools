@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class HibernateConfig {
-	
+
 	@Value("${jdbc.driverClassName}")
 	private String driverClass;
 
@@ -23,10 +23,10 @@ public class HibernateConfig {
 
 	@Value("${jdbc.username}")
 	private String username;
-	
+
 	@Value("${hibernate.dialect}")
 	private String hibernateDialert;
-	
+
 	@Value("${jdbc.url}")
 	private String url;
 
@@ -48,30 +48,27 @@ public class HibernateConfig {
 		dataSource.setUrl(url);
 		return dataSource;
 	}
-	
-    @Bean
-    public HibernateTransactionManager transactionManager() {
-       HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(sessionFactory().getObject());
-       return txManager;
-    }
-    
-    @Bean
-    public HibernateTemplate hibernateTemplate() {
-    	return new HibernateTemplate(sessionFactory().getObject());
-    }
-    
-    
-    
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", hibernateDialert);
-        properties.put("hibernate.show_sql", false);
-        properties.put("hibernate.format_sql", false);
-        //properties.put("hibernate.enable_lazy_load_no_trans", true);
-        //TODO Comment dong nay sau khi chay chuong trinh de tao database
-        //properties.put("hibernate.hbm2ddl.auto", "create");
-        return properties;        
-    }
+
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		HibernateTransactionManager txManager = new HibernateTransactionManager();
+		txManager.setSessionFactory(sessionFactory().getObject());
+		return txManager;
+	}
+
+	@Bean
+	public HibernateTemplate hibernateTemplate() {
+		return new HibernateTemplate(sessionFactory().getObject());
+	}
+
+	private Properties hibernateProperties() {
+		Properties properties = new Properties();
+		properties.put("hibernate.dialect", hibernateDialert);
+		properties.put("hibernate.show_sql", false);
+		properties.put("hibernate.format_sql", false);
+		// properties.put("hibernate.enable_lazy_load_no_trans", true);
+		properties.put("hibernate.hbm2ddl.auto", "create");
+		return properties;
+	}
 
 }

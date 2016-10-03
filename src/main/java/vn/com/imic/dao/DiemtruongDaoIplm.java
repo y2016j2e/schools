@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import vn.com.imic.model.Diemtruong;
 
 @Repository
-public class DiemtruongDaoIplm extends HibernateDaoSupport implements DaoClass<Diemtruong>{
+public class DiemtruongDaoIplm extends HibernateDaoSupport implements DiemTruongDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -19,8 +19,15 @@ public class DiemtruongDaoIplm extends HibernateDaoSupport implements DaoClass<D
 
 	@Override
 	public Diemtruong findObjectById(int id) {
-		// TODO Auto-generated method stub
 		return hibernateTemplate.get(Diemtruong.class, id);
 	}
 
+	public Diemtruong findByCondition(String... condition){
+		return null;
+	}
+
+	@Override
+	public void save(Diemtruong diemtruong) {
+		hibernateTemplate.saveOrUpdate(diemtruong);
+	}
 }

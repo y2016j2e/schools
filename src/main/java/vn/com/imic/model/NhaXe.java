@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name = "nhaxe")
 public class NhaXe {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maNhaxe;
 	@Column(name = "nhaxegv")
 	private int nhaxegv;
@@ -28,6 +27,14 @@ public class NhaXe {
 	@JoinColumn(name = "cosovatchat")
 	private Cosovatchat cosovatchat;
 
+	public NhaXe(){};
+	public NhaXe(int a1, int a2, double b1,double b2){
+		this.nhaxegv=a1;
+		this.nhaxehs=a2;
+		this.Sgv=b1;
+		this.Shs=b2;
+	}
+	
 	public int getNhaxegv() {
 		return nhaxegv;
 	}

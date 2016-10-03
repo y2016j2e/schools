@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.IGiangDayDAO;
-import vn.com.imic.dao.KhoahocDAO;
 import vn.com.imic.model.Giangday;
 import vn.com.imic.model.Giaovien;
 import vn.com.imic.model.Khoahoc;

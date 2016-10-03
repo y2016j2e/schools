@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import vn.com.imic.model.Banghe;
+import vn.com.imic.model.Cosovatchat;
 import vn.com.imic.model.Diemtruong;
 import vn.com.imic.model.Khuonvien;
 import vn.com.imic.model.Khuonvienform;
@@ -33,8 +33,13 @@ import vn.com.imic.service.ServicesInterface;
 @Controller
 @Scope(scopeName = "session")
 public class CosovatchatController {
+
 	@Autowired
 	private ServicesInterface<Diemtruong> diemtruongser;
+
+	@Autowired
+	@Qualifier("csservice")
+	private CosovatchatService<Cosovatchat> csvcser;
 
 	@Autowired
 	@Qualifier("bangheS")
@@ -60,26 +65,6 @@ public class CosovatchatController {
 	@Qualifier("phonghocS")
 	private CosovatchatService<Phonghoc> phonghocser;
 
-	// @RequestMapping(value = "cosovatchat")
-	// public ModelAndView viewdt() {
-	// ModelAndView model = new ModelAndView("cosovatchat");
-	// int id = 0;
-	// List<Diemtruong> listdt = new ArrayList<>();
-	// listdt = diemtruongser.getAllObjects();
-	// System.out.println("DIEM TRUONG: "+listdt.get(0));
-	// List<Banghe> lisbg = new ArrayList<>();
-	// int[] a = new int[listdt.size() - 1];
-	// for (int i = 0; i < listdt.size() - 1; i++) {
-	// a[i] = listdt.get(i).getMadiemtruong();
-	// lisbg.set(i, (Banghe) bangheservice.findByCondition(a[i],
-	// listdt.get(i).getCosovatchat().getMacosovatchat(),
-	// id));
-	// }
-	//// model.addObject("banghe", lisbg);
-	// model.addObject("dt", listdt);
-	// return model;
-	//
-	// }
 	@RequestMapping(value = "cosovatchat/nhaxe", method = RequestMethod.GET)
 	public ModelAndView getnxById() {
 		ModelAndView model = new ModelAndView("cosovatchat/nhaxe");
@@ -87,8 +72,30 @@ public class CosovatchatController {
 		List<NhaXe> nhaxes = new ArrayList<>();
 		NhaxeTG nhaxeTG = new NhaxeTG();
 		for (Diemtruong diemtruong : diemtruongs) {
-			NhaXe nhaxe = (NhaXe) nxeser.FindById(diemtruong.getCosovatchat().getNhaXe().getMaNhaxe());
-			nhaxes.add(nhaxe);
+			Cosovatchat cs = diemtruong.getCosovatchat();
+			if (cs == null) {
+				cs = new Cosovatchat();
+				cs.setMacosovatchat(diemtruong.getMadiemtruong());
+				cs.setDiemtruong(diemtruong);
+				diemtruong.setCosovatchat(cs);
+				csvcser.SaveOrUpdate(cs);
+				diemtruongser.SaveOrUpdate(diemtruong);
+			}
+			if (cs.getNhaXe() == null) {
+				NhaXe nxn = new NhaXe(0, 0, 0, 0);
+				nxn.setCosovatchat(cs);
+				nxn.setMaNhaxe(cs.getMacosovatchat());
+				nxeser.SaveOrUpdate(nxn);
+				cs.setNhaXe(nxn);
+				csvcser.SaveOrUpdate(cs);
+				String error = "Chưa Có Thông Tin... Ấn F5 Để cập nhật thông tin";
+				model.addObject("EMPTY", error);
+
+			} else {
+
+				NhaXe nhaxe = (NhaXe) nxeser.FindById(diemtruong.getCosovatchat().getNhaXe().getMaNhaxe());
+				nhaxes.add(nhaxe);
+			}
 		}
 		model.addObject("nhaxes", nhaxes);
 		model.addObject("nhaxetemp", nhaxeTG);
@@ -103,8 +110,28 @@ public class CosovatchatController {
 		List<Diemtruong> diemtruongs = diemtruongser.getAllObjects();
 		List<Banghe> banghes = new ArrayList<>();
 		for (Diemtruong diemtruong : diemtruongs) {
-			Banghe bg = (Banghe) bangheservice.FindById(diemtruong.getMadiemtruong());
-			banghes.add(bg);
+			Cosovatchat cs = diemtruong.getCosovatchat();
+			if (cs == null) {
+				cs = new Cosovatchat();
+				cs.setMacosovatchat(diemtruong.getMadiemtruong());
+				cs.setDiemtruong(diemtruong);
+				diemtruong.setCosovatchat(cs);
+				csvcser.SaveOrUpdate(cs);
+				diemtruongser.SaveOrUpdate(diemtruong);
+			}
+			if (cs.getBanghe() == null) {
+				Banghe bgn = new Banghe(0, 0, 0, 0);
+				bgn.setCosovatchat(cs);
+				bgn.setMaBanGhe(cs.getMacosovatchat());
+				bangheservice.SaveOrUpdate(bgn);
+				cs.setBanghe(bgn);
+				csvcser.SaveOrUpdate(cs);
+				String error = "Chưa Có Thông Tin... Ấn F5 Để cập nhật thông tin";
+				model.addObject("EMPTY", error);
+			} else {
+				Banghe bg = (Banghe) bangheservice.FindById(diemtruong.getMadiemtruong());
+				banghes.add(bg);
+			}
 		}
 		model.addObject("banghetemp", bangheform);
 		model.addObject("banghes", banghes);
@@ -118,8 +145,28 @@ public class CosovatchatController {
 		List<Diemtruong> diemtruongs = diemtruongser.getAllObjects();
 		List<Nhavesinh> nhavss = new ArrayList<>();
 		for (Diemtruong diemtruong : diemtruongs) {
-			Nhavesinh nvs = (Nhavesinh) nvsser.FindById(diemtruong.getCosovatchat().getNhaXe().getMaNhaxe());
-			nhavss.add(nvs);
+			Cosovatchat cs = diemtruong.getCosovatchat();
+			if (cs == null) {
+				cs = new Cosovatchat();
+				cs.setMacosovatchat(diemtruong.getMadiemtruong());
+				cs.setDiemtruong(diemtruong);
+				diemtruong.setCosovatchat(cs);
+				csvcser.SaveOrUpdate(cs);
+				diemtruongser.SaveOrUpdate(diemtruong);
+			}
+			if (cs.getNhavesinh() == null) {
+				Nhavesinh nvsn = new Nhavesinh(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				nvsn.setCosovatchat(cs);
+				nvsn.setMaNvs(cs.getMacosovatchat());
+				nvsser.SaveOrUpdate(nvsn);
+				cs.setNhavesinh(nvsn);
+				csvcser.SaveOrUpdate(cs);
+				String error = "Chưa Có Thôngn Tin... Ấn F5 Để cập nhật thông tin";
+				model.addObject("EMPTY", error);
+			} else {
+				Nhavesinh nvs = (Nhavesinh) nvsser.FindById(diemtruong.getCosovatchat().getMacosovatchat());
+				nhavss.add(nvs);
+			}
 		}
 		model.addObject("nhavesinhtemp", nhavesinhform);
 		model.addObject("nhavss", nhavss);
@@ -133,8 +180,30 @@ public class CosovatchatController {
 		phonghocform phonghocform = new phonghocform();
 		List<Phonghoc> phonghocs = new ArrayList<>();
 		for (Diemtruong diemtruong : diemtruongs) {
-			Phonghoc ph = phonghocser.FindById(diemtruong.getMadiemtruong());
-			phonghocs.add(ph);
+			Cosovatchat cs = diemtruong.getCosovatchat();
+			if (cs == null) {
+				cs = new Cosovatchat();
+				cs.setMacosovatchat(diemtruong.getMadiemtruong());
+				cs.setDiemtruong(diemtruong);
+				diemtruong.setCosovatchat(cs);
+				csvcser.SaveOrUpdate(cs);
+				diemtruongser.SaveOrUpdate(diemtruong);
+			}
+			if (cs.getPhongHoc() == null) {
+				Phonghoc phn = new Phonghoc(0, "", 0, false);
+				phn.setMaP(cs.getMacosovatchat());
+				phn.setCosovatchat(cs);
+				phonghocser.SaveOrUpdate(phn);
+				cs.setPhongHoc(phn);
+				csvcser.SaveOrUpdate(cs);
+				String error = "Chưa Có Thông Tin... Ấn F5 Để cập nhật thông tin";
+				model.addObject("EMPTY", error);
+
+			} else {
+
+				Phonghoc ph = phonghocser.FindById(diemtruong.getMadiemtruong());
+				phonghocs.add(ph);
+			}
 		}
 		model.addObject("phonghoctemp", phonghocform);
 		model.addObject("phonghocs", phonghocs);
@@ -146,27 +215,39 @@ public class CosovatchatController {
 		ModelAndView model = new ModelAndView("cosovatchat/khuonvien");
 		Khuonvienform khuonvienform = new Khuonvienform();
 		List<Diemtruong> diemtruongs = diemtruongser.getAllObjects();
-		if (diemtruongs.size() == 0) {
-			System.out.println("Size: " + diemtruongs.size());
-			return null;
-		} else {
-			 List<Double> lissum = new ArrayList<>();
-			List<Khuonvien> khuonviens = new ArrayList<>();
-			for (Diemtruong diemtruong : diemtruongs) {
-				Khuonvien kv = new Khuonvien();
-				kv = khuonvienser.FindById(diemtruong.getMadiemtruong());
-				double Ssum = kv.getDithue() + kv.getDuoccap() + kv.getSanchoi() + kv.getSantap();
-				System.out.println(Ssum);
-				khuonviens.add(kv);
-				lissum.add(Ssum);
+		List<Double> lissum = new ArrayList<>();
+		List<Khuonvien> khuonviens = new ArrayList<>();
+		for (Diemtruong diemtruong : diemtruongs) {
+			Cosovatchat cs = diemtruong.getCosovatchat();
+			if (cs == null) {
+				cs = new Cosovatchat();
+				cs.setMacosovatchat(diemtruong.getMadiemtruong());
+				cs.setDiemtruong(diemtruong);
+				diemtruong.setCosovatchat(cs);
+				csvcser.SaveOrUpdate(cs);
+				diemtruongser.SaveOrUpdate(diemtruong);
 			}
-			System.out.println("sizee:" +lissum.size());
-			model.addObject("listsum", lissum);
-			model.addObject("khuonviens", khuonviens);
-			model.addObject("khuonvientemp", khuonvienform);
+			if (cs.getKhuonvien() == null) {
+				Khuonvien kvi = new Khuonvien(0, 0, 0, 0, 0, false);
+				kvi.setCosovatchat(cs);
+				kvi.setMakhuonvien(cs.getMacosovatchat());
+				khuonvienser.SaveOrUpdate(kvi);
+				cs.setKhuonvien(kvi);
+				csvcser.SaveOrUpdate(cs);
+				String error = "Chưa Có Thông Tin... Ấn F5 Để cập nhật thông tin";
+				model.addObject("EMPTY", error);
+			} else {
+				Khuonvien kv = khuonvienser.FindById(diemtruong.getMadiemtruong());
+				double sum = kv.getDithue() + kv.getDuoccap() + kv.getSanchoi() + kv.getSantap();
+				lissum.add(sum);
+				khuonviens.add(kv);
+			}
 
-			return model;
 		}
+		model.addObject("listsum", lissum);
+		model.addObject("khuonviens", khuonviens);
+		model.addObject("khuonvientemp", khuonvienform);
+		return model;
 	}
 
 	@RequestMapping(value = "cosovatchat/thietbi", method = RequestMethod.GET)
@@ -176,9 +257,29 @@ public class CosovatchatController {
 		List<Diemtruong> diemtruongs = diemtruongser.getAllObjects();
 		List<Thietbi> thietbis = new ArrayList<>();
 		for (Diemtruong diemtruong : diemtruongs) {
-			Thietbi tb = new Thietbi();
-			tb = thietbiser.FindById(diemtruong.getMadiemtruong());
-			thietbis.add(tb);
+			Cosovatchat cs = diemtruong.getCosovatchat();
+			if (cs == null) {
+				cs = new Cosovatchat();
+				cs.setMacosovatchat(diemtruong.getMadiemtruong());
+				cs.setDiemtruong(diemtruong);
+				diemtruong.setCosovatchat(cs);
+				csvcser.SaveOrUpdate(cs);
+				diemtruongser.SaveOrUpdate(diemtruong);
+			}
+			if (cs.getThietbi() == null) {
+				Thietbi tbn = new Thietbi(0, 0, 0, false);
+				tbn.setCosovatchat(cs);
+				tbn.setMaTbi(cs.getMacosovatchat());
+				thietbiser.SaveOrUpdate(tbn);
+				cs.setThietbi(tbn);
+				csvcser.SaveOrUpdate(cs);
+				String error = "Chưa Có Thông Tin... Ấn F5 Để cập nhật thông tin";
+				model.addObject("EMPTY", error);
+			} else {
+				Thietbi tb = new Thietbi();
+				tb = thietbiser.FindById(diemtruong.getMadiemtruong());
+				thietbis.add(tb);
+			}
 		}
 		model.addObject("thietbitemp", thietbiform);
 		model.addObject("thietbis", thietbis);
@@ -186,7 +287,7 @@ public class CosovatchatController {
 	}
 
 	@RequestMapping(value = "cosovatchat/nhavesinh", method = RequestMethod.POST)
-	public String EditNvs(Model model, @ModelAttribute("nhavesinh") Nhavesinh nhavesinh ) {
+	public String EditNvs(Model model, @ModelAttribute("nhavesinh") Nhavesinh nhavesinh) {
 		Nhavesinh nvs = nvsser.FindById(nhavesinh.getMaNvs());
 		nvs.setGvnamchuadatchuan(nhavesinh.getGvnamchuadatchuan());
 		nvs.setGvnamdatchuan(nhavesinh.getGvnamdatchuan());
@@ -212,7 +313,6 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/nhaxe", method = RequestMethod.POST)
 	public String EditNxe(Model model, @ModelAttribute("nhaxetemp") NhaxeTG nhaxetg) {
 		int id = Integer.parseInt(nhaxetg.getManhaxe());
-		System.out.println("id:" +id);
 		NhaXe nxe = nxeser.FindById(id);
 		if (nhaxetg.getNhaxegv() == "") {
 			nxe.setNhaxegv(0);
@@ -241,13 +341,11 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/khuonvien", method = RequestMethod.POST)
 	public String EditKv(@ModelAttribute("khuonvientemp") Khuonvienform khuonvienform) {
 		Khuonvien kv = khuonvienser.FindById(khuonvienform.getMakhuonvien());
-		if(khuonvienform.getDieukienngoaitroi().equals("x")==true||khuonvienform.getDieukienngoaitroi().equals("X")==true )
-		{
+		if (khuonvienform.getDieukienngoaitroi().equals("x") == true
+				|| khuonvienform.getDieukienngoaitroi().equals("X") == true) {
 			kv.setDieukienngoaitroi(true);
-			System.out.println("X");
-		}
-		else kv.setDieukienngoaitroi(false);
-		System.out.println(kv.isDieukienngoaitroi());
+		} else
+			kv.setDieukienngoaitroi(false);
 		kv.setDithue(khuonvienform.getDithue());
 		kv.setDuoccap(khuonvienform.getDuoccap());
 		kv.setSanchoi(khuonvienform.getSanchoi());
@@ -260,12 +358,10 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/phonghoc", method = RequestMethod.POST)
 	public String Editph(@ModelAttribute("phonghoctemp") phonghocform phonghocform) {
 		Phonghoc ph = phonghocser.FindById(phonghocform.getMaP());
-		if(phonghocform.getXaymoi().equals("x")==true||phonghocform.getXaymoi().equals("X")==true )
-		{
+		if (phonghocform.getXaymoi().equals("x") == true || phonghocform.getXaymoi().equals("X") == true) {
 			ph.setXaymoi(true);
-			System.out.println("X");
-		}
-		else ph.setXaymoi(false);
+		} else
+			ph.setXaymoi(false);
 		ph.setCapdoxd(phonghocform.getCapdoxd());
 		ph.setDientich(phonghocform.getDientich());
 		ph.setTenPhong(phonghocform.getTenPhong());
@@ -287,10 +383,10 @@ public class CosovatchatController {
 	@RequestMapping(value = "cosovatchat/thietbi", method = RequestMethod.POST)
 	public String Edittb(@ModelAttribute("thietbitemp") Thietbiform thietbiform) {
 		Thietbi thietbi = thietbiser.FindById(thietbiform.getMaTbi());
-		if(thietbiform.getInternet().equals("x")||thietbiform.equals("x")){
+		if (thietbiform.getInternet().equals("x") || thietbiform.equals("x")) {
 			thietbi.setInternet(true);
-		}
-		else thietbi.setInternet(false);
+		} else
+			thietbi.setInternet(false);
 		thietbi.setMaygv(thietbiform.getMaygv());
 		thietbi.setMayhs(thietbiform.getMayhs());
 		thietbi.setMaychieu(thietbiform.getMaychieu());
@@ -298,4 +394,28 @@ public class CosovatchatController {
 		return "redirect:thietbi";
 	}
 
+	@RequestMapping(value = "cosovatchat", method = RequestMethod.GET)
+	public String Editcsvc() {
+		List<Diemtruong> listdt = diemtruongser.getAllObjects();
+		if (listdt.size() == 0) {
+			return "redirect:home";
+		} else {
+			for (Diemtruong diemtruong : listdt) {
+				if (diemtruong.getCosovatchat() == null) {
+					Cosovatchat vc = new Cosovatchat();
+					vc.setMacosovatchat(diemtruong.getMadiemtruong());
+					vc.setDiemtruong(diemtruong);
+					diemtruong.setCosovatchat(vc);
+					csvcser.SaveOrUpdate(vc);
+
+					diemtruongser.SaveOrUpdate(diemtruong);
+
+				} else {
+					return "redirect:cosovatchat/khuonvien";
+				}
+			}
+			return "redirect:cosovatchat/khuonvien";
+		}
+
+	}
 }

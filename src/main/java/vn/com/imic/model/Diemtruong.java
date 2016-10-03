@@ -18,7 +18,6 @@ import javax.persistence.Table;
 @Table(name="Diemtruong")
 public class Diemtruong {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int madiemtruong;
 	
 	@Column(name="tendiemtruong",nullable=false)
@@ -40,7 +39,8 @@ public class Diemtruong {
 	@OneToMany(mappedBy="diemtruong")
 	private List<Lop> lops;
 	
-	@OneToOne(mappedBy="diemtruong")
+	@OneToOne(cascade= CascadeType.PERSIST)
+	@JoinColumn(name="cosovatchat",nullable=true)
 	private Cosovatchat cosovatchat;
 
 	public int getMadiemtruong() {

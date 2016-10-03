@@ -13,7 +13,7 @@ public class KhuonvienDaoImpl extends HibernateDaoSupport implements csvcInterfa
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Khuonvien> findAll() {
-		DetachedCriteria criteria = DetachedCriteria.forClass(Khuonvien.class, "kv");
+		DetachedCriteria criteria = DetachedCriteria.forClass(Khuonvien.class);
 		List<Khuonvien> lis = (List<Khuonvien>) hibernateTemplate.findByCriteria(criteria);
 		return lis;
 	}
@@ -35,7 +35,7 @@ public class KhuonvienDaoImpl extends HibernateDaoSupport implements csvcInterfa
 
 	@Override
 	public void SaveOrUpdate(Khuonvien e) {
-		save(e);
+		hibernateTemplate.saveOrUpdate(e);
 	}
 
 	@Override

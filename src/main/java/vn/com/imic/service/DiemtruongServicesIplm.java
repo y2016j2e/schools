@@ -4,15 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import vn.com.imic.dao.DaoClass;
+import vn.com.imic.dao.DiemTruongDao;
 import vn.com.imic.model.Diemtruong;
 
 @Service
+@Transactional(readOnly=false)
 public class DiemtruongServicesIplm implements ServicesInterface<Diemtruong>{
 
 	@Autowired
-	private DaoClass<Diemtruong> diemtruongDao;
+	private DiemTruongDao diemtruongDao;
 	
 	@Override
 	public List<Diemtruong> getAllObjects() {
@@ -25,5 +27,8 @@ public class DiemtruongServicesIplm implements ServicesInterface<Diemtruong>{
 		// TODO Auto-generated method stub
 		return diemtruongDao.findObjectById(id);
 	}
-
+	@Override
+	public void SaveOrUpdate(Diemtruong e) {
+		diemtruongDao.save(e);
+	}
 }

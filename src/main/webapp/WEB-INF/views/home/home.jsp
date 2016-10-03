@@ -61,7 +61,7 @@
         <a href="#" class="box"><div><i class="fa fa-2x fa-th-large inside"></i></div><div class="space">Danh mục lớp học</div></a>
         <a href="#" class="box"><div><i class="fa fa-2x fa-calendar inside"></i></div><div class="space">Phân công giảng dạy</div></a>
         <a href="#" class="box"><div><i class="fa fa-2x fa-child inside"></i></div><div class="space">Danh sách học sinh</div></a>
-        <a href="#" class="box"><div><i class="fa fa-2x fa-archive inside"></i></div><div class="space">Cơ sở vật chất</div></a>
+        <a href="cosovatchat" class="box"><div><i class="fa fa-2x fa-archive inside"></i></div><div class="space">Cơ sở vật chất</div></a>
     </div>
    </div>
    

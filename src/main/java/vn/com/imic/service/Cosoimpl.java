@@ -4,16 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import vn.com.imic.dao.DaoClass;
 import vn.com.imic.dao.csvcInterface;
 import vn.com.imic.model.Cosovatchat;
-@Service
-public class Cosoimpl implements csvcInterface<Cosovatchat> {
-	
+
+@Service("csservice")
+@Transactional(readOnly=false)
+public class Cosoimpl implements CosovatchatService<Cosovatchat> {
+
 	@Autowired
-	DaoClass<Cosovatchat> csdao;
-	
+	csvcInterface<Cosovatchat> csvcdao;
+
 	@Override
 	public List<Cosovatchat> findAll() {
 		// TODO Auto-generated method stub
@@ -23,7 +25,7 @@ public class Cosoimpl implements csvcInterface<Cosovatchat> {
 	@Override
 	public Cosovatchat FindById(int id) {
 		// TODO Auto-generated method stub
-		return csdao.findObjectById(id);
+		return csvcdao.FindById(id);
 	}
 
 	@Override
@@ -34,14 +36,13 @@ public class Cosoimpl implements csvcInterface<Cosovatchat> {
 
 	@Override
 	public void SaveOrUpdate(Cosovatchat e) {
-		// TODO Auto-generated method stub
-		
+		csvcdao.SaveOrUpdate(e);
 	}
 
 	@Override
 	public void deleteByid(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
