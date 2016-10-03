@@ -101,13 +101,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=1"></spring:url>'>1
+                                                href='<spring:url value="/pagerows?record=5"></spring:url>'>5
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=2"></spring:url>'>2
+                                                href='<spring:url value="/pagerows?record=10"></spring:url>'>10
                                             dòng</a></li>
                                         <li><a
-                                                href='<spring:url value="/giaovien/pagesize?record=3"></spring:url>'>3
+                                                href='<spring:url value="/pagerows?record=20"></spring:url>'>20
                                             dòng</a></li>
                                     </ul>
                                 </div>
@@ -187,7 +187,6 @@
         </div>
     </div>
 
----- JavaScrip-----
 
 
 <script type="text/javascript">

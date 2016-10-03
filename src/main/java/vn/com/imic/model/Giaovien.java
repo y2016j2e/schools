@@ -29,7 +29,7 @@ public class Giaovien {
 	private String ten;
 
 	@Column(name="ngaysinh",nullable=false)
-
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Past
 	private Date ngaysinh;
 	

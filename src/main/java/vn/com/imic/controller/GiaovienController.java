@@ -32,6 +32,8 @@ import vn.com.imic.service.GiaovienValidator;
 import vn.com.imic.model.Giaovien;
 import vn.com.imic.service.GiaovienServices;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @Scope(scopeName = "session")
 public class GiaovienController {
@@ -41,10 +43,6 @@ public class GiaovienController {
 
     @Autowired
     private GiaovienValidator gvValidator;
-    
-    private int r= 10;
-    
-    //Need validator class . for date and other type of input text.
 
     @InitBinder
     public void dataBinding(WebDataBinder binder){
@@ -59,17 +57,38 @@ public class GiaovienController {
 
 
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
-    public String showData(Model model){
-        List<Giaovien> giaovienList = giaovienServices.getALL();
-        System.out.println(giaovienList.get(0).getMagiaovien());
+    public String showData(@RequestParam(name = "page", required =false,defaultValue = "1") int page, Model model,HttpSession session){
+        Integer record = (Integer) session.getAttribute("record");
+        if (record == null) {
+            record = 5;
+        }
+        int totalRecord = giaovienServices.countGiaoVien();
+        int totalPage = 0;
+        if (totalRecord % record == 0) {
+            totalPage = totalRecord / record;
+        } else {
+            totalPage = (totalRecord / record) + 1;
+        }
+        int first = (page - 1) * record;
+
+        List<Giaovien> giaovienList = giaovienServices.getALL(first, record);
+
         model.addAttribute("giaovienList", giaovienList);
+        model.addAttribute("page", page);
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("record", record);
+        model.addAttribute("totalRecord", totalRecord);
+
     	return "giaovien/giaovien";
+
+
+
     }
-    
-    @RequestMapping(value="/giaovien/rows", method = RequestMethod.GET)
-    public String selectedRow(Model model,@ModelAttribute("rows") String row , BindingResult result, RedirectAttributes redirect){
-      r = Integer.parseInt(row);
-    return "redirect:/giaovien";
+
+    @RequestMapping(value = "/pagerows", method = RequestMethod.GET)
+    public String selectRecord(@RequestParam("record") int record, HttpSession session) {
+        session.setAttribute("record", record);
+        return "redirect:/giaovien";
     }
     
     

@@ -2,6 +2,7 @@ package vn.com.imic.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Giaovien> getAll() {
+    public List<Giaovien> getAll(int first, int max) {
 
         DetachedCriteria criteria = DetachedCriteria.forClass(Giaovien.class);
         List<Giaovien> list = (List<Giaovien>) hibernateTemplate.findByCriteria(criteria);
@@ -60,5 +61,11 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
         return null;
     }
 
+    @Override
+    public int countGiaoVien() {
+        Session session = hibernateTemplate.getSessionFactory().openSession();
+        int count = ((Long) session.createQuery("select count(*) from Giaovien").uniqueResult()).intValue();
+        return count;
+    }
 
 }
