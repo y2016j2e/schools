@@ -11,7 +11,7 @@
 <title>Bàn Ghế</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../layouts/header.jsp"></jsp:include>
 	<div id="content">
 		<div class="main">
 			<div class="row">
@@ -98,7 +98,7 @@
 
 	</div>
 	<div style="text-align: center">${EMPTY}</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="../layouts/footer.jsp"></jsp:include>
 	<script>
 	function editbg(mabanghe){
 		$("#banghe-table tr").removeClass('canceltable');

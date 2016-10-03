@@ -18,7 +18,6 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
 
         DetachedCriteria criteria = DetachedCriteria.forClass(Giaovien.class);
         List<Giaovien> list = (List<Giaovien>) hibernateTemplate.findByCriteria(criteria);
-        System.out.println(list.get(0).getMagiaovien());
         return list;
     }
 

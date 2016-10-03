@@ -35,6 +35,7 @@ import vn.com.imic.service.ServicesInterface;
 public class CosovatchatController {
 
 	@Autowired
+	@Qualifier("diemtruongServices")
 	private ServicesInterface<Diemtruong> diemtruongser;
 
 	@Autowired
@@ -79,7 +80,7 @@ public class CosovatchatController {
 				cs.setDiemtruong(diemtruong);
 				diemtruong.setCosovatchat(cs);
 				csvcser.SaveOrUpdate(cs);
-				diemtruongser.SaveOrUpdate(diemtruong);
+				diemtruongser.saveOrUpdateObject(diemtruong);
 			}
 			if (cs.getNhaXe() == null) {
 				NhaXe nxn = new NhaXe(0, 0, 0, 0);
@@ -117,7 +118,7 @@ public class CosovatchatController {
 				cs.setDiemtruong(diemtruong);
 				diemtruong.setCosovatchat(cs);
 				csvcser.SaveOrUpdate(cs);
-				diemtruongser.SaveOrUpdate(diemtruong);
+				diemtruongser.saveOrUpdateObject(diemtruong);
 			}
 			if (cs.getBanghe() == null) {
 				Banghe bgn = new Banghe(0, 0, 0, 0);
@@ -152,7 +153,7 @@ public class CosovatchatController {
 				cs.setDiemtruong(diemtruong);
 				diemtruong.setCosovatchat(cs);
 				csvcser.SaveOrUpdate(cs);
-				diemtruongser.SaveOrUpdate(diemtruong);
+				diemtruongser.saveOrUpdateObject(diemtruong);
 			}
 			if (cs.getNhavesinh() == null) {
 				Nhavesinh nvsn = new Nhavesinh(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -187,7 +188,7 @@ public class CosovatchatController {
 				cs.setDiemtruong(diemtruong);
 				diemtruong.setCosovatchat(cs);
 				csvcser.SaveOrUpdate(cs);
-				diemtruongser.SaveOrUpdate(diemtruong);
+				diemtruongser.saveOrUpdateObject(diemtruong);
 			}
 			if (cs.getPhongHoc() == null) {
 				Phonghoc phn = new Phonghoc(0, "", 0, false);
@@ -225,7 +226,7 @@ public class CosovatchatController {
 				cs.setDiemtruong(diemtruong);
 				diemtruong.setCosovatchat(cs);
 				csvcser.SaveOrUpdate(cs);
-				diemtruongser.SaveOrUpdate(diemtruong);
+				diemtruongser.saveOrUpdateObject(diemtruong);
 			}
 			if (cs.getKhuonvien() == null) {
 				Khuonvien kvi = new Khuonvien(0, 0, 0, 0, 0, false);
@@ -264,7 +265,7 @@ public class CosovatchatController {
 				cs.setDiemtruong(diemtruong);
 				diemtruong.setCosovatchat(cs);
 				csvcser.SaveOrUpdate(cs);
-				diemtruongser.SaveOrUpdate(diemtruong);
+				diemtruongser.saveOrUpdateObject(diemtruong);
 			}
 			if (cs.getThietbi() == null) {
 				Thietbi tbn = new Thietbi(0, 0, 0, false);
@@ -408,7 +409,7 @@ public class CosovatchatController {
 					diemtruong.setCosovatchat(vc);
 					csvcser.SaveOrUpdate(vc);
 
-					diemtruongser.SaveOrUpdate(diemtruong);
+					diemtruongser.saveOrUpdateObject(diemtruong);
 
 				} else {
 					return "redirect:cosovatchat/khuonvien";

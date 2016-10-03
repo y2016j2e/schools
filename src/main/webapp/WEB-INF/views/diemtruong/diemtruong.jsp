@@ -27,7 +27,7 @@
 <!-- header -->
 <div id="header">
 	<div class="left">
-    	<a href="#" class="box1" >
+    	<a href="<spring:url value="/home"></spring:url>" class="box1" >
         	<i class="fa fa-3x fa-home"></i>
         </a>
         <div class="box2">

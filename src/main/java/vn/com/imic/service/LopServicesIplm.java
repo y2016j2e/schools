@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.DaoClass;
+import vn.com.imic.dao.GiaovienDao;
 import vn.com.imic.dao.LopDao;
 import vn.com.imic.dao.NamhocDao;
 import vn.com.imic.model.Giaovien;
@@ -38,7 +39,7 @@ public class LopServicesIplm implements LopServices {
 	private DaoClass<Hocky> hockyDao;
 	
 	@Autowired
-	private DaoClass<Giaovien> giaovienDao;
+	private GiaovienDao giaovienDao;
 	
 	@Override
 	public List<Khoahoc> getAllLopInKhoahoc(String namhoc, String hocki, String diemtruong) {

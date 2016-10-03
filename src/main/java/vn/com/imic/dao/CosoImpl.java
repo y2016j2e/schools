@@ -36,9 +36,4 @@ public class CosoImpl extends HibernateDaoSupport implements csvcInterface<Cosov
 
 	}
 
-	@Override
-	public Cosovatchat findByCondition(String... condition) {
-		return null;
-	}
-
 }
