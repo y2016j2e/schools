@@ -49,7 +49,7 @@ public class GiaovienController {
     @InitBinder
     public void dataBinding(WebDataBinder binder){
 
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     	dateFormat.setLenient(true);
     	binder.registerCustomEditor(Date.class,"ngaysinh",  new CustomDateEditor(dateFormat, true));
         binder.setValidator(gvValidator);
