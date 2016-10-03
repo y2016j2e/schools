@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,7 +14,6 @@ import javax.persistence.Table;
 @Table(name="khuonvien")
 public class Khuonvien {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int makhuonvien;
 	@Column(name="duoccap",nullable= true)
 	private double duoccap;
@@ -29,8 +29,20 @@ public class Khuonvien {
 	private int soluonvuon;
 	
 	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="cosovatchat")
 	private Cosovatchat cosovatchat;
 
+	public Khuonvien(){}
+	public Khuonvien(double a,double b,double c,double d,int e,boolean f){
+		this.dithue=a;
+		this.duoccap=b;
+		this.sanchoi=c;
+		this.santap=d;
+		this.soluonvuon=e;
+		this.dieukienngoaitroi=f;
+		
+	}
+	
 	public int getMakhuonvien() {
 		return makhuonvien;
 	}

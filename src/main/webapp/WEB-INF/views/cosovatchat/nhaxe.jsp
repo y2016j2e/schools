@@ -108,6 +108,7 @@
 		</div>
 
 	</div>
+	<div style="text-align: center">${EMPTY}</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script>
 	function editnx(maNhaxe){

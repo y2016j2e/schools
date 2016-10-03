@@ -34,7 +34,7 @@ public class NhavesinhImpl extends HibernateDaoSupport implements csvcInterface<
 
 	@Override
 	public void SaveOrUpdate(Nhavesinh e) {
-		save(e);
+		hibernateTemplate.saveOrUpdate(e);
 	}
 
 	@Override

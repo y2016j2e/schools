@@ -35,7 +35,7 @@ public class NhaxeImpl extends HibernateDaoSupport implements csvcInterface<NhaX
 
 	@Override
 	public void SaveOrUpdate(NhaXe e) {
-		save(e);
+		hibernateTemplate.saveOrUpdate(e);
 	}
 
 	@Override

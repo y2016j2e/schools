@@ -62,7 +62,8 @@
 		<div class="main">
 			<div class="row">
 				<div class="col-md-12">
-					<ul class="nav nav-tabs h-tab-selection" style="text-align: center;">
+					<ul class="nav nav-tabs h-tab-selection"
+						style="text-align: center;">
 						<li role="presentation" class="active"><a data-toggle
 							href="#">Khuôn Viên</a></li>
 						<li role="presentation" class="active"><a data-toggle
@@ -82,15 +83,15 @@
 								style="display: none">
 								<i class="fa fa-remove"></i>"Hủy"
 							</div>
-							
-							<form id="form_infrastructure"
-								action="/cosovatchat/khuonvien"
+
+							<form id="form_infrastructure" action="/cosovatchat/khuonvien"
 								accept-charset="UTF-8" method="post">
-								<input name="utf8" style="display:none" value="✓"><input style="display:none"
-									name="authenticity_token"
+								<input name="utf8" style="display: none" value="✓"><input
+									style="display: none" name="authenticity_token"
 									value="i/3TTTJqr9LdcTlTDM8ZHupvQyeYQwCVofvpaYR82gMvvhgF3d5hqsBZ33nxAOTu00V8KOc+nKsLAYDbHykNBQ==">
-								<input style="display:none" name="category" id="category" value="khuonvien">
-								<input style="display:none" name="content_csv" id="content_csv" value="">
+								<input style="display: none" name="category" id="category"
+									value="khuonvien"> <input style="display: none"
+									name="content_csv" id="content_csv" value="">
 								<div id="infrastructures_save"
 									class="btn btn-default pull-right" style="display: none">
 									<i class="fa fa-save"></i> Lưu
@@ -101,41 +102,40 @@
 								</div>
 							</form>
 							<div class="table-responsive">
-  <table class="table table-bordered table-condensed table-infrastructure">
-    <thead>
-      <tr>
-        <th rowspan="2">Điểm trường</th>
-        <th rowspan="2">Tổng diện tích (m2)</th>
-        <th rowspan="2">Được cấp (m2)</th>
-        <th rowspan="2">Đi thuê (m2)</th>
-        <th rowspan="2">Sân chơi (m2)</th>
-        <th rowspan="2">Sân tập (m2)</th>
-        <th colspan="2">Vườn trường</th>
-      </tr>
-      <tr>
-        <th>Số lượng</th>
-        <th>
-          <div data-toggle="tooltip" data-placement="top" title="" data-original-title="Điền 'x' nếu có.
+								<table
+									class="table table-bordered table-condensed table-infrastructure">
+									<thead>
+										<tr>
+											<th rowspan="2">Điểm trường</th>
+											<th rowspan="2">Tổng diện tích (m2)</th>
+											<th rowspan="2">Được cấp (m2)</th>
+											<th rowspan="2">Đi thuê (m2)</th>
+											<th rowspan="2">Sân chơi (m2)</th>
+											<th rowspan="2">Sân tập (m2)</th>
+											<th colspan="2">Vườn trường</th>
+										</tr>
+										<tr>
+											<th>Số lượng</th>
+											<th>
+												<div data-toggle="tooltip" data-placement="top" title=""
+													data-original-title="Điền 'x' nếu có.
 Để trống nếu không.">
-            Đủ điều kiện tổ chức dạy ngoài trời? (x)
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${listdt}" var="dt" varStatus="s">
-        <tr>
-          <td class="cell-header">${dt.tendiemtruong}</td>
-            <td class="cell-edit" id="infrast_info_0_0">
-              34
-            </td>
-            
-        </tr>
-        </c:forEach> 
-        
-    </tbody>
-  </table>
-</div>
+													Đủ điều kiện tổ chức dạy ngoài trời? (x)</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${listdt}" var="dt" varStatus="s">
+											<tr>
+												<td class="cell-header">${dt.tendiemtruong}</td>
+												<td class="cell-edit" id="infrast_info_0_0">34</td>
+
+											</tr>
+										</c:forEach>
+
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

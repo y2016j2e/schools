@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name="thietbi")
 public class Thietbi {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maTbi;
 	@Column(name="mayhs")
 	private int mayhs;
@@ -27,6 +26,13 @@ public class Thietbi {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="cosovatchat")
 	private Cosovatchat cosovatchat;
+	public Thietbi(){};
+	public Thietbi(int a, int b, int c, boolean d){
+		this.internet=d;
+		this.maychieu=a;
+		this.maygv=b;
+		this.mayhs=c;
+	};
 	public int getMayhs() {
 		return mayhs;
 	}

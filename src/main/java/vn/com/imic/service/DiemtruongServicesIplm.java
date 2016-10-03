@@ -29,18 +29,8 @@ public class DiemtruongServicesIplm implements ServicesInterface<Diemtruong>{
 		// TODO Auto-generated method stub
 		return diemtruongDao.findObjectById(id);
 	}
-	
-	//TODO HARDCODE 
-//	@PostConstruct
-//	public void init() {
-//		Diemtruong diemtruong = new Diemtruong();
-//		diemtruong.setTendiemtruong("Nguyen Van Troi 01");
-//		diemtruong.setDiachi("Ha Noi");
-//		diemtruong.setMadiemtruong(1);
-//		if(diemtruongDao.findObjectById(1) == null) {
-//			diemtruongDao.save(diemtruong);
-//		}
-//		
-//	}
-
+	@Override
+	public void SaveOrUpdate(Diemtruong e) {
+		diemtruongDao.save(e);
+	}
 }

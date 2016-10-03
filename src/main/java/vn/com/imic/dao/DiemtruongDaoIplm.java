@@ -28,6 +28,6 @@ public class DiemtruongDaoIplm extends HibernateDaoSupport implements DiemTruong
 
 	@Override
 	public void save(Diemtruong diemtruong) {
-		hibernateTemplate.save(diemtruong);
+		hibernateTemplate.saveOrUpdate(diemtruong);
 	}
 }

@@ -18,7 +18,6 @@ import javax.persistence.Table;
 @Table(name="Diemtruong")
 public class Diemtruong {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int madiemtruong;
 	
 	@Column(name="tendiemtruong",nullable=false)
@@ -40,12 +39,10 @@ public class Diemtruong {
 	@OneToMany(mappedBy="diemtruong")
 	private List<Lop> lops;
 	
-	@OneToOne(mappedBy="diemtruong")
+	@OneToOne(cascade= CascadeType.PERSIST)
+	@JoinColumn(name="cosovatchat",nullable=true)
 	private Cosovatchat cosovatchat;
 
-	@OneToMany(mappedBy="diemtruong")
-	private List<Giaovien> giaovien;
-	
 	public int getMadiemtruong() {
 		return madiemtruong;
 	}
@@ -109,14 +106,6 @@ public class Diemtruong {
 
 	public void setCosovatchat(Cosovatchat cosovatchat) {
 		this.cosovatchat = cosovatchat;
-	}
-	
-	public List<Giaovien> getGiaovien() {
-		return giaovien;
-	}
-
-	public void setGiaovien(List<Giaovien> giaovien) {
-		this.giaovien = giaovien;
 	}
 
 	@Override

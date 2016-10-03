@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name = "nhavesinh")
 public class Nhavesinh {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maNvs;
 
 	@Column(name = "gvnamdatchuan")
@@ -50,6 +49,30 @@ public class Nhavesinh {
 	private double Shsnamchuachuan;
 	@Column(name = "dthsnuchuachuan")
 	private double Shsnuchuachuan;
+
+	public Nhavesinh() {
+	};
+
+	public Nhavesinh(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, double b1, double b2, double b3,
+			double b4, double b5, double b6, double b7, double b8) {
+		this.gvnamchuadatchuan=a1;
+		this.gvnamdatchuan=a2;
+		this.gvnuchuadatchuan=a3;
+		this.gvnudatchuan=a4;
+		this.hsnamchuadatchuan=a5;
+		this.hsnamdatchuan=a6;
+		this.hsnuchuadatchuan=a7;
+		this.hsnudatchuan=a8;
+		this.Sgvnamchuachuan=b1;
+		this.Sgvnamchuan=b2;
+		this.Sgvnnuchuan=b3;
+		this.Sgvnuchuachuan=b4;
+		this.Shsnamchuachuan=b5;
+		this.Shsnamchuan=b6;
+		this.Shsnuchuachuan=b7;
+		this.Shsnuchuan=b8;
+	}
+
 	public int getGvnamdatchuan() {
 		return gvnamdatchuan;
 	}

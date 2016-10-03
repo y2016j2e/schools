@@ -26,4 +26,10 @@ public class HockyServicesIplm implements ServicesInterface<Hocky>{
 		return hockyDao.findObjectById(id);
 	}
 
+	@Override
+	public void SaveOrUpdate(Hocky e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

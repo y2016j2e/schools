@@ -13,7 +13,7 @@ public class BangheImpl extends HibernateDaoSupport implements csvcInterface<Ban
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Banghe> findAll() {
-		DetachedCriteria criteria = DetachedCriteria.forClass(Banghe.class, "bg");
+		DetachedCriteria criteria = DetachedCriteria.forClass(Banghe.class);
 		return (List<Banghe>) hibernateTemplate.findByCriteria(criteria);
 	}
 

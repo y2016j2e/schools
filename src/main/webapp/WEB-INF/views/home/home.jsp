@@ -55,7 +55,6 @@
 			<div class="under"></div>
 		</div>
 
-
 		<!-- content -->
 		<div id="content">
 
