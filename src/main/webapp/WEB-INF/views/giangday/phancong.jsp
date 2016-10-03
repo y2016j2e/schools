@@ -167,7 +167,7 @@
 										<td><c:forEach items="${giaoVien.giangday}"
 												var="giangDay">
 												<c:if test="${giangDay.monhoc.mamonhoc == monHoc.mamonhoc}">
-													<c:if test="${giangDay.khoahoc.namhoc.manamhoc==1}">
+													<c:if test="${giangDay.khoahoc.namhoc.manamhoc==manamhoc}">
 														${giangDay.khoahoc.lop.tenlop}
 													</c:if>
 												</c:if>

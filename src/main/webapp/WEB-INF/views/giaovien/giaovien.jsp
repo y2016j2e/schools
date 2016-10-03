@@ -126,7 +126,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="controlFile">
-                                    <a style="float: right;" class="btn btn-sm btn-default" href='<spring:url value="/giaovien/download"></spring:url>'>
+                                    <a style="float: right;" class="btn btn-sm btn-default" href='<spring:url value="/giaovien"></spring:url>'>
                                         <span style="color:#337ab7;font-size:14px;" class="fa fa-upload"></span>
                                         <span>Upload</span>
                                     </a>

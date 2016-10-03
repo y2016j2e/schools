@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import vn.com.imic.model.Giangday;
@@ -40,9 +41,14 @@ public class GiangDayController {
 	}
 
 	@ModelAttribute("khoaHocs")
-	public List<Khoahoc> getAllKhoaHoc() {
+	public List<Khoahoc> getAllKhoaHoc(HttpSession session) {
 		System.out.println("Run khoaHocModelAtrribute:");
-		List<Khoahoc> khoaHocs = giangDayService.getKhoaHocs(1);
+		Integer manamhoc = (Integer) session.getAttribute("manamhoc");
+		if (manamhoc == null) {
+			manamhoc = 1;
+		}
+		session.setAttribute("manamhoc", manamhoc);
+		List<Khoahoc> khoaHocs = giangDayService.getKhoaHocs(manamhoc);
 		// for (Khoahoc khoahoc : khoaHocs) {
 		// System.out.println("KhoaHoc Du Dieu Kien: " +
 		// khoahoc.getMakhoahoc());
@@ -87,7 +93,8 @@ public class GiangDayController {
 
 	@RequestMapping(value = "/phancong/confirmUpdate", method = RequestMethod.POST)
 	public String conFirmupdate(@ModelAttribute("giaoVien") Giaovien giaoVien, RedirectAttributes redirectAttributes,
-			Model model) {
+			Model model, HttpSession session) {
+		Integer manamhoc = (Integer) session.getAttribute("manamhoc");
 		// i là biến dùng để đánh số thứ tự lỗi
 		int i = 1;
 		// Map chứa các erro hiển thị về cho client
@@ -133,7 +140,7 @@ public class GiangDayController {
 
 			// lấy ra danh sách giảng dạy trong csdl rồi kiểm tra xem giảng dạy
 			// mà người dùng nhập có bị trùng hay không
-			List<Giangday> giangdays = giangDayService.getAll(1);
+			List<Giangday> giangdays = giangDayService.getAll(manamhoc);
 			for (Giangday giangday : giangdays) {
 				// kiểm tra trùng giảng dạy
 				if (giangDayService.checkPhanCong(listGiangDay, giangday) == true) {
@@ -148,10 +155,10 @@ public class GiangDayController {
 		}
 		// nếu có lỗi quay về giao diện update giảng dạy
 		if (!erros.isEmpty()) {
+			Giaovien giaovien2 = giangDayService.getGiaoVien(giaoVien.getMagiaovien(), 1);
+			giaoVien.setTen(giaovien2.getTen());
+			List<Giangday> giangdays = new ArrayList<>();
 			if (giaoVien.getGiangday() != null) {
-				Giaovien giaovien2 = giangDayService.getGiaoVien(giaoVien.getMagiaovien(), 1);
-				giaoVien.setTen(giaovien2.getTen());
-				List<Giangday> giangdays = new ArrayList<>();
 				for (Giangday giangday : giaoVien.getGiangday()) {
 					Khoahoc khoahoc2 = giangDayService.findKhoaHoc(giangday.getKhoahoc().getMakhoahoc());
 					Monhoc monhoc = giangDayService.findMonHoc(giangday.getMonhoc().getMamonhoc());
@@ -160,8 +167,9 @@ public class GiangDayController {
 					giangday.setGiaovien(giaoVien);
 					giangdays.add(giangday);
 				}
-				giaoVien.setGiangday(giangdays);
 			}
+			giaoVien.setGiangday(giangdays);
+			model.addAttribute("giaoVien", giaoVien);
 			model.addAttribute("erros", erros);
 			return "giangday/phancong_update";
 		}
@@ -171,20 +179,24 @@ public class GiangDayController {
 	}
 
 	@RequestMapping(value = "/phancong/{maGiaoVien}/update", method = RequestMethod.GET)
-	public String updatePhanCong(@PathVariable("maGiaoVien") int maGiaoVien, Model model) {
-		System.out.println("Begin UpdatePhanCong");
-		Giaovien giaovien = giangDayService.getGiaoVien(maGiaoVien, 1);
-		System.out.println("GiaoVien: " + giaovien.getMagiaovien() + " - " + giaovien.getTen());
+	public String updatePhanCong(@PathVariable("maGiaoVien") int maGiaoVien, Model model, HttpSession session) {
+		Integer manamhoc = (Integer) session.getAttribute("manamhoc");
+		System.out.println("Begin UpdatePhanCong: " + manamhoc);
+		Giaovien giaovien = giangDayService.getGiaoVien(maGiaoVien, manamhoc);
+		// System.out.println("GiaoVien: " + giaovien.getMagiaovien() + " - " +
+		// giaovien.getTen());
 		List<Giangday> giangdays = giaovien.getGiangday();
-		System.out.println("Size GiaoVien Day Nam 1: " + giangdays.size());
-		System.out.println("Danh Sach Giang Day Nam 1: ");
-		for (Giangday giangday : giangdays) {
-			System.out.println("KhoaHoc: " + giangday.getKhoahoc().getMakhoahoc() + "- LopHoc: "
-					+ giangday.getKhoahoc().getLop().getTenlop() + "- MonHoc: " + giangday.getMonhoc().getTenmonhoc());
-		}
-		for (Khoahoc khoahoc : giaovien.getKhoahoc()) {
-			System.out.println("Khoa Hoc Chu Nhiem: " + khoahoc.getMakhoahoc());
-		}
+		// System.out.println("Size GiaoVien Day Nam 1: " + giangdays.size());
+		// System.out.println("Danh Sach Giang Day Nam 1: ");
+		// for (Giangday giangday : giangdays) {
+		// System.out.println("KhoaHoc: " + giangday.getKhoahoc().getMakhoahoc()
+		// + "- LopHoc: "
+		// + giangday.getKhoahoc().getLop().getTenlop() + "- MonHoc: " +
+		// giangday.getMonhoc().getTenmonhoc());
+		// }
+		// for (Khoahoc khoahoc : giaovien.getKhoahoc()) {
+		// System.out.println("Khoa Hoc Chu Nhiem: " + khoahoc.getMakhoahoc());
+		// }
 		model.addAttribute("giaoVien", giaovien);
 		return "giangday/phancong_update";
 	}
