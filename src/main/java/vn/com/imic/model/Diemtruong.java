@@ -36,7 +36,7 @@ public class Diemtruong {
 	@JoinColumn(name="truong")
 	private Truong truong;
 	
-	@OneToMany(mappedBy="diemtruong")
+	@OneToMany(mappedBy="diemtruong",cascade=CascadeType.REMOVE)
 	private List<Lop> lops;
 	
 	@OneToMany(mappedBy="diemtruong")

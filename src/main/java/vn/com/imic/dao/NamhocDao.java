@@ -8,4 +8,5 @@ public interface NamhocDao {
 	public List<Namhoc> findAllNamhoc();
 	public Namhoc findNamhocById(int manamhoc);
 	public Namhoc findByTime(String time);
+	public void SaveOrUpdateNamhoc(Namhoc nh);
 }

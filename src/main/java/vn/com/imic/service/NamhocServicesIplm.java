@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.imic.dao.NamhocDao;
 import vn.com.imic.model.Namhoc;
 
 @Service
+@Transactional(readOnly=false)
 public class NamhocServicesIplm implements NamhocServices{
 	
 	@Autowired
@@ -25,5 +27,8 @@ public class NamhocServicesIplm implements NamhocServices{
 		return namhocdao.findNamhocById(id);
 	}
 	
+	public void SaveNamhoc(Namhoc nh){
+		namhocdao.SaveOrUpdateNamhoc(nh);
+	}
 	
 }

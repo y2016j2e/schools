@@ -6,34 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import vn.com.imic.dao.DaoClass;
-import vn.com.imic.model.Hocky;
+import vn.com.imic.model.Truong;
 
 @Service
-public class HockyServicesIplm implements ServicesInterface<Hocky>{
+public class TruongServiceIplm implements ServicesInterface<Truong>{
 
 	@Autowired
-	private DaoClass<Hocky> hockyDao;
+	private DaoClass<Truong> truongDao;
 	
 	@Override
-	public List<Hocky> getAllObjects() {
+	public List<Truong> getAllObjects() {
 		// TODO Auto-generated method stub
-		return hockyDao.findAll();
+		return null;
 	}
 
 	@Override
-	public Hocky getObjectById(int id) {
+	public Truong getObjectById(int id) {
 		// TODO Auto-generated method stub
-		return hockyDao.findObjectById(id);
+		return truongDao.findObjectById(id);
 	}
 
 	@Override
-	public void DeleteObject(Hocky e) {
+	public void DeleteObject(Truong e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void SaveOrUpdateObject(Hocky e) {
+	public void SaveOrUpdateObject(Truong e) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -21,6 +21,19 @@ public class AddLopValidate implements Validator{
 		LopDataTemp lop = (LopDataTemp)arg0;
 		System.out.println("validate");
 		ValidationUtils.rejectIfEmpty(arg1, "tenlop", "lop.form.empty.tenlop", "Not empty");
+		
+		if(lop.getDiemtruong() == null){
+			arg1.rejectValue("diemtruong","lop.form.null.diemtruong");
+		}
+		
+		if(lop.getNamhoc() == null){
+			arg1.rejectValue("diemtruong","lop.form.null.namhoc");
+		}
+		
+		if(lop.getHocky() == null){
+			arg1.rejectValue("diemtruong","lop.form.null.hocky");
+		}
+		
 		if(lop.getSotiethoc()<10)
 			arg1.rejectValue("sotiethoc","lop.form.more.sotiethoc");
 	}

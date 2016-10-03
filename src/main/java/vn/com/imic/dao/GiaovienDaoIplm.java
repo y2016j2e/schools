@@ -7,8 +7,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import vn.com.imic.model.Giaovien;
-import vn.com.imic.model.Lop;
-import vn.com.imic.model.Namhoc;
 
 @Repository
 public class GiaovienDaoIplm extends HibernateDaoSupport implements DaoClass<Giaovien>{
@@ -34,6 +32,18 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements DaoClass<Gia
 			if(hibernateTemplate.findByCriteria(criteria).size()!=0)
 				return (Giaovien) hibernateTemplate.findByCriteria(criteria).get(0);
 		return null;
+	}
+
+	@Override
+	public void Delete(Giaovien e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void SaveOrUpdate(Giaovien e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

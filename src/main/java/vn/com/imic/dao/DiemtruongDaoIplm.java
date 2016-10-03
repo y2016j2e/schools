@@ -26,4 +26,16 @@ public class DiemtruongDaoIplm extends HibernateDaoSupport implements DaoClass<D
 	public Diemtruong findByCondition(String... condition){
 		return null;
 	}
+
+	@Override
+	public void Delete(Diemtruong e) {
+		delete(e);
+		
+	}
+
+	@Override
+	public void SaveOrUpdate(Diemtruong e) {
+		save(e);
+		
+	}
 }
