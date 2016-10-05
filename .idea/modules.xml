@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
     <modules>
       <module fileurl="file://$PROJECT_DIR$/schools.iml" filepath="$PROJECT_DIR$/schools.iml" />
     </modules>
-=======
-    <modules />
->>>>>>> 69adb7c78ed62186fd3e1540233a0b6eb980a390
-=======
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/schools.iml" filepath="$PROJECT_DIR$/schools.iml" />
-    </modules>
->>>>>>> conght
   </component>
 </project>

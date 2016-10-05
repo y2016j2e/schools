@@ -116,4 +116,16 @@ public class HocsinhDaoIplm extends HibernateDaoSupport implements DaoClass<Hocs
 	public Hocsinh findByCondition(String... condition){
 		return null;
 	}
+
+	@Override
+	public void Delete(Hocsinh e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void SaveOrUpdate(Hocsinh e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

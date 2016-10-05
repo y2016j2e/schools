@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name = "Cosovatchat")
 public class Cosovatchat {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int macosovatchat;
 
 	@OneToOne(cascade = CascadeType.PERSIST)

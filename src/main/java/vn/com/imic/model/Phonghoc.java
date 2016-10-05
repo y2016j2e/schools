@@ -13,10 +13,9 @@ import javax.persistence.Table;
 @Table(name="phonghoc")
 public class Phonghoc {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maP;
 	@Column(name = "tenPhong", nullable = false)
-	private int tenPhong;
+	private String tenPhong;
 	@Column(name = "capdoxd", nullable = true)
 	private int capdoxd;
 	@Column(name = "dientich", nullable = true)
@@ -28,6 +27,14 @@ public class Phonghoc {
 	@JoinColumn(name = "cosovatchat")
 	private Cosovatchat cosovatchat;
 
+	public Phonghoc(){};
+	public Phonghoc(int a1, String a2, double b1, boolean c){
+		this.capdoxd=a1;
+		this.dientich=b1;
+		this.tenPhong=a2;
+		this.xaymoi=c;
+	}
+	
 	public Cosovatchat getCosovatchat() {
 		return cosovatchat;
 	}
@@ -44,11 +51,11 @@ public class Phonghoc {
 		this.maP = maP;
 	}
 
-	public int getTenPhong() {
+	public String getTenPhong() {
 		return tenPhong;
 	}
 
-	public void setTenPhong(int tenPhong) {
+	public void setTenPhong(String tenPhong) {
 		this.tenPhong = tenPhong;
 	}
 

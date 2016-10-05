@@ -11,24 +11,24 @@
 <title>Khuôn Viên</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../layouts/header.jsp"></jsp:include>
 	<div id="content">
 		<div class="main">
 			<div class="row">
-				<div class="col-md-12 abc" >
+				<div class="col-md-12 abc">
 					<ul class="nav nav-tabs h-tab-selection">
-						<li role="presentation" class="active"><a
-							data-toggle href="khuonvien">Khuôn Viên</a></li>
-						<li role="presentation"><a data-toggle
-							href="phonghoc">Phòng Học</a></li>
-						<li role="presentation"><a data-toggle
-							href="banghe">Bàn Ghế</a></li>
-						<li role="presentation"><a data-toggle
-							href="nhavesinh">Nhà Vệ Sinh</a></li>
-						<li role="presentation"><a data-toggle
-							href="nhaxe"">Nhà Xe</a></li>
-						<li role="presentation"><a data-toggle
-							href="thietbi">Thiết Bị</a></li>
+						<li role="presentation" class="active"><a data-toggle
+							href="khuonvien">Khuôn Viên</a></li>
+						<li role="presentation"><a data-toggle href="phonghoc">Phòng
+								Học</a></li>
+						<li role="presentation"><a data-toggle href="banghe">Bàn
+								Ghế</a></li>
+						<li role="presentation"><a data-toggle href="nhavesinh">Nhà
+								Vệ Sinh</a></li>
+						<li role="presentation"><a data-toggle href="nhaxe"">Nhà
+								Xe</a></li>
+						<li role="presentation"><a data-toggle href="thietbi">Thiết
+								Bị</a></li>
 					</ul>
 				</div>
 				<div class="col-md-12">
@@ -64,9 +64,11 @@
 												<form:input path="makhuonvien" style="display:none;"
 													value="${khuonvien.makhuonvien}" />
 												<td style="background-color: lightyellow !important;">${khuonvien.cosovatchat.diemtruong.tendiemtruong}</td>
-												<td style="background-color: lightyellow !important;">${listsum.get(s.index)}</td>
+												<td style="background-color: lightyellow !important;">
+												 ${listsum.get(s.index)} 
+												</td>
 												<td class="ip"><form:input
-														style="display:none;margin-left: 0px !important;"
+														style="display:none;margin-left: 0px !important;" pattern="^[0-9]{1,6}[.]{0,1}[0-9]{0,6}$"
 														path="duoccap" value="${khuonvien.duoccap}" /> <span
 													class="tdtext">${khuonvien.duoccap}</span></td>
 
@@ -93,7 +95,7 @@
 														value="${khuonvien.soluonvuon}" /> <span class="tdtext">${khuonvien.soluonvuon}</span></td>
 
 												<td class="ip"><form:input
-														style="display:none; margin-left: 0px !important; " 
+														style="display:none; margin-left: 0px !important; "
 														path="dieukienngoaitroi"
 														value="${khuonvien.dieukienngoaitroi}" /> <span
 													class="tdtext">${khuonvien.dieukienngoaitroi}</span></td>
@@ -126,7 +128,8 @@
 		</div>
 
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<div style="text-align: center">${EMPTY}</div>
+	<jsp:include page="../layouts/footer.jsp"></jsp:include>
 	<script>
 	function editkv(makhuonvien){
 		$("#khuonvien-table tr").removeClass('canceltable');

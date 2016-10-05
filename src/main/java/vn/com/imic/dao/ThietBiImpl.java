@@ -35,7 +35,7 @@ public class ThietBiImpl extends HibernateDaoSupport implements csvcInterface<Th
 
 	@Override
 	public void SaveOrUpdate(Thietbi e) {
-		save(e);
+		hibernateTemplate.saveOrUpdate(e);
 	}
 
 	@Override

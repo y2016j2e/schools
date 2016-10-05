@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,32 +37,52 @@ public class GiaovienController {
 
     @Autowired
     private GiaovienValidator gvValidator;
-    
-    private int r= 10;
-    
-    //Need validator class . for date and other type of input text.
 
     @InitBinder
     public void dataBinding(WebDataBinder binder){
 
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
-    	dateFormat.setLenient(false);
-    	binder.registerCustomEditor(Date.class, "ngaysinh", new CustomDateEditor(dateFormat, true));
-        binder.addValidators(gvValidator);
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	dateFormat.setLenient(true);
+    	binder.registerCustomEditor(Date.class,"ngaysinh",  new CustomDateEditor(dateFormat, true));
+        binder.setValidator(gvValidator);
 
     }
-    
+
+
+
     @RequestMapping(value="/giaovien", method = RequestMethod.GET) //set info of giaovien to show
-    public String showData(Model model){
-        List<Giaovien> giaovienList = giaovienServices.getALL();
+    public String showData(@RequestParam(name = "page", required =false,defaultValue = "1") int page, Model model,HttpSession session){
+        Integer record = (Integer) session.getAttribute("record");
+        if (record == null) {
+            record = 5;
+        }
+        int totalRecord = giaovienServices.countGiaoVien();
+        int totalPage = 0;
+        if (totalRecord % record == 0) {
+            totalPage = totalRecord / record;
+        } else {
+            totalPage = (totalRecord / record) + 1;
+        }
+        int first = (page - 1) * record;
+
+        List<Giaovien> giaovienList = giaovienServices.getALL(first, record);
+
         model.addAttribute("giaovienList", giaovienList);
+        model.addAttribute("page", page);
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("record", record);
+        model.addAttribute("totalRecord", totalRecord);
+
     	return "giaovien/giaovien";
+
+
+
     }
-    
-    @RequestMapping(value="/giaovien/rows", method = RequestMethod.GET)
-    public String selectedRow(Model model,@ModelAttribute("rows") String row , BindingResult result, RedirectAttributes redirect){
-      r = Integer.parseInt(row);
-    return "redirect:/giaovien";
+
+    @RequestMapping(value = "/pagerows", method = RequestMethod.GET)
+    public String selectRecord(@RequestParam("record") int record, HttpSession session) {
+        session.setAttribute("record", record);
+        return "redirect:/giaovien";
     }
     
     
@@ -96,16 +119,21 @@ public class GiaovienController {
 
 		model.addObject("giaovien", giaovien);
 		return model;
-    	
+
     }
     	        
     
     @RequestMapping(value="/giaovien/update", method =  RequestMethod.POST) /// update giao vien trong edit form
     public String updateGV( @ModelAttribute("giaovien")  @Validated Giaovien giaovien, BindingResult  result,RedirectAttributes redirect,Model model ){
-    			giaovienServices.saveOrupdate(giaovien);
+    	if(result.hasErrors()){
+                return "/giaovien/editGiaoVien";
+        }
+
+        giaovienServices.saveOrupdate(giaovien);
+        System.out.println("GiaoVien: "+giaovien.getTen());
         return "redirect:/giaovien";
       	
     }
-    
+
 }
 

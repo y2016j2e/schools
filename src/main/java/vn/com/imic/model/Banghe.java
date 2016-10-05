@@ -11,25 +11,34 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="banghe")
+@Table(name = "banghe")
 public class Banghe {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maBanGhe;
-	
-	@Column(name="banbon",nullable=true)
+
+	@Column(name = "banbon", nullable = true)
 	private int banBon;
-	@Column(name="ghebon",nullable=true)
+	@Column(name = "ghebon", nullable = true)
 	private int gheBon;
-	@Column(name="banhai",nullable=true)
+	@Column(name = "banhai", nullable = true)
 	private int banHai;
-	@Column(name="ghehai",nullable=true)
+	@Column(name = "ghehai", nullable = true)
 	private int gheHai;
-	
-	@OneToOne(cascade= CascadeType.PERSIST)
-	@JoinColumn(name="cosovatchat")
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "cosovatchat")
 	private Cosovatchat cosovatchat;
+
+	public Banghe() {
+	}
+
+	public Banghe(int bb, int bh, int gb, int gh) {
+		this.banBon = bb;
+		this.banHai = bh;
+		this.gheBon = gb;
+		this.gheHai = gh;
+	}
 
 	public int getMaBanGhe() {
 		return maBanGhe;
@@ -78,5 +87,5 @@ public class Banghe {
 	public void setCosovatchat(Cosovatchat cosovatchat) {
 		this.cosovatchat = cosovatchat;
 	}
-	
+
 }

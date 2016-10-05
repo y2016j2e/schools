@@ -22,6 +22,8 @@
 
 <link href="<c:url value="/resources/css/vuong.css"/>" rel="stylesheet"
 	type="text/css" />
+<link href="<c:url value="/resources/css/cosovatchat.css"/>" rel="stylesheet"
+	type="text/css" />
 <script src="<c:url value="/resources/js/libs/jquery-1.9.1.js"/>"
 		type="text/javascript"></script>
 

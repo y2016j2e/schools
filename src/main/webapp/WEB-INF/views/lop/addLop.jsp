@@ -78,14 +78,17 @@
             <form:select class="form-control item" path="diemtruong">
             	<form:options items="${dt}" itemValue="madiemtruong"  />
             </form:select>
+            <form:errors cssClass="error" path="diemtruong" />
             
            <form:select class="form-control item" path="namhoc">
             	<form:options items="${nam}" itemValue="manamhoc"/>
             </form:select>
+            <form:errors cssClass="error" path="namhoc" />
             
             <form:select class="form-control item" path="hocky">
             	<form:options items="${hk}" itemValue="mahocky" />
             </form:select>
+            <form:errors cssClass="error" path="hocky" />
             
             <form:input type="text" class="form-control item" placeholder="Số Tiết Học" path="sotiethoc" />
             <form:errors cssClass="error" path="sotiethoc" />

@@ -55,7 +55,6 @@
 			<div class="under"></div>
 		</div>
 
-
 		<!-- content -->
 		<div id="content">
 
@@ -63,7 +62,7 @@
 
 				<div class="box1 row">
 					<div class="center">
-						<a href='<spring:url value="/home"></spring:url>' class="box">
+						<a href='<spring:url value="/diemtruong"></spring:url>' class="box">
 						<div>
 								<i class="fa fa-2x fa-university inside"></i>
 							</div>

@@ -32,15 +32,20 @@ public class GiaovienServicesIplm implements GiaovienServices {
         ///Thieu page
     }
 
-	@Override
+    @Override
+    public int countGiaoVien() {
+         return dao.countGiaoVien();
+    }
+
+    @Override
 	public void saveOrupdate(Giaovien giaovien) {
         dao.saveOrupdate(giaovien);
 
     }
 
     @Override
-    public List<Giaovien> getALL() {
-      return   dao.getAll();
+    public List<Giaovien> getALL(int first, int max) {
+      return   dao.getAll( first,  max);
     }
 
     @Override
@@ -48,4 +53,5 @@ public class GiaovienServicesIplm implements GiaovienServices {
 		 dao.deleteGiaovien(id);
 		
 	}
+
 }

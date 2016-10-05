@@ -11,7 +11,7 @@
 <title>Phòng Học</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../layouts/header.jsp"></jsp:include>
 	<div id="content">
 		<div class="main">
 			<div class="row">
@@ -36,7 +36,7 @@
 									<tr>
 										<th colspan="1">Điểm trường</th>
 										<th colspan="1">Tên Phòng</th>
-										<th colspan="1">Cấp độ xây dựng (?)</th>
+										<th colspan="1">Cấp độ xây dựng (3->6?)</th>
 										<th colspan="1">Diện tích (m2)</th>
 										<th colspan="1">Xây mới? (x)</th>
 										<th colspan="2">Thao Tác</th>
@@ -53,7 +53,7 @@
 												<td class="diemtruong"
 													style="background-color: lightyellow !important;">${phonghoc.cosovatchat.diemtruong.tendiemtruong}</td>
 												<td><form:input style="display:none;" path="tenPhong"
-														pattern="^[1-6]{1}$" value="${phonghoc.tenPhong}" /> <span>${phonghoc.tenPhong}</span></td>
+														value="${phonghoc.tenPhong}" /> <span>${phonghoc.tenPhong}</span></td>
 												<td><form:input style="display:none; " path="capdoxd"
 														pattern="^[3-6]{1}$" value="${phonghoc.capdoxd}" /> <span>${phonghoc.capdoxd}</span></td>
 												<td><form:input style="display:none;" path="dientich"
@@ -90,7 +90,8 @@
 		</div>
 
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<div style="text-align: center">${EMPTY}</div>
+	<jsp:include page="../layouts/footer.jsp"></jsp:include>
 	<script>
 	function editph(maP){
 		$("#phonghoc-table tr").removeClass('canceltable');

@@ -2,7 +2,7 @@ package vn.com.imic.model;
 
 public class phonghocform {
 	private int maP;
-	private int tenPhong;
+	private String tenPhong;
 	private int capdoxd;
 	private double dientich;
 	public int getMaP() {
@@ -11,10 +11,10 @@ public class phonghocform {
 	public void setMaP(int maP) {
 		this.maP = maP;
 	}
-	public int getTenPhong() {
+	public String getTenPhong() {
 		return tenPhong;
 	}
-	public void setTenPhong(int tenPhong) {
+	public void setTenPhong(String tenPhong) {
 		this.tenPhong = tenPhong;
 	}
 	public int getCapdoxd() {
