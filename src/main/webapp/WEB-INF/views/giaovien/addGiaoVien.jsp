@@ -9,13 +9,13 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	
 <title>Thêm Giáo Viên</title>
-<link rel="stylesheet" href="/resources/css/jquery-ui.css">
-<link rel="stylesheet" href="/resources/css/style.css">
+<!-- <link rel="stylesheet" href="/resources/css/jquery-ui.css">
+
 <script src="/resources/js/libs/jquery-1.9.1.js"></script>
 <script src="/resources/js/libs/jquery-ui.js"></script>
 <script src="/resources/js/libs/jquery.min.js"></script>
-
-
+ -->
+<link rel="stylesheet" href="/resources/css/style.css">
 
 
 </head>
