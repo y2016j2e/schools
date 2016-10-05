@@ -11,10 +11,10 @@
 
     <title>Thêm Giáo Viên</title>
 
-    <link rel="stylesheet" href="/resources/css/jquery-ui.css">
+   <!--  <link rel="stylesheet" href="/resources/css/jquery-ui.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="/resources/js/libs/jquery-1.9.1.js"></script>
-    <script src="/resources/js/libs/jquery-ui.js"></script>
+    <script src="/resources/js/libs/jquery-ui.js"></script> -->
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -25,7 +25,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 well form-small">
-
 
                         <spring:url value="/giaovien/update" var="updateGvAction"></spring:url>
                         <form:form	modelAttribute="giaovien" class="form-horizontal" role="form" id="updateGV" action="${updateGvAction}"
@@ -60,7 +59,7 @@
 
                         <div class="col-sm-8">
                             <form:input class="form-control datepicker" placeholder="Ngày sinh"
-                                        type="text" path="ngaysinh" id="ngaysinh"/>
+                                        type="text" path="ngaysinh" id="ns-datepicker"/>
                         </div>
                     </div>
 
@@ -163,7 +162,9 @@
 
     </div>
 
-
+	<script type="text/javascript">
+	$( "#ns-datepicker" ).datepicker();
+	</script>
     <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
