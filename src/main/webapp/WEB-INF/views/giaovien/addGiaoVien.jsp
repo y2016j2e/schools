@@ -6,12 +6,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <title>Thêm Giáo Viên</title>
-<%-- <link rel="stylesheet" href='<spring:url value="resources/css/jquery-ui.css"/>'> --%>
-<link rel="stylesheet" href='<spring:url value="resources/css/style.css"/>' >
-<%-- <script src='<spring:url value="resources/js/libs/jquery-1.9.1.js"/> '></script>
-<script src='<spring:url value="resources/js/libs/jquery-ui.js"/> '></script>
-<script src='<spring:url value="resources/js/libs/jquery.min.js"/> '></script> --%>
 
+
+<link rel="stylesheet" href="/resources/css/style.css">
+<link rel="stylesheet" href="/resources/css/jquery-ui.css">
+<script src="/resources/js/libs/jquery-1.9.1.js"></script>
+<script src="/resources/js/libs/jquery-ui.js"></script>
 
 
 
@@ -37,7 +37,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="datepicker">Ngày sinh</label>
+								<label class="control-label col-sm-4" for="ns-datepicker">Ngày sinh</label>
 								<div class="col-sm-8">
 									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="ns-datepicker"/>
 

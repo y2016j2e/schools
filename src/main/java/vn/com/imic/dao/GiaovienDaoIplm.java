@@ -64,7 +64,7 @@ public class GiaovienDaoIplm extends HibernateDaoSupport implements GiaovienDao 
     @Override
     public int countGiaoVien() {
         Session session = hibernateTemplate.getSessionFactory().openSession();
-        int count = ((Long) session.createQuery("select count(*) from Giaovien").uniqueResult()).intValue();
+        int count = ((Long) session.createQuery("select count(*) from vn.com.imic.model.Giaovien").uniqueResult()).intValue();
         return count;
     }
 
