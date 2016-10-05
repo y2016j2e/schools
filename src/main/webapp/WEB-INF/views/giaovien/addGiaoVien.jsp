@@ -4,15 +4,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	
 <title>Thêm Giáo Viên</title>
-
-
-<link rel="stylesheet" href="/resources/css/style.css">
-<link rel="stylesheet" href="/resources/css/jquery-ui.css">
+ <link rel="stylesheet" href="/resources/css/jquery-ui.css">
 <script src="/resources/js/libs/jquery-1.9.1.js"></script>
 <script src="/resources/js/libs/jquery-ui.js"></script>
-
+<script src="/resources/js/libs/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/css/style.css">
 
 
 </head>
@@ -37,9 +38,9 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="ns-datepicker">Ngày sinh</label>
+								<label class="control-label col-sm-4" for="datepicker">Ngày sinh</label>
 								<div class="col-sm-8">
-									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="ns-datepicker"/>
+									<form:input class="form-control" placeholder="Ngày sinh" type="text" path="ngaysinh" id="datepicker"/>
 
 									<form:errors  path="ngaysinh" cssClass="error"	/>
 								</div>
@@ -130,9 +131,7 @@
 
 	</div>
 
-<script type="text/javascript">
-$( "#ns-datepicker" ).datepicker();
-</script>
+
 
 
 <jsp:include page="footer.jsp"></jsp:include>

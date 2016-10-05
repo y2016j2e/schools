@@ -15,7 +15,16 @@ public class GiaovienServicesIplm implements GiaovienServices {
     @Autowired
     private  GiaovienDao dao;
 
+    @Override
+    public List<Giaovien> getALL(int first, int max) {
+      return   dao.getAll( first,  max);
+    }
 
+    @Override
+	public void deleteGiaovien(int id) {
+		 dao.deleteGiaovien(id);
+		
+	}
     @Override
     public Giaovien getGVbyID(int id) {
         return dao.findbyID(id);
@@ -43,15 +52,6 @@ public class GiaovienServicesIplm implements GiaovienServices {
 
     }
 
-    @Override
-    public List<Giaovien> getALL(int first, int max) {
-      return   dao.getAll( first,  max);
-    }
-
-    @Override
-	public void deleteGiaovien(int id) {
-		 dao.deleteGiaovien(id);
-		
-	}
+    
 
 }

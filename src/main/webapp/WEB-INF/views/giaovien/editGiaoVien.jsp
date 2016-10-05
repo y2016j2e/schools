@@ -10,10 +10,11 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 
     <title>Thêm Giáo Viên</title>
-<link rel="stylesheet" href="/resources/css/style.css">
-<link rel="stylesheet" href="/resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/css/jquery-ui.css">
     <script src="/resources/js/libs/jquery-1.9.1.js"></script>
     <script src="/resources/js/libs/jquery-ui.js"></script>
+    <script src="/resources/js/libs/jquery.min.js"></script>
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -58,7 +59,7 @@
 
                         <div class="col-sm-8">
                             <form:input class="form-control datepicker" placeholder="Ngày sinh"
-                                        type="text" path="ngaysinh" id="ns-datepicker"/>
+                                        type="text" path="ngaysinh" id="ngaysinh"/>
                         </div>
                     </div>
 
@@ -161,9 +162,7 @@
 
     </div>
 
-	<script type="text/javascript">
-	$( "#ns-datepicker" ).datepicker();
-	</script>
+
     <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

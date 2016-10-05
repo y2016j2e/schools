@@ -81,8 +81,6 @@ public class GiaovienController {
 
     	return "giaovien/giaovien";
 
-
-
     }
 
     @RequestMapping(value = "/pagerows", method = RequestMethod.GET)
@@ -102,13 +100,14 @@ public class GiaovienController {
     @RequestMapping(value="/giaovien/addGiaoVien", method = RequestMethod.GET)
     public ModelAndView setAndView(){
     	ModelAndView model = new ModelAndView("giaovien/addGiaoVien");
-    	  	/////// ???????????
+     
     	model.addObject("giaovien", new Giaovien());
     	return model;
     }
     
     @RequestMapping(value="/giaovien/addGV", method = RequestMethod.POST) //add giaovien Object
-    public String addGiaoVien(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result, RedirectAttributes redirect){
+    public String addGiaoVien(Model model, @ModelAttribute("giaovien") @Validated Giaovien giaovien, BindingResult result,
+    		RedirectAttributes redirect){
     	if (result.hasErrors()){
             return "/giaovien/addGiaoVien";
         }
