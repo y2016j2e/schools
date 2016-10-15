@@ -88,6 +88,7 @@ public class GiaovienController {
     
     @RequestMapping(value="/giaovien/delete/{id}")//delete Giao vien
     public String deleteIndex(@PathVariable("id") int id ,RedirectAttributes redirect){
+
     	giaovienServices.deleteGiaovien(id);
     	return  "redirect:/giaovien";
     }

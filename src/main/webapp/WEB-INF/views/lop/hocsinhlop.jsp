@@ -197,7 +197,7 @@ function fun(lopid,id,hs){
 	document.getElementById("del").innerHTML = x;
 	document.getElementById("changeb").setAttribute("style","display:none;");
 	document.getElementById("dele").setAttribute("style","display:inline-block;");
-	var l = "http://localhost:8081/schools/lop/"+lopid+"/delete/"+id;
+	var l = "http://localhost:8080/schools/lop/"+lopid+"/delete/"+id;
 	link = l;
 }		
 

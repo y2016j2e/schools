@@ -255,7 +255,7 @@ public class LopDaoIplm extends HibernateDaoSupport implements LopDao{
 			con = cp.getConnection();
 			CallableStatement call = null;
 		
-			call = con.prepareCall("{call danhsach()}");
+			call = con.prepareCall("{call abc()}");
 			ResultSet result = call.executeQuery();
 		 
 		
