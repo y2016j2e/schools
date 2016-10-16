@@ -54,10 +54,10 @@ public class Giaovien {
 	@Column(name="trinhdo",nullable=false)
 	private String trinhdo;
 
-	@OneToMany(mappedBy = "chunhiem",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "chunhiem",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Khoahoc> khoahoc;
 
-	@OneToMany(mappedBy = "giaovien",fetch=FetchType.LAZY,cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy = "giaovien",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Giangday> giangday;
 
 	public int getMagiaovien() {
